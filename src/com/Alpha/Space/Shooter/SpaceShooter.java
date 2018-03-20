@@ -58,10 +58,11 @@ public class SpaceShooter extends Application
                     }
                     break;
                 case DOWN:
-                    if (ship.getY() < height)
+                    if (ship.getY() < height - ship.getHeight())
                     {
                         ship.moveShipDown();
                     }
+                   git  break;
                 case RIGHT:
                     if (ship.getX() < (width - ship.getWidth()))
                     {
