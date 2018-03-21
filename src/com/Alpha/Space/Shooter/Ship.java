@@ -8,35 +8,44 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 
-public class Ship
+public abstract class Ship
 {
     private Rectangle hull = new Rectangle();
     private Rectangle wings = new Rectangle();
-    private Ammo ammo = new Ammo();
-    private double movement = 15;
+    private Ammo ammo = new FiftyCaliber();
+    private double movement;
 
-    public Ship(double windowWidth, double windowHeight)
+
+
+
+    public abstract ArrayList<Rectangle> getShip();
+
+    public Rectangle getHull()
     {
-        hull.setX(windowWidth/2);
-        hull.setY(windowHeight/4);
-        hull.setWidth(50);
-        hull.setHeight(150);
-
-        wings.setX((hull.getX() + (hull.getWidth()/2) - 50));
-        wings.setY((hull.getY() + hull.getHeight()) - 50);
-        wings.setWidth(100);
-        wings.setHeight(50);
-
-
+        return hull;
     }
 
-    public ArrayList<Rectangle> getShip()
+    public void setHull(Rectangle hull)
     {
-        ArrayList<Rectangle> ship = new ArrayList<>();
-        ship.add(hull);
-        ship.add(wings);
-        ship.add(ammo.getRound());
-        return ship;
+        this.hull = hull;
+    }
+
+    public Rectangle getWings()
+    {
+        return wings;
+    }
+
+    public void setWings(Rectangle wings)
+    {
+        this.wings = wings;
+    }
+    public Rectangle getAmmo()
+    {
+        return ammo.getRound();
+    }
+    public void setMovement(int movement)
+    {
+        this.movement = movement;
     }
 
     public double getX()
