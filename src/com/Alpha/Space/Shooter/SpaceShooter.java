@@ -28,7 +28,7 @@ public class SpaceShooter extends Application
         gameList.addAll(ship.getShip());
 
         Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
-        controls(scene, ship, WINDOW_WIDTH, WINDOW_HEIGHT);
+        Controls controls = new Controls(scene, ship, WINDOW_WIDTH, WINDOW_HEIGHT);
 
         primaryStage.setTitle("Space Shooter");
         primaryStage.setScene(scene);
@@ -45,40 +45,5 @@ public class SpaceShooter extends Application
         return WINDOW_HEIGHT;
     }
 
-    public void controls (Scene scene, Ship ship, int width, int height)
-    {
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
-        {
 
-            switch (key.getCode()) {
-                case UP:
-                    if (ship.getY() > 0)
-                    {
-                        ship.moveShipUp();
-                    }
-                    break;
-                case DOWN:
-                    if (ship.getY() < height - ship.getHeight())
-                    {
-                        ship.moveShipDown();
-                    }
-                   git  break;
-                case RIGHT:
-                    if (ship.getX() < (width - ship.getWidth()))
-                    {
-                        ship.moveShipRight();
-                    }
-                    break;
-                case LEFT:
-                    if (ship.getX() > 0)
-                    {
-                        ship.moveShipLeft();
-                    }
-                    break;
-                case SPACE:
-                    ship.shoot();
-                    break;
-            }
-        });
-    }
 }
