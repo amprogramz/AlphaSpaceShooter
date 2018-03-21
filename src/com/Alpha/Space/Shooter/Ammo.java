@@ -1,14 +1,13 @@
 package com.Alpha.Space.Shooter;
 
 
-import javafx.application.Application;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Ammo
 {
     private Rectangle ammo = new Rectangle();
     private double movement;
+    private int damage;
 
 
 
@@ -29,9 +28,13 @@ public class Ammo
         ammo.setX(x);
         ammo.setY(y);
     }
+    public void setDamage(int damage)
+    {
+        this.damage = damage;
+    }
     public void shoot(EnemyArray enemy)
     {
         ammo.setY(ammo.getY() - movement);
-        enemy.checkForDestruction(ammo);
+        enemy.checkForDestruction(ammo, damage);
     }
 }

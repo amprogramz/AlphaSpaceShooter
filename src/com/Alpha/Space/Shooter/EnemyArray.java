@@ -31,14 +31,14 @@ public class EnemyArray
         return this;
     }
 
-    public void checkForDestruction(Rectangle ammo )
+    public void checkForDestruction(Rectangle ammo, int damage )
     {
         for(Target block : enemyArray)
         {
             if(Colideable.collishion(ammo, enemyArray.get(block.getIndex()).getBlock()))
             {
                 System.out.println("Block Destroyed " + block.getIndex());
-                enemyArray.get(block.getIndex()).destruct();
+                enemyArray.get(block.getIndex()).destruct(damage);
             }
         }
 

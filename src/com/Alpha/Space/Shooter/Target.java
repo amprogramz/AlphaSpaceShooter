@@ -6,6 +6,7 @@ public class Target
 {
     private Rectangle target = new Rectangle();
     private int targetIndex;
+    private int hitPoints = 30;
 
     public Target(double x, double y, int index)
     {
@@ -25,9 +26,15 @@ public class Target
     }
 
 
-    public void destruct()
+    public void destruct(int damage)
     {
-        target.setX(-200);
+        if(this.hitPoints > damage)
+        {
+            hitPoints = hitPoints - damage;
+        }else
+        {
+            target.setX(-200);
+        }
     }
 
 

@@ -15,6 +15,7 @@ public class FiftyCaliber extends Ammo
         ammo.setFill(Color.RED);
         super.setAmmo(ammo);
         super.setMovement(30);
+        super.setDamage(11);
     }
 
 }
