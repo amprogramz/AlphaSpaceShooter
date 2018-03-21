@@ -22,7 +22,7 @@ public class EnemyArray
         ArrayList<Rectangle> blocksToReturn = new ArrayList<>();
         for (int index = 0; index < enemyArray.size(); index++ )
         {
-            blocksToReturn.add(enemyArray.get(index).getBlock());
+            blocksToReturn.add(enemyArray.get(index).getEnemy());
         }
         return blocksToReturn;
     }
@@ -35,7 +35,7 @@ public class EnemyArray
     {
         for(Target block : enemyArray)
         {
-            if(Colideable.collishion(ammo, enemyArray.get(block.getIndex()).getBlock()))
+            if(Colideable.collishion(ammo, enemyArray.get(block.getIndex()).getEnemy()))
             {
                 System.out.println("Block Destroyed " + block.getIndex());
                 enemyArray.get(block.getIndex()).destruct(damage);
