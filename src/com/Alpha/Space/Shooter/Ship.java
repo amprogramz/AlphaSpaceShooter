@@ -9,6 +9,7 @@ public class Ship
 {
     private Rectangle hull = new Rectangle();
     private Rectangle wings = new Rectangle();
+    private Ammo ammo = new Ammo();
     private double movement = 15;
 
     public Ship(double windowWidth, double windowHeight)
@@ -31,6 +32,7 @@ public class Ship
         ArrayList<Rectangle> ship = new ArrayList<>();
         ship.add(hull);
         ship.add(wings);
+        ship.add(ammo.getRound());
         return ship;
     }
 
@@ -74,5 +76,7 @@ public class Ship
 
     public void shoot()
     {
+        ammo.setAmmo(wings.getX(), wings.getY());
+        
     }
 }
