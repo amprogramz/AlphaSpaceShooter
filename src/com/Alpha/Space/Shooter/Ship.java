@@ -77,6 +77,6 @@ public class Ship
     public void shoot()
     {
         ammo.setAmmo(wings.getX(), wings.getY());
-        
+
     }
 }
