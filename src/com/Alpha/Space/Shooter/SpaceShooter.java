@@ -1,10 +1,14 @@
 package com.Alpha.Space.Shooter;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class SpaceShooter extends Application
 {
@@ -29,7 +33,7 @@ public class SpaceShooter extends Application
         gameList.addAll(enemies.getEnemies());
 
         Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
-        Controls controls = new Controls(scene, ship, WINDOW_WIDTH, WINDOW_HEIGHT);
+        Controls controls = new Controls(scene, ship, enemies, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 
         primaryStage.setTitle("Space Shooter");

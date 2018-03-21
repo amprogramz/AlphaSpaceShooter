@@ -1,7 +1,10 @@
 package com.Alpha.Space.Shooter;
 
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 
@@ -74,9 +77,19 @@ public class Ship
         wings.setY(wings.getY() + movement);
     }
 
-    public void shoot()
+    public void setShot()
     {
         ammo.setAmmo(wings.getX(), wings.getY());
+    }
 
+    public void invokeShot(EnemyArray enemy)
+    {
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(10),
+                ae ->  ammo.shoot(enemy) ));
+
+
+        timeline.setCycleCount(50);
+        timeline.play();
     }
 }

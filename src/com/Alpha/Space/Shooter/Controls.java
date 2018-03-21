@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 
 public class Controls {
-    public Controls (Scene scene, Ship ship, int width, int height)
+    public Controls (Scene scene, Ship ship, EnemyArray enemy, int width, int height)
     {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
         {
@@ -35,7 +35,8 @@ public class Controls {
                     }
                     break;
                 case SPACE:
-                    ship.shoot();
+                    ship.setShot();
+                    ship.invokeShot(enemy);
                     break;
             }
         });
