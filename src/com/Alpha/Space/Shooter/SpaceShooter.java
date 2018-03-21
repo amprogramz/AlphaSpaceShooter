@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class SpaceShooter extends Application
@@ -19,6 +18,7 @@ public class SpaceShooter extends Application
     private final int WINDOW_HEIGHT = 800;
 
     private Ship ship = new Ship(WINDOW_WIDTH, WINDOW_HEIGHT);
+    private EnemyArray enemies = new EnemyArray(8);
 
     @Override
     public void start(Stage primaryStage)
@@ -26,9 +26,11 @@ public class SpaceShooter extends Application
         Group gameGroup = new Group();
         ObservableList gameList = gameGroup.getChildren();
         gameList.addAll(ship.getShip());
+        gameList.addAll(enemies.getEnemies());
 
         Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
         Controls controls = new Controls(scene, ship, WINDOW_WIDTH, WINDOW_HEIGHT);
+
 
         primaryStage.setTitle("Space Shooter");
         primaryStage.setScene(scene);
