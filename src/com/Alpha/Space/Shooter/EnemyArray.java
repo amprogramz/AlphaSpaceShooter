@@ -37,11 +37,16 @@ public class EnemyArray
         {
             if(Colideable.collishion(ammo, enemyArray.get(block.getIndex()).getEnemy()))
             {
-                System.out.println("Block Destroyed " + block.getIndex());
+                System.out.println("Block Hit " + block.getIndex());
                 enemyArray.get(block.getIndex()).destruct(damage);
             }
         }
 
+    }
+
+    private void removeFromArray(int index)
+    {
+        enemyArray.remove(index);
     }
 
 }

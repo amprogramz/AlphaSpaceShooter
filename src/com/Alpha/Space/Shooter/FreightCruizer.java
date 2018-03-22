@@ -2,6 +2,8 @@ package com.Alpha.Space.Shooter;
 
 
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+
 import java.util.ArrayList;
 
 public class FreightCruizer extends Ship
@@ -28,9 +30,9 @@ public class FreightCruizer extends Ship
 
         }
         @Override
-        public ArrayList<Rectangle> getShip()
+        public ArrayList<Shape> getShip()
         {
-            ArrayList<Rectangle> ship = new ArrayList<>();
+            ArrayList<Shape> ship = new ArrayList<>();
             ship.add(super.getHull());
             ship.add(super.getWings());
             ship.add(super.getAmmo());

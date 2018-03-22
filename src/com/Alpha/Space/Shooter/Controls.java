@@ -1,10 +1,22 @@
 package com.Alpha.Space.Shooter;
+/**
+ * Author Alec McDaugale
+ * This is a class to define the controles in the game
+ */
 
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 
 public class Controls {
-    public Controls (Scene scene, Ship ship, EnemyArray enemy, int width, int height)
+    /**
+     * This is where the controls are defined.
+     * @param scene The scene to add the controls to.
+     * @param ship The ship object is necessary to use its methods to move it.
+     * @param enemy Passing the enemy objects allows us to to detect collisions when we invoke shoot.
+     * @param width This is the screen width of the game.
+     * @param height This is the screen height of the game.
+     */
+    public Controls (Scene scene, Ship ship, EnemyArray enemy, double width, double height)
     {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
         {
@@ -38,6 +50,8 @@ public class Controls {
                     ship.setShot();
                     ship.invokeShot(enemy);
                     break;
+                
+
             }
         });
     }

@@ -1,5 +1,9 @@
 package com.Alpha.Space.Shooter;
 
+/**
+ * Author Alec McDaugale
+ * This is the JavaFX Aplication area where we define the windows for the game.
+ */
 
 import javafx.application.Application;
 import javafx.collections.ObservableList;
