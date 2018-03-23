@@ -47,8 +47,8 @@ public class Controls {
                     }
                     break;
                 case SPACE:
-                    ship.setShot();
-                    ship.invokeShot(enemy);
+                    ship.setShot(enemy);
+                    //ship.
                     break;
 
 

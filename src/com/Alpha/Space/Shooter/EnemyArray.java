@@ -4,9 +4,13 @@ package com.Alpha.Space.Shooter;
 import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 
+/**
+ * Author Alec McDaugale
+ * This is an array to store Enemy objects for later use.
+ */
 public class EnemyArray
 {
-    private ArrayList<Target> enemyArray = new ArrayList<>();
+    private ArrayList<Enemy> enemyArray = new ArrayList<>();
 
     public EnemyArray(int numberOfTargets)
     {
@@ -33,9 +37,9 @@ public class EnemyArray
 
     public void checkForDestruction(Rectangle ammo, int damage )
     {
-        for(Target block : enemyArray)
+        for(Enemy block : enemyArray)
         {
-            if(Colideable.collishion(ammo, enemyArray.get(block.getIndex()).getEnemy()))
+            if(Colideable.collision(ammo, enemyArray.get(block.getIndex()).getEnemy()))
             {
                 System.out.println("Block Hit " + block.getIndex());
                 enemyArray.get(block.getIndex()).destruct(damage);

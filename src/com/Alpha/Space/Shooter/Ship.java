@@ -1,18 +1,11 @@
 package com.Alpha.Space.Shooter;
 /**
  * Author Alec McDaugale
- * The Ship class is a parent class to create a ship. I made it abstract, but im trying to make this work for a variaty
- * of shapes.
+ * The Ship class is an abstract parent class to create a ship. I made it abstract, but im trying to make this work for
+ * a variety of shapes.
  */
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
-import javafx.util.Duration;
-
 import java.util.ArrayList;
 
 
@@ -21,12 +14,6 @@ public abstract class Ship
     private double movement;
     private double hitPoints;
     private ImageView image = new ImageView();
-
-
-    /**
-     * This returns the ship, i made this abstract so that we could return different ships with different shapes.
-     * @return an array of type Shape.
-     */
 
 
     public void setImage(ImageView image)

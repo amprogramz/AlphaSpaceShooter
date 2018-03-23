@@ -1,5 +1,9 @@
 package com.Alpha.Space.Shooter;
 
+/**
+ * Author Alec McDaugle
+ * This is a class to create a scoring object to keep track of lives and points.
+ */
 public class Score
 {
     private int score;

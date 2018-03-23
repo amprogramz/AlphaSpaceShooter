@@ -2,6 +2,10 @@ package com.Alpha.Space.Shooter;
 
 import javafx.scene.shape.Rectangle;
 
+/**
+ * Author Alec McDaugel
+ * This is a parent class to create enemy objects.
+ */
 public class Enemy
 {
     private Rectangle enemy = new Rectangle();

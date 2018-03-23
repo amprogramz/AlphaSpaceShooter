@@ -1,7 +1,14 @@
 package com.Alpha.Space.Shooter;
+/**
+ * Author Alec McDaugale
+ * This is a parent class to create various munitions for the ship.
+ */
 
-
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+import javafx.util.Duration;
 
 public class Ammo
 {
@@ -11,7 +18,7 @@ public class Ammo
 
 
 
-    public Rectangle getRound()
+    public Shape getRound()
     {
         return ammo;
     }
@@ -36,5 +43,15 @@ public class Ammo
     {
         ammo.setY(ammo.getY() - movement);
         enemy.checkForDestruction(ammo, damage);
+    }
+    public void invokeShot(EnemyArray enemy)
+    {
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(10),
+                ae ->  shoot(enemy) ));
+
+
+        timeline.setCycleCount(50);
+        timeline.play();
     }
 }

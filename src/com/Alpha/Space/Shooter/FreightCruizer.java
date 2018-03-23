@@ -1,16 +1,15 @@
 package com.Alpha.Space.Shooter;
 
-
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import javafx.util.Duration;
-
-
 import java.util.ArrayList;
+
+/**
+ * Author Alec McDaugale
+ * This is a ship i have defined, inherits the abstract class ship.
+ */
 
 public class FreightCruizer extends Ship
 {
@@ -129,19 +128,11 @@ public class FreightCruizer extends Ship
             imageView.setY(imageView.getY() + super.getMovement());
             setImage(imageView);
         }
-        public void setShot()
+        public void setShot(EnemyArray enemy)
         {
-            ammo.setAmmo(wings.getX(), wings.getY());
+            ammo.setAmmo(wings.getX()+ 21, wings.getY());
+            ammo.invokeShot(enemy);
         }
-    public void invokeShot(EnemyArray enemy)
-    {
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(10),
-                ae ->  ammo.shoot(enemy) ));
 
-
-        timeline.setCycleCount(50);
-        timeline.play();
-    }
 
 }
