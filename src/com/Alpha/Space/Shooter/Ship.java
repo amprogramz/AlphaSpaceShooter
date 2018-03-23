@@ -7,6 +7,8 @@ package com.Alpha.Space.Shooter;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
@@ -16,100 +18,55 @@ import java.util.ArrayList;
 
 public abstract class Ship
 {
-    private Rectangle hull = new Rectangle();
-    private Rectangle wings = new Rectangle();
-    private Ammo ammo = new FiftyCaliber();
     private double movement;
+    private double hitPoints;
+    private ImageView image = new ImageView();
+
 
     /**
      * This returns the ship, i made this abstract so that we could return different ships with different shapes.
      * @return an array of type Shape.
      */
-    public abstract ArrayList<Shape> getShip();
 
-    /**
-     * Returns the hull
-     * @return
-     */
-    public Rectangle getHull()
-    {
-        return hull;
-    }
 
-    public void setHull(Rectangle hull)
+    public void setImage(ImageView image)
     {
-        this.hull = hull;
+        this.image = image;
     }
-
-    public Rectangle getWings()
+    public ImageView getImage()
     {
-        return wings;
-    }
-
-    public void setWings(Rectangle wings)
-    {
-        this.wings = wings;
-    }
-    public Rectangle getAmmo()
-    {
-        return ammo.getRound();
+        return image;
     }
     public void setMovement(int movement)
     {
         this.movement = movement;
     }
-
-    public double getX()
+    public double getMovement()
     {
-        return wings.getX();
+        return movement;
     }
-    public double getY()
+    public void setHitPoints(int hitPoints)
     {
-        return hull.getY();
+        this.hitPoints = hitPoints;
     }
-    public double getWidth()
+    public double getHitPoints()
     {
-        return wings.getWidth();
-    }
-    public double getHeight()
-    {
-        return hull.getHeight();
+        return hitPoints;
     }
 
-    public void moveShipRight()
-    {
-        hull.setX(hull.getX() + movement);
-        wings.setX(wings.getX() + movement);
-    }
-    public void moveShipLeft()
-    {
-        hull.setX(hull.getX() - movement);
-        wings.setX(wings.getX() - movement);
-    }
-    public void moveShipUp()
-    {
-        hull.setY(hull.getY() - movement);
-        wings.setY(wings.getY() - movement);
-    }
-    public void moveShipDown()
-    {
-        hull.setY(hull.getY() + movement);
-        wings.setY(wings.getY() + movement);
-    }
+    public abstract ArrayList<Object> getShip();
 
-    public void setShot()
-    {
-        ammo.setAmmo(wings.getX(), wings.getY());
-    }
+    public abstract double getX();
+    public abstract double getY();
+    public abstract double getWidth();
+    public abstract double getHeight();
 
-    public void invokeShot(EnemyArray enemy)
-    {
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(10),
-                ae ->  ammo.shoot(enemy) ));
+    public abstract void moveShipRight();
+    public abstract void moveShipLeft();
+    public abstract void moveShipUp();
+    public abstract void moveShipDown();
 
 
-        timeline.setCycleCount(50);
-        timeline.play();
-    }
+
+
 }

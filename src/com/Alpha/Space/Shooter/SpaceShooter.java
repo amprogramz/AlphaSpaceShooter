@@ -22,8 +22,9 @@ public class SpaceShooter extends Application
     //  let me know if this does not fit on your screen for whatever reason.
     private final int WINDOW_WIDTH = 1000;
     private final int WINDOW_HEIGHT = 800;
+    private String filePath = "sprite/Space-Background-1.jpg";
 
-    private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
+    private FreightCruizer ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
     private EnemyArray enemies = new EnemyArray(8);
 
     @Override
@@ -31,8 +32,10 @@ public class SpaceShooter extends Application
     {
         Group gameGroup = new Group();
         ObservableList gameList = gameGroup.getChildren();
+        gameList.add(SpriteTool.getImage(filePath, WINDOW_WIDTH, WINDOW_HEIGHT));
         gameList.addAll(ship.getShip());
         gameList.addAll(enemies.getEnemies());
+
 
         Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
         Controls controls = new Controls(scene, ship, enemies, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -42,15 +45,6 @@ public class SpaceShooter extends Application
         primaryStage.setScene(scene);
         primaryStage.show();
 
-    }
-
-    public int getWINDOW_WIDTH()
-    {
-        return WINDOW_WIDTH;
-    }
-    public int getWINDOW_HEIGHT()
-    {
-        return WINDOW_HEIGHT;
     }
 
 

@@ -16,7 +16,7 @@ public class Controls {
      * @param width This is the screen width of the game.
      * @param height This is the screen height of the game.
      */
-    public Controls (Scene scene, Ship ship, EnemyArray enemy, double width, double height)
+    public Controls (Scene scene, FreightCruizer ship, EnemyArray enemy, double width, double height)
     {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
         {
@@ -50,7 +50,7 @@ public class Controls {
                     ship.setShot();
                     ship.invokeShot(enemy);
                     break;
-                
+
 
             }
         });

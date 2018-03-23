@@ -1,43 +1,147 @@
 package com.Alpha.Space.Shooter;
 
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.util.Duration;
+
 
 import java.util.ArrayList;
 
 public class FreightCruizer extends Ship
 {
 
+        private Rectangle hull = new Rectangle();
+        private Rectangle wings = new Rectangle();
+        private Ammo ammo = new FiftyCaliber();
 
+        private String imageFileName = "sprite/Spaceship_tut/Spaceship_tut.png";
 
         public FreightCruizer(double windowWidth, double windowHeight)
         {
-            Rectangle hull = new Rectangle();
+
             hull.setX(windowWidth/2);
             hull.setY(windowHeight/4);
             hull.setWidth(50);
             hull.setHeight(150);
-            super.setHull(hull);
+            hull.setArcWidth(50);
+            hull.setArcHeight(100);
+            hull.setFill(Color.TRANSPARENT);
 
-            Rectangle wings = new Rectangle();
+
+
+
             wings.setX((hull.getX() + (hull.getWidth()/2) - 50));
-            wings.setY((hull.getY() + hull.getHeight()) - 50);
+            wings.setY((hull.getY() + hull.getHeight()) - 60);
             wings.setWidth(100);
-            wings.setHeight(50);
-            super.setWings(wings);
+            wings.setHeight(30);
+            hull.setFill(Color.TRANSPARENT);
+
+            ImageView image = new ImageView();
+            image = SpriteTool.getImage(imageFileName, getX(),getY(),getWidth(), getHeight(), false);
+            super.setImage(image);
+
             super.setMovement(15);
+            super.setHitPoints(100);
 
         }
         @Override
-        public ArrayList<Shape> getShip()
+        public ArrayList<Object> getShip()
         {
-            ArrayList<Shape> ship = new ArrayList<>();
-            ship.add(super.getHull());
-            ship.add(super.getWings());
-            ship.add(super.getAmmo());
+            ArrayList<Object> ship = new ArrayList<>();
+            ship.add(getHull());
+            ship.add(getWings());
+            ship.add(getAmmo());
+            ship.add(getImage());
             return ship;
         }
 
+        public Shape getHull()
+    {
+        return hull;
+    }
+        public Shape getWings()
+    {
+        return wings;
+    }
+
+        public Shape getAmmo()
+        {
+            return ammo.getRound();
+        }
+        public double getX()
+        {
+            return wings.getX();
+        }
+        public double getY()
+        {
+            return hull.getY();
+        }
+        public double getWidth()
+        {
+            return wings.getWidth();
+        }
+        public double getHeight()
+        {
+            return hull.getHeight();
+        }
+        @Override
+        public void moveShipRight()
+        {
+            hull.setX(hull.getX() + super.getMovement());
+            wings.setX(wings.getX() + super.getMovement());
+
+            ImageView imageView = super.getImage();
+            imageView.setX(imageView.getX() + super.getMovement());
+            setImage(imageView);
+        }
+        @Override
+        public void moveShipLeft()
+        {
+            hull.setX(hull.getX() - super.getMovement());
+            wings.setX(wings.getX() - super.getMovement());
+
+            ImageView imageView = super.getImage();
+            imageView.setX(imageView.getX() - super.getMovement());
+            setImage(imageView);
+        }
+        @Override
+        public void moveShipUp()
+        {
+            hull.setY(hull.getY() - super.getMovement());
+            wings.setY(wings.getY() - super.getMovement());
+
+            ImageView imageView = super.getImage();
+            imageView.setY(imageView.getY() - super.getMovement());
+            setImage(imageView);
+        }
+        @Override
+        public void moveShipDown()
+        {
+            hull.setY(hull.getY() + super.getMovement());
+            wings.setY(wings.getY() + super.getMovement());
+
+            ImageView imageView = super.getImage();
+            imageView.setY(imageView.getY() + super.getMovement());
+            setImage(imageView);
+        }
+        public void setShot()
+        {
+            ammo.setAmmo(wings.getX(), wings.getY());
+        }
+    public void invokeShot(EnemyArray enemy)
+    {
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(10),
+                ae ->  ammo.shoot(enemy) ));
+
+
+        timeline.setCycleCount(50);
+        timeline.play();
+    }
 
 }
