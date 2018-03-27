@@ -1,5 +1,7 @@
 package com.Alpha.Space.Shooter;
 
+import javafx.collections.ObservableList;
+import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -17,6 +19,7 @@ public class FreightCruizer extends Ship
         private Rectangle hull = new Rectangle();
         private Rectangle wings = new Rectangle();
         private Ammo ammo = new FiftyCaliber();
+        private Ammo ammo2 = new FiftyCaliber();
 
         private String imageFileName = "sprite/Spaceship_tut/Spaceship_tut.png";
 
@@ -49,14 +52,16 @@ public class FreightCruizer extends Ship
 
         }
         @Override
-        public ArrayList<Object> getShip()
+        public Group getShip()
         {
-            ArrayList<Object> ship = new ArrayList<>();
+            Group shipGroup = new Group();
+            ObservableList ship = shipGroup.getChildren();
             ship.add(getHull());
             ship.add(getWings());
-            ship.add(getAmmo());
+            ship.add(getAmmo(ammo));
+            ship.add(getAmmo(ammo2));
             ship.add(getImage());
-            return ship;
+            return shipGroup;
         }
 
         public Shape getHull()
@@ -68,7 +73,7 @@ public class FreightCruizer extends Ship
         return wings;
     }
 
-        public Shape getAmmo()
+        public Shape getAmmo(Ammo ammo)
         {
             return ammo.getRound();
         }
@@ -131,7 +136,9 @@ public class FreightCruizer extends Ship
         public void setShot(EnemyArray enemy)
         {
             ammo.setAmmo(wings.getX()+ 21, wings.getY());
+            ammo2.setAmmo(wings.getX() + wings.getWidth() - 22, wings.getY());
             ammo.invokeShot(enemy);
+            ammo2.invokeShot(enemy);
         }
 
 

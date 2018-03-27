@@ -5,6 +5,7 @@ package com.Alpha.Space.Shooter;
  * a variety of shapes.
  */
 
+import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public abstract class Ship
     private double movement;
     private double hitPoints;
     private ImageView image = new ImageView();
-
+    private Group ship = new Group();
 
     public void setImage(ImageView image)
     {
@@ -41,7 +42,7 @@ public abstract class Ship
         return hitPoints;
     }
 
-    public abstract ArrayList<Object> getShip();
+    public abstract Group getShip();
 
     public abstract double getX();
     public abstract double getY();

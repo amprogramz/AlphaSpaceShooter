@@ -31,6 +31,7 @@ public class SpaceShooter extends Application
     @Override
     public void start(Stage primaryStage)
     {
+        //groups can contain groups
         Group gameGroup = new Group();
         ObservableList gameList = gameGroup.getChildren();
         gameList.add(SpriteTool.getImage(filePath, WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -41,8 +42,7 @@ public class SpaceShooter extends Application
 
         Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
         Controls controls = new Controls(scene, ship, enemies, WINDOW_WIDTH, WINDOW_HEIGHT);
-        //Controls controls = new Controls();
-        //controls.Controls(scene, ship, enemies, WINDOW_WIDTH, WINDOW_HEIGHT);
+
 
         primaryStage.setTitle("Space Shooter");
         primaryStage.setScene(scene);
