@@ -5,6 +5,7 @@ package com.Alpha.Space.Shooter;
  */
 
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class Controls {
@@ -26,6 +27,7 @@ public class Controls {
                     if (ship.getY() > 0)
                     {
                         ship.moveShipUp();
+                        
                     }
                     break;
                 case DOWN:
@@ -44,11 +46,12 @@ public class Controls {
                     if (ship.getX() > 0)
                     {
                         ship.moveShipLeft();
+
                     }
                     break;
                 case SPACE:
                     ship.setShot(enemy);
-                    //ship.
+
                     break;
 
 

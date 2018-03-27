@@ -26,6 +26,7 @@ public class SpaceShooter extends Application
 
     private FreightCruizer ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
     private EnemyArray enemies = new EnemyArray(8);
+    private Score score = new Score(5);
 
     @Override
     public void start(Stage primaryStage)
@@ -35,11 +36,13 @@ public class SpaceShooter extends Application
         gameList.add(SpriteTool.getImage(filePath, WINDOW_WIDTH, WINDOW_HEIGHT));
         gameList.addAll(ship.getShip());
         gameList.addAll(enemies.getEnemies());
+        gameList.addAll(score.getScoreLivesOut());
 
 
         Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
         Controls controls = new Controls(scene, ship, enemies, WINDOW_WIDTH, WINDOW_HEIGHT);
-
+        //Controls controls = new Controls();
+        //controls.Controls(scene, ship, enemies, WINDOW_WIDTH, WINDOW_HEIGHT);
 
         primaryStage.setTitle("Space Shooter");
         primaryStage.setScene(scene);
