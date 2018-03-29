@@ -24,7 +24,7 @@ public class SpaceShooter extends Application
     private final int WINDOW_HEIGHT = 800;
     private String filePath = "sprite/Space-Background-1.jpg";
 
-    private FreightCruizer ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
+    private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
     private EnemyArray enemies = new EnemyArray(8);
     private Score score = new Score(5);
 

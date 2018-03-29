@@ -5,26 +5,52 @@ package com.Alpha.Space.Shooter;
  * a variety of shapes.
  */
 
+import javafx.collections.ObservableList;
 import javafx.scene.Group;
-import javafx.scene.image.ImageView;
-import java.util.ArrayList;
 
 
 public abstract class Ship
 {
     private double movement;
     private double hitPoints;
-    private ImageView image = new ImageView();
-    private Group ship = new Group();
 
-    public void setImage(ImageView image)
+    private Group ship = new Group();
+    private ObservableList shipParts = ship.getChildren();
+
+    public Group getShip()
     {
-        this.image = image;
+        return ship;
     }
-    public ImageView getImage()
+    public void addShipParts(Object shipPart)
     {
-        return image;
+        shipParts.add(shipPart);
     }
+    public void addShipParts(ObservableList shipParts)
+    {
+        this.shipParts.addAll(shipParts);
+    }
+
+
+    public void moveShipRight()
+    {
+        ship.setAutoSizeChildren(true);
+        ship.setLayoutX(ship.getLayoutX() + movement);
+    }
+    public  void moveShipLeft()
+    {
+        ship.setLayoutX(ship.getLayoutX() - movement);
+    }
+    public void moveShipUp()
+    {
+        ship.setLayoutY(ship.getLayoutY() - movement);
+    }
+    public void moveShipDown()
+    {
+        ship.setLayoutY(ship.getLayoutY() + movement);
+    }
+
+
+
     public void setMovement(int movement)
     {
         this.movement = movement;
@@ -42,17 +68,27 @@ public abstract class Ship
         return hitPoints;
     }
 
-    public abstract Group getShip();
 
-    public abstract double getX();
-    public abstract double getY();
-    public abstract double getWidth();
-    public abstract double getHeight();
 
-    public abstract void moveShipRight();
-    public abstract void moveShipLeft();
-    public abstract void moveShipUp();
-    public abstract void moveShipDown();
+    public double getX()
+    {
+        return ship.getLayoutX();
+    }
+    public double getY()
+    {
+        return ship.getLayoutY();
+    }
+    public double getWidth()
+    {
+        return 0;
+    }
+    public double getHeight()
+    {
+        return 0;
+    }
+
+    public abstract void setShot(EnemyArray enemy);
+
 
 
 

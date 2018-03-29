@@ -18,7 +18,7 @@ public class Controls {
      * @param width  This is the screen width of the game.
      * @param height This is the screen height of the game.
      */
-    public Controls(Scene scene, FreightCruizer ship, EnemyArray enemy, double width, double height) {
+    public Controls(Scene scene, Ship ship, EnemyArray enemy, double width, double height) {
         //caseUp(scene, ship);
         //caseleft(scene, ship);
 

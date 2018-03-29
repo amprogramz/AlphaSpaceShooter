@@ -21,18 +21,21 @@ public class FreightCruizer extends Ship
         private Ammo ammo = new FiftyCaliber();
         private Ammo ammo2 = new FiftyCaliber();
 
+        //Group group
+
         private String imageFileName = "sprite/Spaceship_tut/Spaceship_tut.png";
 
         public FreightCruizer(double windowWidth, double windowHeight)
         {
 
             hull.setX(windowWidth/2);
-            hull.setY(windowHeight/4);
+            hull.setY(windowHeight/4 * 3);
             hull.setWidth(50);
             hull.setHeight(150);
             hull.setArcWidth(50);
             hull.setArcHeight(100);
-            hull.setFill(Color.TRANSPARENT);
+            //hull.setFill(Color.TRANSPARENT);
+            super.addShipParts(hull);
 
 
 
@@ -41,43 +44,21 @@ public class FreightCruizer extends Ship
             wings.setY((hull.getY() + hull.getHeight()) - 60);
             wings.setWidth(100);
             wings.setHeight(30);
-            hull.setFill(Color.TRANSPARENT);
+            super.addShipParts(wings);
+            //wings.setFill(Color.TRANSPARENT);
 
-            ImageView image = new ImageView();
-            image = SpriteTool.getImage(imageFileName, getX(),getY(),getWidth(), getHeight(), false);
-            super.setImage(image);
+            ImageView image = SpriteTool.getImage(imageFileName, getX(),getY(),getWidth(), getHeight(), false);
+            super.addShipParts(image);
+
+            super.addShipParts(ammo.getRound());
+            super.addShipParts(ammo2.getRound());
 
             super.setMovement(15);
             super.setHitPoints(100);
 
         }
-        @Override
-        public Group getShip()
-        {
-            Group shipGroup = new Group();
-            ObservableList ship = shipGroup.getChildren();
-            ship.add(getHull());
-            ship.add(getWings());
-            ship.add(getAmmo(ammo));
-            ship.add(getAmmo(ammo2));
-            ship.add(getImage());
-            return shipGroup;
-        }
 
-        public Shape getHull()
-    {
-        return hull;
-    }
-        public Shape getWings()
-    {
-        return wings;
-    }
-
-        public Shape getAmmo(Ammo ammo)
-        {
-            return ammo.getRound();
-        }
-        public double getX()
+       public double getX()
         {
             return wings.getX();
         }
@@ -93,50 +74,11 @@ public class FreightCruizer extends Ship
         {
             return hull.getHeight();
         }
-        @Override
-        public void moveShipRight()
-        {
-            hull.setX(hull.getX() + super.getMovement());
-            wings.setX(wings.getX() + super.getMovement());
 
-            ImageView imageView = super.getImage();
-            imageView.setX(imageView.getX() + super.getMovement());
-            setImage(imageView);
-        }
-        @Override
-        public void moveShipLeft()
-        {
-            hull.setX(hull.getX() - super.getMovement());
-            wings.setX(wings.getX() - super.getMovement());
-
-            ImageView imageView = super.getImage();
-            imageView.setX(imageView.getX() - super.getMovement());
-            setImage(imageView);
-        }
-        @Override
-        public void moveShipUp()
-        {
-            hull.setY(hull.getY() - super.getMovement());
-            wings.setY(wings.getY() - super.getMovement());
-
-            ImageView imageView = super.getImage();
-            imageView.setY(imageView.getY() - super.getMovement());
-            setImage(imageView);
-        }
-        @Override
-        public void moveShipDown()
-        {
-            hull.setY(hull.getY() + super.getMovement());
-            wings.setY(wings.getY() + super.getMovement());
-
-            ImageView imageView = super.getImage();
-            imageView.setY(imageView.getY() + super.getMovement());
-            setImage(imageView);
-        }
         public void setShot(EnemyArray enemy)
         {
-            ammo.setAmmo(wings.getX()+ 21, wings.getY());
-            ammo2.setAmmo(wings.getX() + wings.getWidth() - 22, wings.getY());
+            ammo.setAmmo(/*wings.getX() +*/ wings.getParent().getLayoutX() + 21, wings.getY());
+            ammo2.setAmmo(/*wings.getX() + */wings.getWidth() + wings.getParent().getLayoutX()- 22, wings.getY());
             ammo.invokeShot(enemy);
             ammo2.invokeShot(enemy);
         }
