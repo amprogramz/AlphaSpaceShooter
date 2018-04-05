@@ -42,7 +42,7 @@ public abstract class Ship
     }
 
 
-    public void move(int x,int y){
+    public void move(double x,double y){
     	ship.setAutoSizeChildren(true);
     	ship.setLayoutX(x);
     	ship.setLayoutY(y);

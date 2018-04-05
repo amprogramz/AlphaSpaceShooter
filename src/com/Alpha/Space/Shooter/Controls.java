@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import java.awt.MouseInfo;
+import java.security.Key;
 
 public class Controls {
     boolean keyboard = true;
@@ -41,6 +42,7 @@ public class Controls {
             scene.removeEventHandler(MouseEvent.MOUSE_DRAGGED, mouseDragged);
             scene.removeEventHandler(MouseEvent.MOUSE_PRESSED, mousePressed);
             scene.removeEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
+            //scene.removeEventHandler(mouseControls(scene, ship, enemy, width, height));
             keyboardControls(scene, ship, enemy, width, height);
 
         }else
@@ -85,8 +87,8 @@ public class Controls {
                     break;
                 case Q:
                     checkControlMode(scene, ship, enemy, width, height);
-                    break;
 
+                    break;
             }}
         };
         scene.addEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
@@ -132,45 +134,5 @@ public class Controls {
         scene.addEventHandler(MouseEvent.MOUSE_DRAGGED, mouseDragged);
         scene.addEventHandler(MouseEvent.MOUSE_PRESSED, mousePressed);
         scene.addEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
+        };
     }
-
-
-   /* public void caseUp(Scene scene, Ship ship) {
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
-        {
-
-            switch (key.getCode()) {
-                case UP:
-                    if (ship.getY() > 0) {
-                        ship.moveShipUp();
-
-                    }
-                    break;
-
-
-            }
-        });
-
-
-    }
-
-    public void caseleft(Scene scene, Ship ship) {
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
-        {
-
-            switch (key.getCode()) {
-                case LEFT:
-                    if (ship.getY() > 0) {
-                        ship.moveShipLeft();
-
-                    }
-                    break;
-
-
-            }
-        });
-
-
-    }
-*/
-}
