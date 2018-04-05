@@ -45,6 +45,7 @@ public class SpaceShooter extends Application
         Controls controls = new Controls(scene, ship, enemies, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 
+
         primaryStage.setTitle("Space Shooter");
         primaryStage.setScene(scene);
         primaryStage.show();

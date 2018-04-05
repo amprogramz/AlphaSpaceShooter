@@ -12,6 +12,9 @@ import javafx.scene.input.MouseEvent;
 import java.awt.MouseInfo;
 
 public class Controls {
+    boolean keyboard = true;
+
+
     /**
      * This is where the controls are defined.
      *
@@ -22,9 +25,24 @@ public class Controls {
      * @param height This is the screen height of the game.
      */
     public Controls(Scene scene, Ship ship, EnemyArray enemy, double width, double height) {
-        //caseUp(scene, ship);
-        //caseleft(scene, ship);
+//        going to the keyboard controls by default.
+        keyboardControls(scene, ship, enemy, width, height);
+    }
+    public void checkControlMode(Scene scene, Ship ship, EnemyArray enemy, double width, double height)
+    {
+        keyboard = !keyboard;
+        //selects mode
+        if (keyboard)
+        {
+            keyboardControls(scene, ship, enemy, width, height);
 
+        }else
+        {
+            mouseControls(scene, ship, enemy, width, height);
+        }
+    }
+    public void keyboardControls(Scene scene, Ship ship, EnemyArray enemy, double width, double height)
+    {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
         {
 
@@ -55,34 +73,41 @@ public class Controls {
                     ship.setShot(enemy);
 
                     break;
-
+                case Q:
+                    checkControlMode(scene, ship, enemy, width, height);
+                    break;
 
             }
         });
-      /*  scene.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>(){
+        //checkControlMode(scene, ship, enemy, width, height);
+    }
 
-			//@Override
-			public void handle(MouseEvent mouseEvent){
-				ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
-			}
+    public void mouseControls(Scene scene, Ship ship, EnemyArray enemy, double width, double height)
+    {
+        scene.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>(){
+
+            //@Override
+            public void handle(MouseEvent mouseEvent){
+                ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
+            }
         });
-        
+
         scene.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
 
-			//@Override
-			public void handle(MouseEvent mouseEvent){
-				ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
-			}
+            //@Override
+            public void handle(MouseEvent mouseEvent){
+                ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
+            }
         });
-        
+
         scene.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
-        	
-        	//@Override
-        	public void handle(MouseEvent mouseEvent){
-        		ship.setShot(enemy);
-        	}
+
+            //@Override
+            public void handle(MouseEvent mouseEvent){
+                ship.setShot(enemy);
+            }
         });
-        */
+
     }
 
 
