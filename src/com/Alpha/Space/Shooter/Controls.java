@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import java.awt.MouseInfo;
+import java.security.Key;
 
 public class Controls {
     boolean keyboard = true;
@@ -34,10 +35,12 @@ public class Controls {
         //selects mode
         if (keyboard)
         {
+            //scene.removeEventHandler(mouseControls(scene, ship, enemy, width, height));
             keyboardControls(scene, ship, enemy, width, height);
 
         }else
         {
+
             mouseControls(scene, ship, enemy, width, height);
         }
     }
@@ -75,11 +78,13 @@ public class Controls {
                     break;
                 case Q:
                     checkControlMode(scene, ship, enemy, width, height);
+
                     break;
 
             }
         });
-        //checkControlMode(scene, ship, enemy, width, height);
+
+
     }
 
     public void mouseControls(Scene scene, Ship ship, EnemyArray enemy, double width, double height)
@@ -88,7 +93,7 @@ public class Controls {
 
             //@Override
             public void handle(MouseEvent mouseEvent){
-                ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
+                ship.move(MouseInfo.getPointerInfo().getLocation().getX(), MouseInfo.getPointerInfo().getLocation().getY() );
             }
         });
 
@@ -96,7 +101,7 @@ public class Controls {
 
             //@Override
             public void handle(MouseEvent mouseEvent){
-                ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
+                ship.move(MouseInfo.getPointerInfo().getLocation().getX() , MouseInfo.getPointerInfo().getLocation().getY()  );
             }
         });
 
@@ -107,46 +112,6 @@ public class Controls {
                 ship.setShot(enemy);
             }
         });
-
     }
 
-
-   /* public void caseUp(Scene scene, Ship ship) {
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
-        {
-
-            switch (key.getCode()) {
-                case UP:
-                    if (ship.getY() > 0) {
-                        ship.moveShipUp();
-
-                    }
-                    break;
-
-
-            }
-        });
-
-
-    }
-
-    public void caseleft(Scene scene, Ship ship) {
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
-        {
-
-            switch (key.getCode()) {
-                case LEFT:
-                    if (ship.getY() > 0) {
-                        ship.moveShipLeft();
-
-                    }
-                    break;
-
-
-            }
-        });
-
-
-    }
-*/
 }
