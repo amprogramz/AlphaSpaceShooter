@@ -27,6 +27,7 @@ public abstract class Ship
         setShip(width, height);
         return ship;
     }
+
     public void addShipParts(Object shipPart)
     {
         shipParts.add(shipPart);
@@ -104,6 +105,7 @@ public abstract class Ship
     }
 
     public abstract void setShot(EnemyArray enemy);
+    public abstract Group getAmmo();
 
 
 

@@ -51,52 +51,29 @@ public class FreightCruizer extends Ship
             super.addShipParts(image);
 
            // super.addShipParts(ammo.getRound());
-            super.addShipParts(ammo2.getRound());
+            //super.addShipParts(ammo2.getRound());
 
             super.setMovement(15);
             super.setHitPoints(100);
 
         }
 
-<<<<<<< HEAD
+
+        public Group getAmmo()
+        {
+            return ammo2.getRound();
+        }
         public void setShot(EnemyArray enemy)
         {
             //Ammo ammo = new FiftyCaliber();
             //ammo.setRound( wings.getX() + 21, wings.getY());
             //super.addShipParts(ammo);
-            ammo2.setRound (wings.getParent().getLayoutX()+ 50 , wings.getY());
-            //ammo.invokeShot(enemy);
-=======
-       public double getX()
-        {
-            return wings.getX();
-        }
-        public double getY()
-        {
-            return hull.getY();
-        }
-        public double getWidth()
-        {
-            return wings.getWidth();
-        }
-        public double getHeight()
-        {
-            return hull.getHeight();
-        }
-        
-        @Override
-        public void setShot(EnemyArray enemy)
-        {
-            ammo.setAmmo(/*wings.getX() +5*/ wings.getParent().getLayoutX() +450 , wings.getY());
-            ammo2.setAmmo(/*wings.getX() +95*/ wings.getWidth() + wings.getParent().getLayoutX() +450, wings.getY());
-            ammo.invokeShot(enemy);
-            ammo2.invokeShot(enemy);
-            ammo.setAmmo(wings.getX() +5, wings.getY());
-            ammo2.setAmmo(wings.getX() +95, wings.getY());
-            ammo.invokeShot(enemy);
->>>>>>> 7419ad6e1acaa68a2082924d5bef613c65ab6600
+            ammo2.setRound(wings.getParent().getLayoutX(), wings.getParent().getLayoutY());
             ammo2.invokeShot(enemy);
         }
+
+
+
 
 
 }

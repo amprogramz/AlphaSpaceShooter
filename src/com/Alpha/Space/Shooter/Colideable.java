@@ -15,13 +15,13 @@ public class Colideable
 {
     /**
      * A static method which accepts two shapes and checks them for a collision.
-     * @param amo Accepts shape 1.
+     * @param ammo Accepts shape 1.
      * @param ship Accepts shape 2.
      * @return True if Shapes collide.
      */
-    public static boolean collision(Shape amo, Shape ship)
+    public static boolean collision(Group ammo, Shape ship)
     {
-        if(amo.intersects(ship.getLayoutBounds()))
+        if(ammo.getBoundsInParent().intersects(ship.getLayoutBounds()))
         {
             return true;
         }
@@ -30,16 +30,16 @@ public class Colideable
     /**
      * A static method which checks for collisions between a shape and an array of shapes, and returns true if a
      * collision occurs.
-     * @param amo Accepts shape 1.
+     * @param ammo Accepts shape 1.
      * @param ships Accepts an ArrayList of shapes.
      * @return True if Shapes collide.
      */
-    public static boolean collision(Shape amo, ArrayList<Shape> ships)
+    public static boolean collision(Group ammo, ArrayList<Shape> ships)
     {
 
         for(int index = 0; index < ships.size(); index++)
         {
-            if (amo.intersects(ships.get(index).getLayoutBounds()))
+            if (ammo.getBoundsInParent().intersects(ships.get(index).getLayoutBounds()))
             {
                 return true;
             }

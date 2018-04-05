@@ -59,9 +59,9 @@ public class Controls {
 
             }
         });
-        scene.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>(){
+      /*  scene.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>(){
 
-			@Override
+			//@Override
 			public void handle(MouseEvent mouseEvent){
 				ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
 			}
@@ -69,7 +69,7 @@ public class Controls {
         
         scene.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
 
-			@Override
+			//@Override
 			public void handle(MouseEvent mouseEvent){
 				ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
 			}
@@ -77,11 +77,12 @@ public class Controls {
         
         scene.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
         	
-        	@Override
+        	//@Override
         	public void handle(MouseEvent mouseEvent){
         		ship.setShot(enemy);
         	}
         });
+        */
     }
 
 

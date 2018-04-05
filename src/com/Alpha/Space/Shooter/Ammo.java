@@ -15,6 +15,8 @@ import javafx.util.Duration;
 public class Ammo
 {
     private Rectangle ammo = new Rectangle();
+    Group round = new Group();
+
     private double movement;
     private int damage;
 
@@ -22,13 +24,14 @@ public class Ammo
 
     public Group getRound()
     {
-        Group round = new Group();
-        round.getChildren().add(ammo);
+
+
         return round;
     }
     public void setAmmo(Rectangle ammo)
     {
         this.ammo = ammo;
+        round.getChildren().add(ammo);
     }
     public void setMovement(double movement)
     {
@@ -36,8 +39,8 @@ public class Ammo
     }
     public void setRound(double x, double y)
     {
-        ammo.setLayoutX(x);
-        ammo.setLayoutY(y);
+        round.setLayoutX(x);
+        round.setLayoutY(y);
     }
     public void setDamage(int damage)
     {
@@ -45,8 +48,8 @@ public class Ammo
     }
     public void shoot(EnemyArray enemy)
     {
-        ammo.setLayoutY(ammo.getLayoutY() - movement);
-        enemy.checkForDestruction(ammo, damage);
+        round.setLayoutY(round.getLayoutY() - movement);
+        enemy.checkForDestruction(round, damage);
     }
     public void invokeShot(EnemyArray enemy)
     {
