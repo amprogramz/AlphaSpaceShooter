@@ -74,11 +74,16 @@ public class FreightCruizer extends Ship
         {
             return hull.getHeight();
         }
-
+        
+        @Override
         public void setShot(EnemyArray enemy)
         {
-            ammo.setAmmo(/*wings.getX() +*/ wings.getParent().getLayoutX() + 21, wings.getY());
-            ammo2.setAmmo(/*wings.getX() + */wings.getWidth() + wings.getParent().getLayoutX()- 22, wings.getY());
+            ammo.setAmmo(/*wings.getX() +5*/ wings.getParent().getLayoutX() +450 , wings.getY());
+            ammo2.setAmmo(/*wings.getX() +95*/ wings.getWidth() + wings.getParent().getLayoutX() +450, wings.getY());
+            ammo.invokeShot(enemy);
+            ammo2.invokeShot(enemy);
+            ammo.setAmmo(wings.getX() +5, wings.getY());
+            ammo2.setAmmo(wings.getX() +95, wings.getY());
             ammo.invokeShot(enemy);
             ammo2.invokeShot(enemy);
         }

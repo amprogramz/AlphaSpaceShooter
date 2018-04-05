@@ -4,9 +4,12 @@ package com.Alpha.Space.Shooter;
  * This is a class to define the controles in the game
  */
 
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import java.awt.MouseInfo;
 
 public class Controls {
     /**
@@ -55,6 +58,29 @@ public class Controls {
 
 
             }
+        });
+        scene.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent mouseEvent){
+				ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
+			}
+        });
+        
+        scene.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent mouseEvent){
+				ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
+			}
+        });
+        
+        scene.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
+        	
+        	@Override
+        	public void handle(MouseEvent mouseEvent){
+        		ship.setShot(enemy);
+        	}
         });
     }
 

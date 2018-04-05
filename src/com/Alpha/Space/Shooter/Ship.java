@@ -30,6 +30,11 @@ public abstract class Ship
         this.shipParts.addAll(shipParts);
     }
 
+    public void move(int x,int y){
+    	ship.setAutoSizeChildren(true);
+    	ship.setLayoutX(x);
+    	ship.setLayoutY(y);
+    }
 
     public void moveShipRight()
     {

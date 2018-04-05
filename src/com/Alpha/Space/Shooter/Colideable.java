@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Author Alec McDaugale
- * This is a class wich contains static methods which detect collisions between two objects, and return true if a
+ * This is a class which contains static methods which detect collisions between two objects, and return true if a
  * collision has been detected.
  */
 public class Colideable
