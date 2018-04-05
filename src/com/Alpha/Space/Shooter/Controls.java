@@ -13,7 +13,10 @@ import java.awt.MouseInfo;
 
 public class Controls {
     boolean keyboard = true;
-
+    EventHandler<KeyEvent> keyboardControls;
+    EventHandler<MouseEvent> mouseMoved;
+    EventHandler<MouseEvent> mousePressed;
+    EventHandler<MouseEvent> mouseDragged;
 
     /**
      * This is where the controls are defined.
@@ -34,18 +37,25 @@ public class Controls {
         //selects mode
         if (keyboard)
         {
+        	scene.removeEventHandler(MouseEvent.MOUSE_MOVED, mouseMoved);
+            scene.removeEventHandler(MouseEvent.MOUSE_DRAGGED, mouseDragged);
+            scene.removeEventHandler(MouseEvent.MOUSE_PRESSED, mousePressed);
+            scene.removeEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
             keyboardControls(scene, ship, enemy, width, height);
 
         }else
         {
+        	scene.removeEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
             mouseControls(scene, ship, enemy, width, height);
         }
     }
     public void keyboardControls(Scene scene, Ship ship, EnemyArray enemy, double width, double height)
     {
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
+        //scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
+        keyboardControls = new EventHandler<KeyEvent>() 
         {
-
+        	@Override
+        	public void handle(KeyEvent key){
             switch (key.getCode()) {
                 case UP:
                     if (ship.getY() > 0) {
@@ -77,37 +87,51 @@ public class Controls {
                     checkControlMode(scene, ship, enemy, width, height);
                     break;
 
-            }
-        });
+            }}
+        };
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
         //checkControlMode(scene, ship, enemy, width, height);
     }
 
     public void mouseControls(Scene scene, Ship ship, EnemyArray enemy, double width, double height)
     {
-        scene.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>(){
+        mouseMoved = new EventHandler<MouseEvent>(){
 
-            //@Override
+            @Override
             public void handle(MouseEvent mouseEvent){
-                ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
+                ship.move(MouseInfo.getPointerInfo().getLocation().x - 510, MouseInfo.getPointerInfo().getLocation().y - 200 );
             }
-        });
+        };
 
-        scene.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
+        mouseDragged = new EventHandler<MouseEvent>(){
 
-            //@Override
+            @Override
             public void handle(MouseEvent mouseEvent){
-                ship.move(MouseInfo.getPointerInfo().getLocation().x - 984, MouseInfo.getPointerInfo().getLocation().y - 800 );
+                ship.move(MouseInfo.getPointerInfo().getLocation().x - 510, MouseInfo.getPointerInfo().getLocation().y - 200 );
             }
-        });
+        };
 
-        scene.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
+        mousePressed = new EventHandler<MouseEvent>(){
 
-            //@Override
+            @Override
             public void handle(MouseEvent mouseEvent){
                 ship.setShot(enemy);
             }
-        });
-
+        };
+        
+        keyboardControls = new EventHandler<KeyEvent>(){
+        	
+        	public void handle(KeyEvent key){
+        		if(key.getCode() == key.getCode().Q){
+        			checkControlMode(scene, ship, enemy, width, height);
+        		}
+        	}
+        };
+		
+        scene.addEventHandler(MouseEvent.MOUSE_MOVED, mouseMoved);
+        scene.addEventHandler(MouseEvent.MOUSE_DRAGGED, mouseDragged);
+        scene.addEventHandler(MouseEvent.MOUSE_PRESSED, mousePressed);
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
     }
 
 
