@@ -6,6 +6,8 @@ package com.Alpha.Space.Shooter;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
@@ -18,9 +20,11 @@ public class Ammo
 
 
 
-    public Shape getRound()
+    public Group getRound()
     {
-        return ammo;
+        Group round = new Group();
+        round.getChildren().add(ammo);
+        return round;
     }
     public void setAmmo(Rectangle ammo)
     {
@@ -30,10 +34,10 @@ public class Ammo
     {
         this.movement = movement;
     }
-    public void setAmmo(double x, double y)
+    public void setRound(double x, double y)
     {
-        ammo.setX(x);
-        ammo.setY(y);
+        ammo.setLayoutX(x);
+        ammo.setLayoutY(y);
     }
     public void setDamage(int damage)
     {
@@ -41,7 +45,7 @@ public class Ammo
     }
     public void shoot(EnemyArray enemy)
     {
-        ammo.setY(ammo.getY() - movement);
+        ammo.setLayoutY(ammo.getLayoutY() - movement);
         enemy.checkForDestruction(ammo, damage);
     }
     public void invokeShot(EnemyArray enemy)
@@ -52,6 +56,7 @@ public class Ammo
 
 
         timeline.setCycleCount(50);
+        //timeline.setAutoReverse(true);
         timeline.play();
     }
 }

@@ -17,8 +17,14 @@ public abstract class Ship
     private Group ship = new Group();
     private ObservableList shipParts = ship.getChildren();
 
-    public Group getShip()
+    private void setShip(double width, double height)
     {
+        ship.setLayoutX(width / 2); //center x
+        ship.setLayoutY((height / 4) * 3); //bottom quadrant y
+    }
+    public Group getShip(double width, double height)
+    {
+        setShip(width, height);
         return ship;
     }
     public void addShipParts(Object shipPart)
@@ -29,11 +35,15 @@ public abstract class Ship
     {
         this.shipParts.addAll(shipParts);
     }
+    public void removeShipParts(Object shipPart)
+    {
+        shipParts.remove(shipPart);
+    }
+
 
 
     public void moveShipRight()
     {
-        ship.setAutoSizeChildren(true);
         ship.setLayoutX(ship.getLayoutX() + movement);
     }
     public  void moveShipLeft()
@@ -44,6 +54,7 @@ public abstract class Ship
     {
         ship.setLayoutY(ship.getLayoutY() - movement);
     }
+
     public void moveShipDown()
     {
         ship.setLayoutY(ship.getLayoutY() + movement);
@@ -80,11 +91,11 @@ public abstract class Ship
     }
     public double getWidth()
     {
-        return 0;
+        return ship.getLayoutBounds().getWidth();
     }
     public double getHeight()
     {
-        return 0;
+        return ship.getLayoutBounds().getHeight();
     }
 
     public abstract void setShot(EnemyArray enemy);

@@ -2,6 +2,8 @@ package com.Alpha.Space.Shooter;
 
 
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+
 import java.util.ArrayList;
 
 /**
@@ -35,7 +37,7 @@ public class EnemyArray
         return this;
     }
 
-    public void checkForDestruction(Rectangle ammo, int damage )
+    public void checkForDestruction(Shape ammo, int damage )
     {
         for(Enemy block : enemyArray)
         {

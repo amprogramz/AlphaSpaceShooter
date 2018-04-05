@@ -35,7 +35,7 @@ public class SpaceShooter extends Application
         Group gameGroup = new Group();
         ObservableList gameList = gameGroup.getChildren();
         gameList.add(SpriteTool.getImage(filePath, WINDOW_WIDTH, WINDOW_HEIGHT));
-        gameList.addAll(ship.getShip());
+        gameList.addAll(ship.getShip(WINDOW_WIDTH, WINDOW_HEIGHT));
         gameList.addAll(enemies.getEnemies());
         gameList.addAll(score.getScoreLivesOut());
 

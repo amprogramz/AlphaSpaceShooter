@@ -18,39 +18,39 @@ public class FreightCruizer extends Ship
 
         private Rectangle hull = new Rectangle();
         private Rectangle wings = new Rectangle();
-        private Ammo ammo = new FiftyCaliber();
+//        private Ammo ammo = new FiftyCaliber();
         private Ammo ammo2 = new FiftyCaliber();
-
-        //Group group
 
         private String imageFileName = "sprite/Spaceship_tut/Spaceship_tut.png";
 
         public FreightCruizer(double windowWidth, double windowHeight)
         {
 
-            hull.setX(windowWidth/2);
-            hull.setY(windowHeight/4 * 3);
+            hull.setX(25);
+            hull.setY(0);
             hull.setWidth(50);
             hull.setHeight(150);
             hull.setArcWidth(50);
             hull.setArcHeight(100);
             //hull.setFill(Color.TRANSPARENT);
-            super.addShipParts(hull);
 
-
-
-
-            wings.setX((hull.getX() + (hull.getWidth()/2) - 50));
+            wings.setX((0));
             wings.setY((hull.getY() + hull.getHeight()) - 60);
             wings.setWidth(100);
             wings.setHeight(30);
-            super.addShipParts(wings);
             //wings.setFill(Color.TRANSPARENT);
 
-            ImageView image = SpriteTool.getImage(imageFileName, getX(),getY(),getWidth(), getHeight(), false);
+            ImageView image = SpriteTool.getImage(imageFileName, wings.getX(),hull.getY(),wings.getWidth(), hull.getHeight(), false);
+
+            //ammo.setRound( wings.getX() + 20, wings.getY());
+            ammo2.setRound(wings.getX() + wings.getWidth() - 21, wings.getY());
+
+
+            super.addShipParts(hull);
+            super.addShipParts(wings);
             super.addShipParts(image);
 
-            super.addShipParts(ammo.getRound());
+           // super.addShipParts(ammo.getRound());
             super.addShipParts(ammo2.getRound());
 
             super.setMovement(15);
@@ -58,28 +58,13 @@ public class FreightCruizer extends Ship
 
         }
 
-       public double getX()
-        {
-            return wings.getX();
-        }
-        public double getY()
-        {
-            return hull.getY();
-        }
-        public double getWidth()
-        {
-            return wings.getWidth();
-        }
-        public double getHeight()
-        {
-            return hull.getHeight();
-        }
-
         public void setShot(EnemyArray enemy)
         {
-            ammo.setAmmo(/*wings.getX() +*/ wings.getParent().getLayoutX() + 21, wings.getY());
-            ammo2.setAmmo(/*wings.getX() + */wings.getWidth() + wings.getParent().getLayoutX()- 22, wings.getY());
-            ammo.invokeShot(enemy);
+            //Ammo ammo = new FiftyCaliber();
+            //ammo.setRound( wings.getX() + 21, wings.getY());
+            //super.addShipParts(ammo);
+            ammo2.setRound (wings.getParent().getLayoutX()+ 50 , wings.getY());
+            //ammo.invokeShot(enemy);
             ammo2.invokeShot(enemy);
         }
 

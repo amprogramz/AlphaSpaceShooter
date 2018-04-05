@@ -1,6 +1,7 @@
 package com.Alpha.Space.Shooter;
 
 
+import javafx.scene.Group;
 import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class Colideable
      * A static method which checks for collisions between a shape and an array of shapes, and returns true if a
      * collision occurs.
      * @param amo Accepts shape 1.
-     * @param ship Accepts an ArrayList of shapes.
+     * @param ships Accepts an ArrayList of shapes.
      * @return True if Shapes collide.
      */
     public static boolean collision(Shape amo, ArrayList<Shape> ships)
