@@ -21,7 +21,7 @@ public class Target extends Enemy
         target.setFill(Color.GRAY);
         super.setEnemy(target);
         super.setTargetIndex(index);
-        super.setHitPoints(30);
+        super.setHitPoints(90);
     }
 
 
