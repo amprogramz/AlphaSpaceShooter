@@ -49,7 +49,11 @@ public class Ammo
     public void shoot(EnemyArray enemy)
     {
         round.setLayoutY(round.getLayoutY() - movement);
-        enemy.checkForDestruction(round, damage);
+        boolean hit = enemy.checkForDestruction(round, damage);
+        if (hit)
+        {
+            setRound(-200, 0);
+        }
     }
     public void invokeShot(EnemyArray enemy)
     {

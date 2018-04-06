@@ -38,7 +38,7 @@ public class EnemyArray
         return this;
     }
 
-    public void checkForDestruction(Group ammo, int damage )
+    public boolean checkForDestruction(Group ammo, int damage)
     {
         for(Enemy block : enemyArray)
         {
@@ -46,8 +46,10 @@ public class EnemyArray
             {
                 System.out.println("Block Hit " + block.getIndex());
                 enemyArray.get(block.getIndex()).destruct(damage);
+                return true;
             }
         }
+        return false;
 
     }
 
