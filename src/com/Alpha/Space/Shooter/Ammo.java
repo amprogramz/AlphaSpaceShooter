@@ -4,10 +4,12 @@ package com.Alpha.Space.Shooter;
  * This is a parent class to create various munitions for the ship.
  */
 
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
@@ -19,6 +21,8 @@ public class Ammo
 
     private double movement;
     private int damage;
+    private String soundFile = "Sounds/Futuristic Shotgun Single Shot.wav";
+    private MediaPlayer shotSound = SoundTool.getSound(soundFile);
 
 
 
@@ -57,6 +61,7 @@ public class Ammo
     }
     public void invokeShot(EnemyArray enemy)
     {
+
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(10),
                 ae ->  shoot(enemy) ));
@@ -65,5 +70,8 @@ public class Ammo
         timeline.setCycleCount(50);
         //timeline.setAutoReverse(true);
         timeline.play();
+        shotSound.seek(Duration.ZERO);
+        shotSound.play();
+
     }
 }
