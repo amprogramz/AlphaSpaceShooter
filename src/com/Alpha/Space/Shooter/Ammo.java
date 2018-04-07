@@ -9,6 +9,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
@@ -22,7 +23,7 @@ public class Ammo
     private double movement;
     private int damage;
     private String soundFile = "Sounds/Futuristic Shotgun Single Shot.wav";
-    private MediaPlayer shotSound = SoundTool.getSound(soundFile);
+    private AudioClip shotSound = SoundTool.getAudioClip(soundFile);
 
 
 
@@ -70,7 +71,7 @@ public class Ammo
         timeline.setCycleCount(50);
         //timeline.setAutoReverse(true);
         timeline.play();
-        shotSound.seek(Duration.ZERO);
+//        shotSound.seek(Duration.ZERO);
         shotSound.play();
 
     }

@@ -1,5 +1,6 @@
 package com.Alpha.Space.Shooter;
 
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -9,11 +10,11 @@ import java.io.FileNotFoundException;
 
 public class SoundTool
 {
-    public static Media setSound(String file)
+    public static Media setMedia(String file)
     {
         try
         {
-            return new Media(( SpaceShooter.class.getResource(file)).toURI().toString());
+            return new Media( SpaceShooter.class.getResource(file).toURI().toString());
         }catch (Exception e)
         {
             System.out.println("Sound file not found.");
@@ -21,8 +22,20 @@ public class SoundTool
         return null;
     }
 
-    public static MediaPlayer getSound(String file)
+    public static MediaPlayer getMediaPlayer(String file)
     {
-        return new MediaPlayer(setSound(file));
+        return new MediaPlayer(setMedia(file));
+    }
+
+    public static AudioClip getAudioClip(String file)
+    {
+        try
+        {
+            return new AudioClip( SpaceShooter.class.getResource(file).toURI().toString());
+        }catch (Exception e)
+        {
+            System.out.println("Sound file not found.");
+        }
+        return null;
     }
 }
