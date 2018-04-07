@@ -8,58 +8,106 @@ package com.Alpha.Space.Shooter;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
-import javafx.scene.layout.Pane;
+import javafx.scene.Node;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
-public class Ammo
+public abstract class Ammo
 {
-    private Rectangle ammo = new Rectangle();
-    Group round = new Group();
-
+    private Group round = new Group();
     private double movement;
     private int damage;
-    private String soundFile = "Sounds/Futuristic Shotgun Single Shot.wav";
-    private AudioClip shotSound = SoundTool.getAudioClip(soundFile);
+    private AudioClip shotSound;
 
-
-
-    public Group getRound()
+    /**
+     * Method to set the ammo elements.
+     * @param ammo This is abstract, so can contain a Shape, Image, ect..
+     */
+    public void setRound(Node ammo)
     {
-
-
-        return round;
-    }
-    public void setAmmo(Rectangle ammo)
-    {
-        this.ammo = ammo;
         round.getChildren().add(ammo);
     }
-    public void setMovement(double movement)
-    {
-        this.movement = movement;
-    }
-    public void setRound(double x, double y)
+
+    /**
+     * Method to set the location of the round.
+     * @param x Value of x.
+     * @param y Value of Y.
+     */
+    public void setRoundLocation(double x, double y)
     {
         round.setLayoutX(x);
         round.setLayoutY(y);
     }
+
+    /**
+     * Method to return the round of Ammo.
+     * @return Returns a group node.
+     */
+    public Group getRound()
+    {
+        return round;
+    }
+
+    /**
+     * Method to set the movement value. Added or subtracted from X or Y value.
+     * @param movement Value of movement.
+     */
+    public void setMovement(double movement)
+    {
+        this.movement = movement;
+    }
+
+    /**
+     * Return the movement value.
+     * @return Value of movement.
+     */
+    public double getMovement()
+    {
+        return this.movement;
+    }
+
+    /**
+     * Sets the ammount of damage the round deals. This can be added or subtracted from a health.
+     * @param damage Value of damage.
+     */
     public void setDamage(int damage)
     {
         this.damage = damage;
     }
-    public void shoot(EnemyArray enemy)
+
+    /**
+     * Setts the value of shotSound
+     * @param shotSound An AudioClip for the shot sound;
+     */
+    public void setShotSound(AudioClip shotSound)
     {
-        round.setLayoutY(round.getLayoutY() - movement);
+        this.shotSound = shotSound;
+    }
+
+    /**
+     * Checks for collision and moves the ammo off the screen if a collision happens.
+     * @param enemy The enemy array to test the collisions against.
+     */
+    public void colishionCheck(EnemyArray enemy)
+    {
         boolean hit = enemy.checkForDestruction(round, damage);
         if (hit)
         {
-            setRound(-200, 0);
+            setRoundLocation(-200, 0);
         }
     }
+
+    /**
+     * Abstact method to define the way the ammo moves when fired. This is the place to get creative.
+     * @param enemy The enemy array to test the collisions against.
+     */
+    public abstract void shoot(EnemyArray enemy);
+
+    /**
+     * Invokes a timeline which calls the shoot method.
+     * @param enemy The enemy array to test the collisions against.
+     */
     public void invokeShot(EnemyArray enemy)
     {
 
@@ -69,9 +117,8 @@ public class Ammo
 
 
         timeline.setCycleCount(50);
-        //timeline.setAutoReverse(true);
         timeline.play();
-//        shotSound.seek(Duration.ZERO);
+
         shotSound.play();
 
     }

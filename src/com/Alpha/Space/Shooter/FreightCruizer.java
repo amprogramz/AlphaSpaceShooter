@@ -1,12 +1,8 @@
 package com.Alpha.Space.Shooter;
 
-import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
-import java.util.ArrayList;
 
 /**
  * Author Alec McDaugale
@@ -42,8 +38,8 @@ public class FreightCruizer extends Ship
 
             ImageView image = SpriteTool.getImage(imageFileName, wings.getX(),hull.getY(),wings.getWidth(), hull.getHeight(), false);
 
-            //ammo.setRound( wings.getX() + 20, wings.getY());
-            ammo2.setRound(wings.getX() + wings.getWidth() - 21, wings.getY());
+            //ammo.setRoundLocation( wings.getX() + 20, wings.getY());
+            ammo2.setRoundLocation(wings.getX() + wings.getWidth() - 21, wings.getY());
 
 
             super.addShipParts(hull);
@@ -66,9 +62,9 @@ public class FreightCruizer extends Ship
         public void setShot(EnemyArray enemy)
         {
             //Ammo ammo = new FiftyCaliber();
-            //ammo.setRound( wings.getX() + 21, wings.getY());
+            //ammo.setRoundLocation( wings.getX() + 21, wings.getY());
             //super.addShipParts(ammo);
-            ammo2.setRound(wings.getParent().getLayoutX(), wings.getParent().getLayoutY());
+            ammo2.setRoundLocation(wings.getParent().getLayoutX(), wings.getParent().getLayoutY());
             ammo2.invokeShot(enemy);
         }
 
