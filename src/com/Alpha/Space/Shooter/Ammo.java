@@ -10,7 +10,6 @@ import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.media.AudioClip;
-import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public abstract class Ammo
