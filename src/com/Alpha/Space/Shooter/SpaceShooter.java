@@ -24,6 +24,7 @@ public class SpaceShooter extends Application
     private final int WINDOW_HEIGHT = 800;
     private String filePath = "sprite/Space-Background-1.jpg";
 
+    private Background background = new Background(filePath, WINDOW_WIDTH, WINDOW_HEIGHT);
     private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
     private EnemyArray enemies = new EnemyArray(8);
     private Score score = new Score(5);
@@ -34,7 +35,7 @@ public class SpaceShooter extends Application
         //groups can contain groups
         Group gameGroup = new Group();
         ObservableList gameList = gameGroup.getChildren();
-        gameList.add(SpriteTool.getImage(filePath, WINDOW_WIDTH, WINDOW_HEIGHT));
+        gameList.add(background.getBackground());
         gameList.addAll(ship.getShip(WINDOW_WIDTH, WINDOW_HEIGHT));
         gameList.addAll(ship.getAmmo());
         gameList.addAll(enemies.getEnemies());
