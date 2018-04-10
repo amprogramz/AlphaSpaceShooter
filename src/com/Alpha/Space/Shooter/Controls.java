@@ -5,6 +5,7 @@ package com.Alpha.Space.Shooter;
  */
 
 import javafx.event.EventHandler;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -43,6 +44,7 @@ public class Controls {
             scene.removeEventHandler(MouseEvent.MOUSE_PRESSED, mousePressed);
             scene.removeEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
             //scene.removeEventHandler(mouseControls(scene, ship, enemy, width, height));
+            scene.setCursor(Cursor.DEFAULT);
             keyboardControls(scene, ship, enemy, width, height);
 
         }else
@@ -101,7 +103,9 @@ public class Controls {
 
             @Override
             public void handle(MouseEvent mouseEvent){
-                ship.move(MouseInfo.getPointerInfo().getLocation().x - 510, MouseInfo.getPointerInfo().getLocation().y - 200 );
+            	//scene.setCursor(Cursor.NONE);
+                //ship.move(MouseInfo.getPointerInfo().getLocation().x - 510, MouseInfo.getPointerInfo().getLocation().y - 200 );
+                ship.move(mouseEvent.getSceneX() - 50, mouseEvent.getSceneY() - 100);
             }
         };
 
@@ -109,7 +113,9 @@ public class Controls {
 
             @Override
             public void handle(MouseEvent mouseEvent){
-                ship.move(MouseInfo.getPointerInfo().getLocation().x - 510, MouseInfo.getPointerInfo().getLocation().y - 200 );
+            	//scene.setCursor(Cursor.NONE);
+                //ship.move(MouseInfo.getPointerInfo().getLocation().x - 510, MouseInfo.getPointerInfo().getLocation().y - 200 );
+                ship.move(mouseEvent.getSceneX() - 50, mouseEvent.getSceneY() - 100);
             }
         };
 
