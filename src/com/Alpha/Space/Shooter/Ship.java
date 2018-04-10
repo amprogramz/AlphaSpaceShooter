@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Node;
 
+import java.util.ArrayList;
+
 
 public abstract class Ship
 {
@@ -194,7 +196,7 @@ public abstract class Ship
      * Abstract method to reurnthe ammo.
      * @return A Group containing the ammo.
      */
-    public abstract Group getAmmo();
+    public abstract ArrayList<Group> getAmmo();
 
 
 

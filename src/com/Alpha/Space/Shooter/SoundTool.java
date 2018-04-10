@@ -4,10 +4,6 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import javax.sound.midi.Soundbank;
-import java.io.File;
-import java.io.FileNotFoundException;
-
 public class SoundTool
 {
     /**
