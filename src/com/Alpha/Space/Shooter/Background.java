@@ -4,7 +4,8 @@ package com.Alpha.Space.Shooter;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+
 
 public class Background
 {
@@ -12,13 +13,20 @@ public class Background
     Canvas moveableBackground = new Canvas();
     GraphicsContext moveableBackgroundGC = moveableBackground.getGraphicsContext2D();
 
-    //String filePath = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
+
 
 
     public Background(String filePath, double width, double height)
     {
         background = SpriteTool.setImage(filePath);
-        moveableBackgroundGC.drawImage(background,width,height);
+        moveableBackground.setHeight(height);
+        moveableBackground.setWidth(width);
+        //moveableBackground.setVisible(true);
+
+
+        moveableBackgroundGC.setFill(Color.BLACK);
+        moveableBackgroundGC.fillRect(0,0,width, height);
+        moveableBackgroundGC.drawImage(background,0,0,width,height);
 
     }
 

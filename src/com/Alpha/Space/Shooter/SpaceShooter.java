@@ -22,9 +22,10 @@ public class SpaceShooter extends Application
     //  let me know if this does not fit on your screen for whatever reason.
     private final int WINDOW_WIDTH = 1000;
     private final int WINDOW_HEIGHT = 800;
-    private String filePath = "sprite/Space-Background-1.jpg";
+    private String background1 = "sprite/Space-Background-1.jpg";
+    private String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
 
-    private Background background = new Background(filePath, WINDOW_WIDTH, WINDOW_HEIGHT);
+    private Background background = new Background(background2, WINDOW_WIDTH, WINDOW_HEIGHT);
     private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
     private EnemyArray enemies = new EnemyArray(8);
     private Score score = new Score(5);
