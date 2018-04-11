@@ -1,6 +1,10 @@
 package com.Alpha.Space.Shooter;
 
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 
@@ -26,12 +30,18 @@ public class Score
 
         scoreOut.setText("Score: " + score);
         scoreOut.setX(5);
-        scoreOut.setY(15);
+        scoreOut.setY(25);
+        scoreOut.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
+        scoreOut.setStrokeWidth(1);
+        scoreOut.setStroke(Color.BLACK);
         scoreOut.setFill(Color.RED);
 
         livesOut.setText("Lives: " + lives);
         livesOut.setX(150);
-        livesOut.setY(15);
+        livesOut.setY(25);
+        livesOut.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
+        livesOut.setStrokeWidth(1);
+        livesOut.setStroke(Color.BLACK);
         livesOut.setFill(Color.RED);
 
     }
@@ -39,6 +49,7 @@ public class Score
     public void setScore(int score)
     {
         this.score = + score;
+        scoreOut.setText("Score: " + this.score);
     }
     public int getScore()
     {

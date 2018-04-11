@@ -34,14 +34,14 @@ public class Enemy
     }
 
 
-    public void destruct(int damage)
+    public void destruct(int damage, Score score)
     {
         if(this.hitPoints > damage)
         {
             hitPoints = hitPoints - damage;
         }else
         {
-            //this line needs to be fixes to remove the enemy
+            score.setScore(score.getScore() + 10);
             enemy.setX(-200);
         }
     }

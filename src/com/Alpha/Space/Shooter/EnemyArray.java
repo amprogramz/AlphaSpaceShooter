@@ -38,14 +38,14 @@ public class EnemyArray
         return this;
     }
 
-    public boolean checkForDestruction(Group ammo, int damage)
+    public boolean checkForDestruction(Group ammo, int damage, Score score)
     {
         for(Enemy block : enemyArray)
         {
             if(Colideable.collision(ammo, enemyArray.get(block.getIndex()).getEnemy()))
             {
                 System.out.println("Block Hit " + block.getIndex());
-                enemyArray.get(block.getIndex()).destruct(damage);
+                enemyArray.get(block.getIndex()).destruct(damage, score);
                 return true;
             }
         }

@@ -190,7 +190,7 @@ public abstract class Ship
     /**
      * Abstract method to set the shot to an origin.
      * @param enemy Enemy 0bject to check for collisions.     */
-    public abstract void setShot(EnemyArray enemy);
+    public abstract void setShot(EnemyArray enemy, Score score);
 
     /**
      * Abstract method to reurnthe ammo.

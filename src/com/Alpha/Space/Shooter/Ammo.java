@@ -88,9 +88,9 @@ public abstract class Ammo
      * Checks for collision and moves the ammo off the screen if a collision happens.
      * @param enemy The enemy array to test the collisions against.
      */
-    public void colishionCheck(EnemyArray enemy)
+    public void colishionCheck(EnemyArray enemy, Score score)
     {
-        boolean hit = enemy.checkForDestruction(round, damage);
+        boolean hit = enemy.checkForDestruction(round, damage, score);
         if (hit)
         {
             setRoundLocation(-200, 0);
@@ -101,18 +101,18 @@ public abstract class Ammo
      * Abstact method to define the way the ammo moves when fired. This is the place to get creative.
      * @param enemy The enemy array to test the collisions against.
      */
-    public abstract void shoot(EnemyArray enemy);
+    public abstract void shoot(EnemyArray enemy, Score score);
 
     /**
      * Invokes a timeline which calls the shoot method.
      * @param enemy The enemy array to test the collisions against.
      */
-    public void invokeShot(EnemyArray enemy)
+    public void invokeShot(EnemyArray enemy, Score score)
     {
 
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(10),
-                ae ->  shoot(enemy) ));
+                ae ->  shoot(enemy, score) ));
 
 
         timeline.setCycleCount(50);

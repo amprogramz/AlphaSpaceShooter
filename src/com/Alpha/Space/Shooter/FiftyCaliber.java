@@ -25,11 +25,11 @@ public class FiftyCaliber extends Ammo
     }
 
     //this is where we can get creative with our movements for the ammo
-    public void shoot(EnemyArray enemy)
+    public void shoot(EnemyArray enemy, Score score)
     {
     //    getRound().setLayoutX(getRound().getLayoutX() + getMovement());
         getRound().setLayoutY(getRound().getLayoutY() - getMovement());
-        colishionCheck(enemy);
+        colishionCheck(enemy, score);
     }
 
 

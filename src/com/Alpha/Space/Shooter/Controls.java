@@ -29,11 +29,11 @@ public class Controls {
      * @param width  This is the screen width of the game.
      * @param height This is the screen height of the game.
      */
-    public Controls(Scene scene, Ship ship, EnemyArray enemy, double width, double height) {
+    public Controls(Scene scene, Ship ship, EnemyArray enemy, Score score, double width, double height) {
 //        going to the keyboard controls by default.
-        keyboardControls(scene, ship, enemy, width, height);
+        keyboardControls(scene, ship, enemy, score, width, height);
     }
-    public void checkControlMode(Scene scene, Ship ship, EnemyArray enemy, double width, double height)
+    public void checkControlMode(Scene scene, Ship ship, EnemyArray enemy, Score score, double width, double height)
     {
         keyboard = !keyboard;
         //selects mode
@@ -45,15 +45,15 @@ public class Controls {
             scene.removeEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
             //scene.removeEventHandler(mouseControls(scene, ship, enemy, width, height));
             scene.setCursor(Cursor.DEFAULT);
-            keyboardControls(scene, ship, enemy, width, height);
+            keyboardControls(scene, ship, enemy, score, width, height);
 
         }else
         {
         	scene.removeEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
-            mouseControls(scene, ship, enemy, width, height);
+            mouseControls(scene, ship, enemy, score, width, height);
         }
     }
-    public void keyboardControls(Scene scene, Ship ship, EnemyArray enemy, double width, double height)
+    public void keyboardControls(Scene scene, Ship ship, EnemyArray enemy, Score score, double width, double height)
     {
         //scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
         keyboardControls = new EventHandler<KeyEvent>() 
@@ -84,11 +84,11 @@ public class Controls {
                     }
                     break;
                 case SPACE:
-                    ship.setShot(enemy);
+                    ship.setShot(enemy, score);
 
                     break;
                 case Q:
-                    checkControlMode(scene, ship, enemy, width, height);
+                    checkControlMode(scene, ship, enemy, score, width, height);
 
                     break;
             }}
@@ -97,7 +97,7 @@ public class Controls {
         //checkControlMode(scene, ship, enemy, width, height);
     }
 
-    public void mouseControls(Scene scene, Ship ship, EnemyArray enemy, double width, double height)
+    public void mouseControls(Scene scene, Ship ship, EnemyArray enemy, Score score, double width, double height)
     {
         mouseMoved = new EventHandler<MouseEvent>(){
 
@@ -123,7 +123,7 @@ public class Controls {
 
             @Override
             public void handle(MouseEvent mouseEvent){
-                ship.setShot(enemy);
+                ship.setShot(enemy, score);
             }
         };
         
@@ -131,7 +131,7 @@ public class Controls {
         	
         	public void handle(KeyEvent key){
         		if(key.getCode() == key.getCode().Q){
-        			checkControlMode(scene, ship, enemy, width, height);
+        			checkControlMode(scene, ship, enemy, score, width, height);
         		}
         	}
         };
