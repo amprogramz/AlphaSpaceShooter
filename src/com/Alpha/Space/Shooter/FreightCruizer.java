@@ -53,7 +53,7 @@ public class FreightCruizer extends Ship
 
         }
 
-
+        @Override
         public ArrayList<Group> getAmmo()
         {
             ArrayList<Group> ammoList = new ArrayList<>();
@@ -61,6 +61,7 @@ public class FreightCruizer extends Ship
             ammoList.add(ammo2.getRound());
             return ammoList;
         }
+        @Override
         public void setShot(EnemyArray enemy, Score score)
         {
             ammo.setRoundLocation(wings.getParent().getLayoutX() + 21, wings.getParent().getLayoutY());
