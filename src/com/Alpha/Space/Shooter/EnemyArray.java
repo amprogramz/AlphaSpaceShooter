@@ -24,9 +24,9 @@ public class EnemyArray
         }
     }
 
-    public ArrayList<Rectangle> getEnemies()
+    public ArrayList<Group> getEnemies()
     {
-        ArrayList<Rectangle> blocksToReturn = new ArrayList<>();
+        ArrayList<Group> blocksToReturn = new ArrayList<>();
         for (int index = 0; index < enemyArray.size(); index++ )
         {
             blocksToReturn.add(enemyArray.get(index).getEnemy());

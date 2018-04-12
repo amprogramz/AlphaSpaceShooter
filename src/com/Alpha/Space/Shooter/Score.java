@@ -68,7 +68,7 @@ public class Score
         return lives;
     }
 
-    public Text getScoreOut()
+   /* public Text getScoreOut()
     {
         return scoreOut;
     }
@@ -76,6 +76,7 @@ public class Score
     {
         return livesOut;
     }
+    */
     public ArrayList<Text> getScoreLivesOut()
     {
         ArrayList<Text> UIOut = new ArrayList<>();

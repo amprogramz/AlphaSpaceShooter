@@ -1,5 +1,7 @@
 package com.Alpha.Space.Shooter;
 
+import javafx.collections.ObservableList;
+import javafx.scene.Group;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -8,17 +10,18 @@ import javafx.scene.shape.Rectangle;
  */
 public class Enemy
 {
-    private Rectangle enemy = new Rectangle();
+    private Group enemyShip = new Group();
+    private ObservableList enemyShipParts = enemyShip.getChildren();
     private int targetIndex;
     private int hitPoints;
 
-    public Rectangle getEnemy()
+    public Group getEnemy()
     {
-        return enemy;
+        return enemyShip;
     }
     public void setEnemy(Rectangle enemy)
     {
-        this.enemy = enemy;
+        enemyShipParts.add(enemy);
     }
     public int getIndex()
     {
@@ -42,7 +45,9 @@ public class Enemy
         }else
         {
             score.setScore(score.getScore() + 10);
-            enemy.setX(-200);
+           // for (enemyShip.getChildren().size())
+            enemyShip.getChildren().get(0).setLayoutX(-2000);
+
         }
     }
 }

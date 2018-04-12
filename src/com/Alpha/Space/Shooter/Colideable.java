@@ -19,7 +19,7 @@ public class Colideable
      * @param ship Accepts shape 2.
      * @return True if Shapes collide.
      */
-    public static boolean collision(Group ammo, Shape ship)
+    public static boolean collision(Group ammo, Group ship)
     {
         if(ammo.getBoundsInParent().intersects(ship.getLayoutBounds()))
         {
@@ -34,7 +34,7 @@ public class Colideable
      * @param ships Accepts an ArrayList of shapes.
      * @return True if Shapes collide.
      */
-    public static boolean collision(Group ammo, ArrayList<Shape> ships)
+    public static boolean collision(Group ammo, ArrayList<Group> ships)
     {
 
         for(int index = 0; index < ships.size(); index++)

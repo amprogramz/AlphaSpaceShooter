@@ -40,8 +40,8 @@ public class FreightCruizer extends Ship
 
             ImageView image = SpriteTool.getImage(imageFileName, wings.getX(),hull.getY(),wings.getWidth(), hull.getHeight(), false);
 
-            ammo2.setRoundLocation(-200, 0);
-            ammo2.setRoundLocation(-200, 0);
+            ammo2.setRoundLocation(-200, -200);
+            ammo2.setRoundLocation(-200, -200);
 
 
             super.addShipParts(hull);
