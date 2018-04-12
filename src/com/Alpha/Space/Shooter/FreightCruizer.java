@@ -56,7 +56,7 @@ public class FreightCruizer extends Ship
 
         public ArrayList<Group> getAmmo()
         {
-            ArrayList<Group> ammoList = new ArrayList();
+            ArrayList<Group> ammoList = new ArrayList<>();
             ammoList.add(ammo.getRound());
             ammoList.add(ammo2.getRound());
             return ammoList;
