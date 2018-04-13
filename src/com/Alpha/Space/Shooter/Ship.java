@@ -6,9 +6,15 @@ package com.Alpha.Space.Shooter;
  */
 
 import javafx.collections.ObservableList;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.effect.ColorInput;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.paint.Color;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 
@@ -18,6 +24,7 @@ public abstract class Ship
     private double hitPoints;
 
     private Group ship = new Group();
+
     private ObservableList shipParts = ship.getChildren();
 
     /**
@@ -28,7 +35,16 @@ public abstract class Ship
      */
     private void defaultShip(double width, double height)
     {
-        ship.setLayoutX(width / 2); //center x
+
+//        for (int index = 0; index < ship.getChildren().size(); index++)
+//        {
+//            ship.getChildren().get(index).setLayoutX(+(width / 2));
+//        }
+          ship.setLayoutX(width / 2); //center x
+//        for (int index = 0; index < ship.getChildren().size(); index++)
+//        {
+//            ship.getChildren().get(index).setLayoutY(+((height / 4) * 3));
+//        }
         ship.setLayoutY((height / 4) * 3); //bottom quadrant y
     }
 
@@ -87,6 +103,10 @@ public abstract class Ship
      */
     public void moveShipRight()
     {
+//        for (int index = 0; index < ship.getChildren().size(); index++)
+//        {
+//            ship.getChildren().get(index).setLayoutX( + movement);
+//        }
         ship.setLayoutX(ship.getLayoutX() + movement);
     }
 
@@ -95,6 +115,10 @@ public abstract class Ship
      */
     public  void moveShipLeft()
     {
+//        for (int index = 0; index < ship.getChildren().size(); index++)
+//        {
+//            ship.getChildren().get(index).setLayoutX( - movement);
+//        }
         ship.setLayoutX(ship.getLayoutX() - movement);
     }
 
@@ -103,6 +127,13 @@ public abstract class Ship
      */
     public void moveShipUp()
     {
+//        ship.setEffect(new ColorInput(ship.getLayoutX(), ship.getLayoutY(), ship.getLayoutBounds().getWidth(),
+//                ship.getLayoutBounds().getHeight(),
+//                Color.RED));
+//        for (int index = 0; index < ship.getChildren().size(); index++)
+//        {
+//            ship.getChildren().get(index).setLayoutY( - movement);
+//        }
         ship.setLayoutY(ship.getLayoutY() - movement);
     }
 
@@ -111,6 +142,10 @@ public abstract class Ship
      */
     public void moveShipDown()
     {
+//        for (int index = 0; index < ship.getChildren().size(); index++)
+//        {
+//            ship.getChildren().get(index).setLayoutY( + movement);
+//        }
         ship.setLayoutY(ship.getLayoutY() + movement);
     }
 
@@ -197,6 +232,35 @@ public abstract class Ship
      * @return A Group containing the ammo.
      */
     public abstract ArrayList<Group> getAmmo();
+
+    public boolean checkForShipDestruction(Group ammo, int damage, Score score)
+    {
+
+            if(Colideable.collision(ammo, ship))
+            {
+                System.out.println("Ship hit.");
+                shipDestruct(damage, score);
+                return true;
+            }
+
+        return false;
+
+    }
+    public void shipDestruct(int damage, Score score)
+    {
+        if(this.hitPoints > damage)
+        {
+            hitPoints = hitPoints - damage;
+            System.out.println("Health: " + hitPoints);
+        }else
+        {
+            score.setScore(score.getScore() + 10);
+
+            System.out.println("Dead.");
+
+
+        }
+    }
 
 
 

@@ -40,7 +40,14 @@ public class SpaceShooter extends Application
         gameList.addAll(ship.getShip(WINDOW_WIDTH, WINDOW_HEIGHT));
         gameList.addAll(ship.getAmmo());
         gameList.addAll(enemies.getEnemies());
+        for(int index = 0; index < enemies.getAllAmmo().size(); index++)
+        {
+            gameList.addAll(enemies.getAllAmmo().get(index));
+        }
+//        gameList.addAll(enemies.getAllAmmo());
         gameList.addAll(score.getScoreLivesOut());
+
+        //enemies.startShooting(ship, score);
 
 
         Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);

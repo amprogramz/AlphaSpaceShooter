@@ -5,6 +5,7 @@ package com.Alpha.Space.Shooter;
  */
 
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
@@ -96,26 +97,50 @@ public abstract class Ammo
             setRoundLocation(-200, 0);
         }
     }
+    public void colishionCheck(Ship ship, Score score)
+    {
+        boolean hit = ship.checkForShipDestruction(round, damage, score);
+        if (hit)
+        {
+            setRoundLocation(-200, 0);
+        }
+    }
 
     /**
      * Abstact method to define the way the ammo moves when fired. This is the place to get creative.
      * @param enemy The enemy array to test the collisions against.
      */
-    public abstract void shoot(EnemyArray enemy, Score score);
+    public abstract void shipShoot(EnemyArray enemy, Score score);
+    public abstract void enemyShoot(Ship ship, Score score);
 
     /**
      * Invokes a timeline which calls the shoot method.
      * @param enemy The enemy array to test the collisions against.
      */
-    public void invokeShot(EnemyArray enemy, Score score)
+    public void invokeShipShot(EnemyArray enemy, Score score)
     {
 
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(10),
-                ae ->  shoot(enemy, score) ));
+                ae ->  shipShoot(enemy, score) ));
 
 
         timeline.setCycleCount(50);
+        timeline.play();
+
+        shotSound.play();
+
+    }
+    public void invokeEnemyShot(Ship ship, Score score)
+    {
+
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(10),
+                ae ->  enemyShoot(ship, score) ));
+
+
+        timeline.setCycleCount(50);
+        //timeline.delayProperty().setValue(Duration.seconds(2));
         timeline.play();
 
         shotSound.play();

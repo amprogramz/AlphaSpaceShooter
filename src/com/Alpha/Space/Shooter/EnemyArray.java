@@ -58,4 +58,23 @@ public class EnemyArray
         enemyArray.remove(index);
     }
 
+    public void startShooting(Ship ship, Score score)
+    {
+        for (int index = 0; index < enemyArray.size(); index++ )
+        {
+            enemyArray.get(index).setShot(ship, score);
+            //enemyArray.get(index).shoot();
+        }
+    }
+
+    public ArrayList<ArrayList<Group>> getAllAmmo()
+    {
+        ArrayList<ArrayList<Group>> enemyAmmo = new ArrayList<>();
+        for (int index = 0; index < enemyArray.size(); index++ )
+        {
+            enemyAmmo.add(enemyArray.get(index).getAmmo());
+        }
+        return enemyAmmo;
+    }
+
 }

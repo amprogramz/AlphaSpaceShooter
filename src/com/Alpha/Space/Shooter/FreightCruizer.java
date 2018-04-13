@@ -65,9 +65,9 @@ public class FreightCruizer extends Ship
         public void setShot(EnemyArray enemy, Score score)
         {
             ammo.setRoundLocation(wings.getParent().getLayoutX() + 21, wings.getParent().getLayoutY());
-            ammo.invokeShot(enemy, score);
+            ammo.invokeShipShot(enemy, score);
             ammo2.setRoundLocation(wings.getParent().getLayoutX() + 78, wings.getParent().getLayoutY());
-            ammo2.invokeShot(enemy, score);
+            ammo2.invokeShipShot(enemy, score);
         }
 
 

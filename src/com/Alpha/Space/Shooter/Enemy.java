@@ -4,16 +4,19 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+
 /**
  * Author Alec McDaugel
  * This is a parent class to create enemy objects.
  */
-public class Enemy
+public abstract class Enemy
 {
     private Group enemyShip = new Group();
     private ObservableList enemyShipParts = enemyShip.getChildren();
-    private int targetIndex;
+    private int enemyIndex;
     private int hitPoints;
+    Ammo ammo = new FiftyCaliber();
 
     public Group getEnemy()
     {
@@ -25,11 +28,11 @@ public class Enemy
     }
     public int getIndex()
     {
-        return targetIndex;
+        return enemyIndex;
     }
     public void setTargetIndex(int index)
     {
-        targetIndex = index;
+        enemyIndex = index;
     }
     public void setHitPoints(int hitPoints)
     {
@@ -45,9 +48,17 @@ public class Enemy
         }else
         {
             score.setScore(score.getScore() + 10);
-           // for (enemyShip.getChildren().size())
-            enemyShip.getChildren().get(0).setLayoutX(-2000);
+            for (int index = 0; index < enemyShip.getChildren().size(); index++)
+            {
+                enemyShip.getChildren().get(index).setLayoutX(-2000);
+            }
 
         }
     }
+
+    public abstract void setShot(Ship ship, Score score);
+
+
+    public abstract ArrayList<Group> getAmmo();
+
 }
