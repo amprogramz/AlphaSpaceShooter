@@ -39,7 +39,7 @@ public class Colideable
 
         for(int index = 0; index < ships.size(); index++)
         {
-            if (ammo.getBoundsInParent().intersects(ships.get(index).getLayoutBounds()))
+            if (ammo.getBoundsInParent().intersects(ships.get(index).getBoundsInParent()))
             {
                 return true;
             }

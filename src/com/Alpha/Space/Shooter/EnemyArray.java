@@ -60,18 +60,23 @@ public class EnemyArray
 
     public void startShooting(Ship ship, Score score)
     {
-//        for (int index = 0; index < enemyArray.size(); index++ )
-//        {
-//            enemyArray.get(index).setShot(ship, score);
-//            //enemyArray.get(index).shoot();
-//        }
-        enemyArray.get(3).setShot(ship, score);
+        for (int index = 0; index < enemyArray.size(); index++ )
+        {
+            enemyArray.get(index).setShot(ship, score);
+            //enemyArray.get(index).shoot();
+        }
+       // enemyArray.get(3).setShot(ship, score);
     }
 
     public ArrayList<Group> getAllAmmo()
     {
+        ArrayList<Group> ammo = new ArrayList<>();
+        for (int index = 0; index < enemyArray.size(); index++ )
+        {
+            ammo.add(enemyArray.get(index).getAmmo().get(0));
+        }
+        return ammo;
 
-            return enemyArray.get(3).getAmmo();
 
     }
 
