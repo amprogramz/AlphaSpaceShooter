@@ -29,12 +29,12 @@ public class FiftyCaliber extends Ammo
     {
     //    getRound().setLayoutX(getRound().getLayoutX() + getMovement());
         getRound().setLayoutY(getRound().getLayoutY() - getMovement());
-        colishionCheck(enemy, score);
+        enemyColishionCheck(enemy, score);
     }
     public void enemyShoot(Ship ship, Score score)
     {
         getRound().setLayoutY(getRound().getLayoutY() + getMovement());
-        colishionCheck(ship, score);
+        shipColishionCheck(ship, score);
     }
 
 

@@ -89,7 +89,7 @@ public abstract class Ammo
      * Checks for collision and moves the ammo off the screen if a collision happens.
      * @param enemy The enemy array to test the collisions against.
      */
-    public void colishionCheck(EnemyArray enemy, Score score)
+    public void enemyColishionCheck(EnemyArray enemy, Score score)
     {
         boolean hit = enemy.checkForDestruction(round, damage, score);
         if (hit)
@@ -97,7 +97,7 @@ public abstract class Ammo
             setRoundLocation(-200, 0);
         }
     }
-    public void colishionCheck(Ship ship, Score score)
+    public void shipColishionCheck(Ship ship, Score score)
     {
         boolean hit = ship.checkForShipDestruction(round, damage, score);
         if (hit)

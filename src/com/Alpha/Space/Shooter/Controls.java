@@ -85,7 +85,8 @@ public class Controls {
                     break;
                 case SPACE:
                     ship.setShot(enemy, score);
-
+                    break;
+                case V:
                     //for(int index = 0; index < enemy.getEnemies().size(); index++)
                     enemy.startShooting(ship, score);
 
