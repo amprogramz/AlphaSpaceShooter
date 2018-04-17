@@ -254,7 +254,7 @@ public abstract class Ship
             System.out.println("Health: " + hitPoints);
         }else
         {
-            score.setScore(score.getScore() + 10);
+            //score.setScore(score.getScore() + 10);
 
             System.out.println("Dead.");
 

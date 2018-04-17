@@ -21,7 +21,7 @@ public class Colideable
      */
     public static boolean collision(Group ammo, Group ship)
     {
-        if(ammo.getBoundsInParent().intersects(ship.getLayoutBounds()))
+        if(ammo.getBoundsInParent().intersects(ship.getBoundsInParent()))
         {
             return true;
         }

@@ -7,11 +7,8 @@ package com.Alpha.Space.Shooter;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import java.awt.MouseInfo;
-import java.security.Key;
 
 public class Controls {
     boolean keyboard = true;
