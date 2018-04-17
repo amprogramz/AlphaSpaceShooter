@@ -29,7 +29,7 @@ public class Target extends Enemy
     }
     public void setShot(Ship ship, Score score)
     {
-        ammo.setRoundLocation(target.getX(), target.getY());
+        ammo.setRoundLocation(target.getLayoutX(), target.getLayoutY());
         ammo.invokeEnemyShot(ship, score);
     }
 

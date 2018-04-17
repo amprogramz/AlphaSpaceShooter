@@ -67,14 +67,11 @@ public class EnemyArray
         }
     }
 
-    public ArrayList<ArrayList<Group>> getAllAmmo()
+    public ArrayList<Group> getAllAmmo()
     {
-        ArrayList<ArrayList<Group>> enemyAmmo = new ArrayList<>();
-        for (int index = 0; index < enemyArray.size(); index++ )
-        {
-            enemyAmmo.add(enemyArray.get(index).getAmmo());
-        }
-        return enemyAmmo;
+
+            return enemyArray.get(2).getAmmo();
+
     }
 
 }
