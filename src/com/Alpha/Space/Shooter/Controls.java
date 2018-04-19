@@ -86,7 +86,6 @@ public class Controls {
                 case V:
                     //for(int index = 0; index < enemy.getEnemies().size(); index++)
                     enemy.startShooting(ship, score);
-
                     break;
                 case Q:
                     checkControlMode(scene, ship, enemy, score, width, height);
