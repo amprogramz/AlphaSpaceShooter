@@ -16,6 +16,7 @@ public abstract class Enemy
     private ObservableList enemyShipParts = enemyShip.getChildren();
     private int enemyIndex;
     private int hitPoints;
+    private double movement;
     Ammo ammo = new FiftyCaliber();
 
     public Group getEnemy()
@@ -45,6 +46,7 @@ public abstract class Enemy
         if(this.hitPoints > damage)
         {
             hitPoints = hitPoints - damage;
+            //add sound here
         }else
         {
             score.setScore(score.getScore() + 10);
@@ -52,7 +54,7 @@ public abstract class Enemy
             {
                 enemyShip.getChildren().get(index).setLayoutX(-2000);
             }
-
+            //add sound explode
         }
     }
 

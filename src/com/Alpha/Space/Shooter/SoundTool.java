@@ -11,7 +11,7 @@ public class SoundTool
      * @param file Strung value that holds the file name.
      * @return Media Object.
      */
-    public static Media setMedia(String file)
+    private static Media setMedia(String file)
     {
         try
         {

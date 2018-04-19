@@ -18,6 +18,7 @@ public class Score
 {
     private int score;
     private int lives;
+    private int hitPoints;
 
     private Text scoreOut = new Text();
     private Text livesOut = new Text();
@@ -28,7 +29,7 @@ public class Score
         score = 0;
         this.lives = lives;
 
-        scoreOut.setText("Score: " + score);
+        updateScoreOut();
         scoreOut.setX(5);
         scoreOut.setY(25);
         scoreOut.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
@@ -36,7 +37,7 @@ public class Score
         scoreOut.setStroke(Color.BLACK);
         scoreOut.setFill(Color.RED);
 
-        livesOut.setText("Lives: " + lives);
+        updateLivesOut();
         livesOut.setX(150);
         livesOut.setY(25);
         livesOut.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
@@ -49,40 +50,51 @@ public class Score
     public void setScore(int score)
     {
         this.score = + score;
-        scoreOut.setText("Score: " + this.score);
+        updateScoreOut();
     }
     public int getScore()
     {
         return score;
     }
-    public void rsetLives(int lives)
+    public void updateScoreOut()
+    {
+        scoreOut.setText("Score: " + this.score);
+    }
+    public void setLives(int lives)
     {
         this.lives = lives;
     }
     public void decrementLives()
     {
         lives--;
+        updateLivesOut();
     }
     public int getLives()
     {
         return lives;
     }
-
-   /* public Text getScoreOut()
+    public void updateLivesOut()
     {
-        return scoreOut;
+        livesOut.setText("Lives: " + this.lives);
     }
-    public Text getLivesOut()
-    {
-        return livesOut;
-    }
-    */
     public ArrayList<Text> getScoreLivesOut()
     {
         ArrayList<Text> UIOut = new ArrayList<>();
         UIOut.add(scoreOut);
         UIOut.add(livesOut);
         return UIOut;
+    }
+    public void setHitPoints(int hitPoints)
+    {
+        this.hitPoints = hitPoints;
+    }
+    public int getHitPoints()
+    {
+        return hitPoints;
+    }
+    public void reduceHitPoints(int damage)
+    {
+        hitPoints = hitPoints - damage;
     }
 
 
