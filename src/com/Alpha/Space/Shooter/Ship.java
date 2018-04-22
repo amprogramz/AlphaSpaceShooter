@@ -13,6 +13,7 @@ import javafx.scene.effect.ColorInput;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.paint.Color;
+import javafx.scene.media.AudioClip;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -22,8 +23,17 @@ public abstract class Ship
 {
     private double movement;
     private double hitPoints;
+    private AudioClip deathSound;
+    
 
-    private Group ship = new Group();
+    public AudioClip getDeathSound() {
+		return deathSound;
+	}
+
+	public void setDeathSound(AudioClip deathSound) {
+		this.deathSound = deathSound;
+	}
+	private Group ship = new Group();
 
     private ObservableList shipParts = ship.getChildren();
 
@@ -257,6 +267,7 @@ public abstract class Ship
             //score.setScore(score.getScore() + 10);
 
             System.out.println("Dead.");
+            deathSound.play();
 
 
         }
