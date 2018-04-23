@@ -12,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="SpaceShooter.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SpaceShooter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/SpaceShooter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
-              <caret line="30" column="49" lean-forward="false" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+              <caret line="30" column="50" lean-forward="false" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,8 +51,8 @@
       <file leaf-file-name="Target.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Target.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1397">
-              <caret line="82" column="37" lean-forward="false" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
+            <state relative-caret-position="1827">
+              <caret line="87" column="22" lean-forward="false" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,10 +60,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="1008">
               <caret line="71" column="32" lean-forward="false" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -112,10 +112,12 @@
       <file leaf-file-name="Ship.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Ship.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2772">
-              <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+            <state relative-caret-position="399">
+              <caret line="68" column="20" lean-forward="false" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1671#1672#0" expanded="true" />
+                <element signature="e#1698#1699#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -165,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Score.java" />
         <option value="$PROJECT_DIR$/.idea/misc.xml" />
         <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Controls.java" />
-        <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Ship.java" />
         <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/FreightCruizer.java" />
         <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/FiftyCaliber.java" />
         <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Phaser.java" />
@@ -173,9 +174,10 @@
         <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/SpriteTool.java" />
         <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Moveable.java" />
         <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/EnemyArray.java" />
-        <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/SpaceShooter.java" />
-        <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Target.java" />
         <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Enemy.java" />
+        <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Ship.java" />
+        <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Target.java" />
+        <option value="$PROJECT_DIR$/src/com/Alpha/Space/Shooter/SpaceShooter.java" />
       </list>
     </option>
   </component>
@@ -413,12 +415,12 @@
       <workItem from="1523541450590" duration="22087000" />
       <workItem from="1523858665798" duration="111000" />
       <workItem from="1523939589884" duration="10482000" />
-      <workItem from="1524147810825" duration="25623000" />
+      <workItem from="1524147810825" duration="27919000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191607000" />
+    <option name="totallyTimeSpent" value="193903000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -493,7 +495,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Ship.java</url>
-          <line>164</line>
+          <line>168</line>
           <properties />
         </line-breakpoint>
       </breakpoints>
@@ -729,6 +731,8 @@
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1671#1672#0" expanded="true" />
+            <element signature="e#1698#1699#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -982,36 +986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/EnemyArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/SpaceShooter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="30" column="49" lean-forward="false" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Ship.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2772">
-          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Moveable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1031,19 +1005,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Target.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1397">
-          <caret line="82" column="37" lean-forward="false" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="1008">
           <caret line="71" column="32" lean-forward="false" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1071,6 +1035,48 @@
             <element signature="e#2465#2466#0" expanded="true" />
             <element signature="e#2513#2514#0" expanded="true" />
             <element signature="e#2584#2585#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Ship.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="68" column="20" lean-forward="false" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1671#1672#0" expanded="true" />
+            <element signature="e#1698#1699#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Target.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1827">
+          <caret line="87" column="22" lean-forward="false" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/EnemyArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="91" column="5" lean-forward="true" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/SpaceShooter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="30" column="50" lean-forward="false" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

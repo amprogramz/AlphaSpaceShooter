@@ -57,25 +57,35 @@ public class Target extends Enemy
     public void move(double screenWidth, double screenHeight, Ship ship, Score score)
     {
         //boolean directionX;
-        if (target.getParent().getLayoutX() < screenWidth && directionX == true)
+        if (target.getParent().getLayoutX() < screenWidth
+                && directionX == true
+                && !Colideable.collision(ship.getShipObj(), getEnemy()))
         {
             moveRight(5);
             moveDown(1);
         }
-        else if (target.getParent().getLayoutX() == screenWidth)
+        else if (target.getParent().getLayoutX() >= screenWidth
+                || Colideable.collision(ship.getShipObj(), getEnemy())
+                && target.getParent().getLayoutX() <= ship.getX())
         {
             directionX = false;
             moveLeft(5);
+            moveDown(1);
         }
-        else if (target.getParent().getLayoutX() > 0 && directionX == false)
+        else if (target.getParent().getLayoutX() > 0
+                && directionX == false
+                && !Colideable.collision(ship.getShipObj(), getEnemy()))
         {
 
             moveLeft(5);
             moveDown(1);
-        }else
+        }else if (target.getParent().getLayoutX() <= 0
+                || Colideable.collision(ship.getShipObj(), getEnemy())
+                && target.getParent().getLayoutX() >= ship.getX())
         {
             directionX = true;
             moveRight(5);
+            moveDown(1);
         }
 
         if (target.getParent().getLayoutY() == screenHeight)

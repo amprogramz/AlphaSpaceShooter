@@ -64,6 +64,10 @@ public abstract class Ship
         defaultShip(width, height);
         return ship;
     }
+    public Group getShipObj()
+    {
+        return ship;
+    }
 
     /**
      * A way to add a node to the ship group.
