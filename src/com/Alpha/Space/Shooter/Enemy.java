@@ -21,6 +21,7 @@ public abstract class Enemy implements Moveable
     private ObservableList enemyShipParts = enemyShip.getChildren();
     private int enemyIndex;
     private int hitPoints;
+    private int currentHitPoints;
 
     private double movement;
 
@@ -49,6 +50,7 @@ public abstract class Enemy implements Moveable
     public void setHitPoints(int hitPoints)
     {
         this.hitPoints = hitPoints;
+        currentHitPoints = hitPoints;
     }
 
     public AudioClip getMovingSound() {
@@ -67,9 +69,9 @@ public abstract class Enemy implements Moveable
 
 	public void destruct(int damage, Score score)
     {
-        if(this.hitPoints > damage)
+        if(this.currentHitPoints > damage)
         {
-            hitPoints = hitPoints - damage;
+            currentHitPoints = currentHitPoints - damage;
             //add sound here
         }else
         {
@@ -78,6 +80,7 @@ public abstract class Enemy implements Moveable
             {
                 enemyShip.setLayoutX(-2000);
                 enemyShip.setLayoutY(-1500);
+                currentHitPoints = hitPoints;
                 deathSound.play();
             }
             //add sound explode

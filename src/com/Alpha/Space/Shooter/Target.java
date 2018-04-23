@@ -78,13 +78,19 @@ public class Target extends Enemy
             moveRight(5);
         }
 
-        int shootRandom = (int) (Math.random()* 50);
-//        System.out.println(shootRandom); //test random
-        if (shootRandom == 3)
+        if (target.getParent().getLayoutY() == screenHeight)
         {
-            setShot(ship, score);
+            moveUp(screenHeight + 100);
         }
 
+        if (target.getParent().getLayoutX() > 0 && target.getParent().getLayoutX() < screenWidth && target.getParent().getLayoutY() > 0) {
+            int shootRandom = (int) (Math.random() * 50);
+
+//        System.out.println(shootRandom); //test random
+            if (shootRandom == 3) {
+                setShot(ship, score);
+            }
+        }
 
     }
 }
