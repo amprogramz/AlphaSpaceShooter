@@ -10,7 +10,7 @@ import javafx.scene.shape.Rectangle;
 public class FiftyCaliber extends Ammo
 {
 
-    private String shotSoundFile = "Sounds/Futuristic Shotgun Single Shot.wav";
+    private String shotSoundFile = "Sounds/Sound Effects/Futuristic Shotgun Single Shot.wav";
 
     public FiftyCaliber()
     {

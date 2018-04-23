@@ -16,10 +16,11 @@ public class FreightCruizer extends Ship
 
         private Rectangle hull = new Rectangle();
         private Rectangle wings = new Rectangle();
-        private Ammo ammo = new FiftyCaliber();
-        private Ammo ammo2 = new FiftyCaliber();
+        private Ammo ammo = new Phaser();
+        private Ammo ammo2 = new Phaser();
 
         private String imageFileName = "sprite/Spaceship_tut/Spaceship_tut.png";
+        private String deathSoundFile = "Sounds/Sound Effects/Futuristic Explosion.wav";
 
         public FreightCruizer(double windowWidth, double windowHeight)
         {
@@ -50,6 +51,7 @@ public class FreightCruizer extends Ship
 
             super.setMovement(15);
             super.setHitPoints(100);
+            super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
 
         }
 

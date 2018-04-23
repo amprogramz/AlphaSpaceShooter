@@ -8,9 +8,17 @@ package com.Alpha.Space.Shooter;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Node;
+<<<<<<< HEAD
 import javafx.scene.media.AudioClip;
 
 
+=======
+import javafx.scene.effect.ColorInput;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.paint.Color;
+import javafx.scene.media.AudioClip;
+>>>>>>> cb8ec7ef98d2804ef75cd0967bc105c7496b9b11
 
 import java.util.ArrayList;
 
@@ -18,11 +26,24 @@ import java.util.ArrayList;
 public abstract class Ship
 {
     private double movement;
+<<<<<<< HEAD
     private int hitPoints;
     private AudioClip shipMovingSound;
     private AudioClip shipHit;
+=======
+    private double hitPoints;
+    private AudioClip deathSound;
+    
+>>>>>>> cb8ec7ef98d2804ef75cd0967bc105c7496b9b11
 
-    private Group ship = new Group();
+    public AudioClip getDeathSound() {
+		return deathSound;
+	}
+
+	public void setDeathSound(AudioClip deathSound) {
+		this.deathSound = deathSound;
+	}
+	private Group ship = new Group();
 
     private ObservableList shipParts = ship.getChildren();
 
@@ -230,6 +251,7 @@ public abstract class Ship
             score.setHitPoints(hitPoints);
 
             System.out.println("Dead.");
+            deathSound.play();
 
 
         }

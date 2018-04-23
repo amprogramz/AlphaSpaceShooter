@@ -3,6 +3,7 @@ package com.Alpha.Space.Shooter;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.media.AudioClip;
 
 import java.util.ArrayList;
 
@@ -16,8 +17,14 @@ public abstract class Enemy
     private ObservableList enemyShipParts = enemyShip.getChildren();
     private int enemyIndex;
     private int hitPoints;
+<<<<<<< HEAD
     private double movement;
     Ammo ammo = new FiftyCaliber();
+=======
+    private AudioClip movingSound;
+    private AudioClip deathSound = SoundTool.getAudioClip("Sounds/Sound Effects/Small Futuristic Explosion.mp3");
+    Ammo ammo = new Phaser();
+>>>>>>> cb8ec7ef98d2804ef75cd0967bc105c7496b9b11
 
     public Group getEnemy()
     {
@@ -39,9 +46,20 @@ public abstract class Enemy
     {
         this.hitPoints = hitPoints;
     }
-
-
-    public void destruct(int damage, Score score)
+    public AudioClip getMovingSound() {
+		return movingSound;
+	}
+	public void setMovingSound(AudioClip movingSound) {
+		this.movingSound = movingSound;
+	}
+	public AudioClip getDeathSound() {
+		return deathSound;
+	}
+	public void setDeathSound(AudioClip deathSound) {
+		this.deathSound = deathSound;
+	}
+	
+	public void destruct(int damage, Score score)
     {
         if(this.hitPoints > damage)
         {
@@ -53,6 +71,7 @@ public abstract class Enemy
             for (int index = 0; index < enemyShip.getChildren().size(); index++)
             {
                 enemyShip.getChildren().get(index).setLayoutX(-2000);
+                deathSound.play();
             }
             //add sound explode
         }
