@@ -1,5 +1,7 @@
 package com.Alpha.Space.Shooter;
 
+import javafx.scene.Node;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
@@ -18,16 +20,19 @@ public class Score
 {
     private int score;
     private int lives;
-    private int hitPoints;
+    private double hitPoints;
 
     private Text scoreOut = new Text();
     private Text livesOut = new Text();
+    private Text hitPointOut = new Text();
+    private ProgressBar hitPointBar = new ProgressBar();
 
-    public Score(int lives)
+    public Score(int lives, double hitPoints)
     {
 
         score = 0;
         this.lives = lives;
+        this.hitPoints = hitPoints;
 
         updateScoreOut();
         scoreOut.setX(5);
@@ -44,6 +49,20 @@ public class Score
         livesOut.setStrokeWidth(1);
         livesOut.setStroke(Color.BLACK);
         livesOut.setFill(Color.RED);
+
+        hitPointBar.setProgress(hitPoints);
+        hitPointBar.setMaxWidth(500);
+        hitPointBar.setLayoutX(560);
+        hitPointBar.setLayoutY(10);
+
+        setHitPointOut();
+        hitPointOut.setX(500);
+        hitPointOut.setY(25);
+        hitPointOut.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
+        hitPointOut.setStrokeWidth(1);
+        hitPointOut.setStroke(Color.BLACK);
+        hitPointOut.setFill(Color.RED);
+
 
     }
 
@@ -77,24 +96,38 @@ public class Score
     {
         livesOut.setText("Lives: " + this.lives);
     }
-    public ArrayList<Text> getScoreLivesOut()
+    public ArrayList<Node> getScoreLivesOut()
     {
-        ArrayList<Text> UIOut = new ArrayList<>();
+        ArrayList<Node> UIOut = new ArrayList<>();
         UIOut.add(scoreOut);
         UIOut.add(livesOut);
+        UIOut.add(hitPointOut);
+        UIOut.add(hitPointBar);
         return UIOut;
     }
     public void setHitPoints(int hitPoints)
     {
         this.hitPoints = hitPoints;
+        setHitPointOut();
+        setHitPointBar();
     }
-    public int getHitPoints()
+    public double getHitPoints()
     {
         return hitPoints;
     }
     public void reduceHitPoints(int damage)
     {
         hitPoints = hitPoints - damage;
+        setHitPointOut();
+        setHitPointBar();
+    }
+    public void setHitPointOut()
+    {
+        hitPointOut.setText("HP: " + hitPoints);
+    }
+    public void setHitPointBar()
+    {
+        hitPointBar.setProgress(hitPoints);
     }
 
 

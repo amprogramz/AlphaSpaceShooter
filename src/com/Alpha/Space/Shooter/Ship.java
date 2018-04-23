@@ -146,6 +146,7 @@ public abstract class Ship
     public void setHitPoints(int hitPoints)
     {
         this.hitPoints = hitPoints;
+
     }
 
     /**

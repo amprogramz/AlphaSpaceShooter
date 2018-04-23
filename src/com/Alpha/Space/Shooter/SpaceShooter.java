@@ -29,7 +29,7 @@ public class SpaceShooter extends Application
     private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
     private EnemyArray enemies = new EnemyArray(8);
     //Enemy enemy = new Target(500, 50, 1);
-    private Score score = new Score(5);
+    private Score score = new Score(5, ship.getHitPoints());
 
     @Override
     public void start(Stage primaryStage)
