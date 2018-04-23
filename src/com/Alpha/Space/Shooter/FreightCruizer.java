@@ -20,7 +20,7 @@ public class FreightCruizer extends Ship
         private Ammo ammo2 = new Phaser();
 
         private String imageFileName = "sprite/Spaceship_tut/Spaceship_tut.png";
-        private String deathSoundFile = "Sounds/Sound Effects/Futuristic Explosion.wav";
+        private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
 
         public FreightCruizer(double windowWidth, double windowHeight)
         {

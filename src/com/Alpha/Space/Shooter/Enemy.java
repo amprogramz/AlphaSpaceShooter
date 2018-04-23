@@ -19,11 +19,11 @@ public abstract class Enemy
     private int hitPoints;
 
     private double movement;
-    //Ammo ammo = new FiftyCaliber();
+
 
     private AudioClip movingSound;
     private AudioClip deathSound = SoundTool.getAudioClip("Sounds/Sound Effects/Small Futuristic Explosion.mp3");
-    Ammo ammo = new Phaser();
+    //Ammo ammo = new Phaser();
 
 
     public Group getEnemy()
@@ -46,6 +46,7 @@ public abstract class Enemy
     {
         this.hitPoints = hitPoints;
     }
+
     public AudioClip getMovingSound() {
 		return movingSound;
 	}
@@ -59,6 +60,7 @@ public abstract class Enemy
 		this.deathSound = deathSound;
 	}
 	
+
 	public void destruct(int damage, Score score)
     {
         if(this.hitPoints > damage)

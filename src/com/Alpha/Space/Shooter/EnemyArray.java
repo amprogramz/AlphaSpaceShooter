@@ -2,8 +2,7 @@ package com.Alpha.Space.Shooter;
 
 
 import javafx.scene.Group;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
+
 
 import java.util.ArrayList;
 
@@ -63,9 +62,9 @@ public class EnemyArray
         for (int index = 0; index < enemyArray.size(); index++ )
         {
             enemyArray.get(index).setShot(ship, score);
-            //enemyArray.get(index).shoot();
+
         }
-       // enemyArray.get(3).setShot(ship, score);
+//        enemyArray.get(4).setShot(ship, score);
     }
 
     public ArrayList<Group> getAllAmmo()
@@ -73,6 +72,7 @@ public class EnemyArray
         ArrayList<Group> ammo = new ArrayList<>();
         for (int index = 0; index < enemyArray.size(); index++ )
         {
+
             ammo.add(enemyArray.get(index).getAmmo().get(0));
         }
         return ammo;

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Target extends Enemy
 {
 
+    Ammo ammo = new FiftyCaliber();
     Rectangle target = new Rectangle();
     public Target(double x, double y, int index)
     {

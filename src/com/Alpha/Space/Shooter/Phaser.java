@@ -5,7 +5,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Phaser extends Ammo{
 	
-	private String shotSound = "Sounds/Sound Effects/Laser Shot.wav";
+	private String shotSound = "Sounds/SoundEffects/Laser Shot.wav";
 	
 	public Phaser() {
 		Rectangle ammo = new Rectangle();

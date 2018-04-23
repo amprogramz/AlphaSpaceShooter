@@ -29,7 +29,7 @@ public class SpaceShooter extends Application
     private Background background = new Background(background2, WINDOW_WIDTH, WINDOW_HEIGHT);
     private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
     private EnemyArray enemies = new EnemyArray(8);
-    //Enemy enemy = new Target(500, 50, 1);
+
 
     private Score score = new Score(5, ship.getHitPoints());
 
@@ -49,19 +49,15 @@ public class SpaceShooter extends Application
         gameList.addAll(enemies.getEnemies());
         gameList.addAll(enemies.getAllAmmo());
 
-////        for(int index = 0; index < enemies.getAllAmmo().size(); index++)
-//        {
-//            gameList.addAll(enemies.getAllAmmo().get(index));
-//        }
-//        gameList.addAll(enemies.getAllAmmo());
+
         gameList.addAll(score.getScoreLivesOut());
 
-        //enemies.startShooting(ship, score);
+
 
 
         Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
         Controls controls = new Controls(scene, ship, enemies, score, WINDOW_WIDTH, WINDOW_HEIGHT);
-        //Controls controls = new Controls(scene, ship, enemy, score, WINDOW_WIDTH, WINDOW_HEIGHT);
+
 
 
         primaryStage.setTitle("Space Shooter");

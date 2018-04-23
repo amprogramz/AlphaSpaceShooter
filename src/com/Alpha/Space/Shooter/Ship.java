@@ -27,7 +27,7 @@ public abstract class Ship
 
     //private double hitPoints;
     private AudioClip deathSound;
-    
+    private Group ship = new Group();
 
 
     public AudioClip getDeathSound() {
@@ -37,7 +37,7 @@ public abstract class Ship
 	public void setDeathSound(AudioClip deathSound) {
 		this.deathSound = deathSound;
 	}
-	private Group ship = new Group();
+
 
     private ObservableList shipParts = ship.getChildren();
 
