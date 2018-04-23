@@ -22,7 +22,7 @@ public abstract class Enemy
 
 
     private AudioClip movingSound;
-    private AudioClip deathSound = SoundTool.getAudioClip("Sounds/Sound Effects/Small Futuristic Explosion.mp3");
+    private AudioClip deathSound = SoundTool.getAudioClip("Sounds/SoundEffects/Small Futuristic Explosion.mp3");
     //Ammo ammo = new Phaser();
 
 

@@ -18,7 +18,7 @@ public class SoundTool
             return new Media( SpaceShooter.class.getResource(file).toURI().toString());
         }catch (Exception e)
         {
-            System.out.println("Sound file not found.");
+            System.out.println("Sound file not found: " + file);
         }
         return null;
     }
@@ -45,7 +45,7 @@ public class SoundTool
             return new AudioClip( SpaceShooter.class.getResource(file).toURI().toString());
         }catch (Exception e)
         {
-            System.out.println("Sound file not found.");
+            System.out.println("Sound file not found: " + file);
         }
         return null;
     }

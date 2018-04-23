@@ -21,7 +21,7 @@ public class SpriteTool
             return  new Image(SpaceShooter.class.getResourceAsStream(filePath));
         }catch(Exception e)
         {
-            System.out.println("file was not found.");
+            System.out.println("Image file was not found: " + filePath);
         }
 
         return null;
