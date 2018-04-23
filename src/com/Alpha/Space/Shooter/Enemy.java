@@ -76,7 +76,8 @@ public abstract class Enemy implements Moveable
             score.setScore(score.getScore() + 10);
             for (int index = 0; index < enemyShip.getChildren().size(); index++)
             {
-                enemyShip.getChildren().get(index).setLayoutX(-2000);
+                enemyShip.setLayoutX(-2000);
+                enemyShip.setLayoutY(-1500);
                 deathSound.play();
             }
             //add sound explode

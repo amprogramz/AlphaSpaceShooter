@@ -83,16 +83,19 @@ public class EnemyArray
 
 
     }
-    public void enemiesMove(double screenWidth, double screenHeight)
+    public void enemiesMove(double screenWidth, double screenHeight, Ship ship, Score score)
     {
-        enemyArray.get(0).move(screenWidth, screenHeight);
+        for (int index = 0; index < enemyArray.size(); index ++)
+        {
+            enemyArray.get(index).move(screenWidth, screenHeight, ship, score);
+        }
     }
 
-    public void animateMovement(double screenWidth, double screenHeight)
+    public void animateMovement(double screenWidth, double screenHeight, Ship ship, Score score)
     {
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(10),
-                ae -> enemiesMove(screenWidth, screenHeight)));
+                ae -> enemiesMove(screenWidth, screenHeight, ship, score)));
 
 
         timeline.setCycleCount(Animation.INDEFINITE);

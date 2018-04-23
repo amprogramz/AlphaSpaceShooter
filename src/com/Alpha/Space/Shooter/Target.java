@@ -20,12 +20,15 @@ public class Target extends Enemy
     public Target(double x, double y, int index)
     {
 
-        target.setLayoutX(x);
-        target.setLayoutY(y);
-        target.setWidth(100);
-        target.setHeight(30);
+        target.setLayoutX(0);
+        target.setLayoutY(0);
+        target.setWidth(45);
+        target.setHeight(45);
         target.setFill(Color.GRAY);
         super.setEnemy(target);
+
+        target.getParent().setLayoutX(x);
+        target.getParent().setLayoutY(y);
 
         super.setTargetIndex(index);
         super.setHitPoints(30);
@@ -36,7 +39,7 @@ public class Target extends Enemy
     @Override
     public void setShot(Ship ship, Score score)
     {
-        ammo.setRoundLocation(target.getParent().getLayoutX(), target.getParent().getLayoutY());
+        ammo.setRoundLocation(target.getParent().getLayoutX() + 18, target.getParent().getLayoutY());
         ammo.invokeEnemyShot(ship, score);
     }
 
@@ -51,12 +54,13 @@ public class Target extends Enemy
 
     boolean directionX = true;
     @Override
-    public void move(double screenWidth, double screenHeight)
+    public void move(double screenWidth, double screenHeight, Ship ship, Score score)
     {
         //boolean directionX;
         if (target.getParent().getLayoutX() < screenWidth && directionX == true)
         {
             moveRight(5);
+            moveDown(1);
         }
         else if (target.getParent().getLayoutX() == screenWidth)
         {
@@ -67,10 +71,20 @@ public class Target extends Enemy
         {
 
             moveLeft(5);
+            moveDown(1);
         }else
         {
             directionX = true;
             moveRight(5);
         }
+
+        int shootRandom = (int) (Math.random()* 50);
+//        System.out.println(shootRandom); //test random
+        if (shootRandom == 3)
+        {
+            setShot(ship, score);
+        }
+
+
     }
 }
