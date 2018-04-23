@@ -30,13 +30,13 @@ public class SpaceShooter extends Application
     private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
     private EnemyArray enemies = new EnemyArray(8);
     //Enemy enemy = new Target(500, 50, 1);
-<<<<<<< HEAD
+
     private Score score = new Score(5, ship.getHitPoints());
 
-=======
-    private Score score = new Score(5);
+
+    //private Score score = new Score(5);
     private MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
->>>>>>> cb8ec7ef98d2804ef75cd0967bc105c7496b9b11
+
     @Override
     public void start(Stage primaryStage)
     {

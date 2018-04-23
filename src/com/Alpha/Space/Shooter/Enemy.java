@@ -17,14 +17,14 @@ public abstract class Enemy
     private ObservableList enemyShipParts = enemyShip.getChildren();
     private int enemyIndex;
     private int hitPoints;
-<<<<<<< HEAD
+
     private double movement;
-    Ammo ammo = new FiftyCaliber();
-=======
+    //Ammo ammo = new FiftyCaliber();
+
     private AudioClip movingSound;
     private AudioClip deathSound = SoundTool.getAudioClip("Sounds/Sound Effects/Small Futuristic Explosion.mp3");
     Ammo ammo = new Phaser();
->>>>>>> cb8ec7ef98d2804ef75cd0967bc105c7496b9b11
+
 
     public Group getEnemy()
     {
