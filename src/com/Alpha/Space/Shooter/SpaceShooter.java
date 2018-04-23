@@ -28,7 +28,7 @@ public class SpaceShooter extends Application
 
     private Background background = new Background(background2, WINDOW_WIDTH, WINDOW_HEIGHT);
     private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
-    private EnemyArray enemies = new EnemyArray(8);
+    private EnemyArray enemies = new EnemyArray(1);
 
 
     private Score score = new Score(5, ship.getHitPoints());
@@ -64,6 +64,9 @@ public class SpaceShooter extends Application
         primaryStage.setScene(scene);
         primaryStage.show();
         soundTrack.play();
+
+
+        enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT);
         
 
     }

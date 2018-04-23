@@ -1,7 +1,11 @@
 package com.Alpha.Space.Shooter;
 
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
+import javafx.util.Duration;
 
 
 import java.util.ArrayList;
@@ -32,9 +36,9 @@ public class EnemyArray
         }
         return blocksToReturn;
     }
-    public EnemyArray getBlockGrid()
+    public ArrayList<Enemy> getBlockGrid()
     {
-        return this;
+        return enemyArray;
     }
 
     public boolean checkForDestruction(Group ammo, int damage, Score score)
@@ -78,6 +82,22 @@ public class EnemyArray
         return ammo;
 
 
+    }
+    public void enemiesMove(double screenWidth, double screenHeight)
+    {
+        enemyArray.get(0).move(screenWidth, screenHeight);
+    }
+
+    public void animateMovement(double screenWidth, double screenHeight)
+    {
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(10),
+                ae -> enemiesMove(screenWidth, screenHeight)));
+
+
+        timeline.setCycleCount(Animation.INDEFINITE);
+        //timeline.delayProperty().setValue(Duration.seconds(2));
+        timeline.play();
     }
 
 }

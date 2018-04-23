@@ -15,6 +15,8 @@ public class Target extends Enemy
 
     Ammo ammo = new FiftyCaliber();
     Rectangle target = new Rectangle();
+
+    String deathSoundFile = "Sounds/SoundEffects/Small Futuristic Explosion.mp3";
     public Target(double x, double y, int index)
     {
 
@@ -27,13 +29,18 @@ public class Target extends Enemy
 
         super.setTargetIndex(index);
         super.setHitPoints(30);
+
+        super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
     }
+
+    @Override
     public void setShot(Ship ship, Score score)
     {
-        ammo.setRoundLocation(target.getLayoutX(), target.getLayoutY());
+        ammo.setRoundLocation(target.getParent().getLayoutX(), target.getParent().getLayoutY());
         ammo.invokeEnemyShot(ship, score);
     }
 
+    @Override
     public ArrayList<Group> getAmmo()
     {
         ArrayList<Group> ammoList = new ArrayList<>();
@@ -42,6 +49,28 @@ public class Target extends Enemy
         return ammoList;
     }
 
+    boolean directionX = true;
+    @Override
+    public void move(double screenWidth, double screenHeight)
+    {
+        //boolean directionX;
+        if (target.getParent().getLayoutX() < screenWidth && directionX == true)
+        {
+            moveRight(5);
+        }
+        else if (target.getParent().getLayoutX() == screenWidth)
+        {
+            directionX = false;
+            moveLeft(5);
+        }
+        else if (target.getParent().getLayoutX() > 0 && directionX == false)
+        {
 
-
+            moveLeft(5);
+        }else
+        {
+            directionX = true;
+            moveRight(5);
+        }
+    }
 }

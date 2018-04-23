@@ -1,9 +1,13 @@
 package com.Alpha.Space.Shooter;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.media.AudioClip;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 
@@ -11,7 +15,7 @@ import java.util.ArrayList;
  * Author Alec McDaugel
  * This is a parent class to create enemy objects.
  */
-public abstract class Enemy
+public abstract class Enemy implements Moveable
 {
     private Group enemyShip = new Group();
     private ObservableList enemyShipParts = enemyShip.getChildren();
@@ -22,8 +26,8 @@ public abstract class Enemy
 
 
     private AudioClip movingSound;
-    private AudioClip deathSound = SoundTool.getAudioClip("Sounds/SoundEffects/Small Futuristic Explosion.mp3");
-    //Ammo ammo = new Phaser();
+    private AudioClip deathSound;
+
 
 
     public Group getEnemy()
@@ -79,9 +83,30 @@ public abstract class Enemy
         }
     }
 
+    public void moveLeft(double movement)
+    {
+        enemyShip.setLayoutX(enemyShip.getLayoutX() - movement);
+    }
+    public void moveRight(double movement)
+    {
+        enemyShip.setLayoutX(enemyShip.getLayoutX() + movement);
+    }
+    public void moveUp(double movement)
+    {
+        enemyShip.setLayoutY(enemyShip.getLayoutY() - movement);
+    }
+    public void moveDown(double movement)
+    {
+        enemyShip.setLayoutY(enemyShip.getLayoutY() + movement);
+    }
+
+
+
     public abstract void setShot(Ship ship, Score score);
 
 
     public abstract ArrayList<Group> getAmmo();
+
+
 
 }
