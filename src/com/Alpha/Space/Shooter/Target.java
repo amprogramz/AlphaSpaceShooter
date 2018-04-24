@@ -3,7 +3,7 @@ package com.Alpha.Space.Shooter;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
+import java.lang.Math;
 import java.util.ArrayList;
 
 /**
@@ -61,16 +61,16 @@ public class Target extends Enemy
                 && directionX == true
                 && !Colideable.collision(ship.getShipObj(), getEnemy()))
         {
-            moveRight(5);
-            moveDown(1);
+            moveRight(Math.random()*6);
+            moveDown(Math.random()*2);
         }
         else if (target.getParent().getLayoutX() >= screenWidth
                 || Colideable.collision(ship.getShipObj(), getEnemy())
                 && target.getParent().getLayoutX() <= ship.getX())
         {
             directionX = false;
-            moveLeft(5);
-            moveDown(1);
+            moveLeft(Math.random()*6);
+            moveDown(Math.random()*2);
         }
         else if (target.getParent().getLayoutX() > 0
                 && directionX == false
@@ -88,9 +88,9 @@ public class Target extends Enemy
             moveDown(1);
         }
 
-        if (target.getParent().getLayoutY() == screenHeight)
+        if (target.getParent().getLayoutY() >= screenHeight)
         {
-            moveUp(screenHeight + 100);
+            moveUp(screenHeight + Math.random()*200);
         }
 
         if (target.getParent().getLayoutX() > 0 && target.getParent().getLayoutX() < screenWidth && target.getParent().getLayoutY() > 0) {
