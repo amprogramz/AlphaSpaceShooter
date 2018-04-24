@@ -1,5 +1,7 @@
 package com.Alpha.Space.Shooter;
 
+import javax.swing.Timer;
+
 /**
  * Author Alec McDaugale
  * This is the JavaFX Aplication area where we define the windows for the game.
@@ -26,13 +28,14 @@ public class SpaceShooter extends Application
     private String background1 = "sprite/Space-Background-1.jpg";
     private String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
 
-    private Background background = new Background(background2, WINDOW_WIDTH, WINDOW_HEIGHT);
+    private Background background = new Background(background2, 3000, 2400);
     private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
     private EnemyArray enemies = new EnemyArray(10);
 
 
     private Score score = new Score(5, ship.getHitPoints());
-
+    
+    
 
     //private Score score = new Score(5);
     private MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
@@ -67,6 +70,8 @@ public class SpaceShooter extends Application
 
 
         enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
+        
+        background.moveForward();
         
 
     }
