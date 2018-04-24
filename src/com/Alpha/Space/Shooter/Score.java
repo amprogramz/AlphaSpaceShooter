@@ -50,9 +50,9 @@ public class Score
         livesOut.setStroke(Color.BLACK);
         livesOut.setFill(Color.RED);
 
-        hitPointBar.setProgress(hitPoints);
+        setHitPointBar();
         hitPointBar.setMaxWidth(500);
-        hitPointBar.setLayoutX(560);
+        hitPointBar.setLayoutX(650);
         hitPointBar.setLayoutY(10);
 
         setHitPointOut();
@@ -127,7 +127,7 @@ public class Score
     }
     public void setHitPointBar()
     {
-        hitPointBar.setProgress(hitPoints);
+        hitPointBar.setProgress(hitPoints/100);
     }
 
 

@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.media.AudioClip;
+import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public abstract class Enemy implements Moveable
     {
         return enemyShip;
     }
-    public void setEnemy(Rectangle enemy)
+    public void setEnemy(Shape enemy)
     {
         enemyShipParts.add(enemy);
     }
@@ -78,7 +79,7 @@ public abstract class Enemy implements Moveable
             score.setScore(score.getScore() + 10);
             for (int index = 0; index < enemyShip.getChildren().size(); index++)
             {
-                enemyShip.setLayoutX(-2000);
+                enemyShip.setLayoutX(-1000);
                 enemyShip.setLayoutY(-1500);
                 currentHitPoints = hitPoints;
                 deathSound.play();
