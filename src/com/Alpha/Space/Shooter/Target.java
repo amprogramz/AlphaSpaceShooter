@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * Author Alec McDaugle
- * This is a child class of Enemy. It is a basic target for testing.
+ * This is a child class of Enemy. It is now a borg cube like ship.
  */
 public class Target extends Enemy
 {

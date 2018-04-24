@@ -101,7 +101,6 @@ public class EnemyArray
 
 
         timeline.setCycleCount(Animation.INDEFINITE);
-        //timeline.delayProperty().setValue(Duration.seconds(2));
         timeline.play();
     }
 

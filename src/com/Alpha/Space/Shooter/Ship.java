@@ -23,21 +23,9 @@ public abstract class Ship
 
     private int hitPoints;
     private AudioClip shipMovingSound;
-    private AudioClip shipHit;
-
-    //private double hitPoints;
+    private AudioClip shipHitSound;
     private AudioClip deathSound;
     private Group ship = new Group();
-
-
-    public AudioClip getDeathSound() {
-		return deathSound;
-	}
-
-	public void setDeathSound(AudioClip deathSound) {
-		this.deathSound = deathSound;
-	}
-
 
     private ObservableList shipParts = ship.getChildren();
 
@@ -64,6 +52,11 @@ public abstract class Ship
         defaultShip(width, height);
         return ship;
     }
+
+    /**
+     * Method to return ship group object without redefining it.
+     * @return returns the ship node.
+     */
     public Group getShipObj()
     {
         return ship;
@@ -94,6 +87,32 @@ public abstract class Ship
     public void removeShipParts(Node shipPart)
     {
         shipParts.remove(shipPart);
+    }
+
+    /**
+     * A method to set the sound of the ships death.
+     * @param deathSound This is the file path of the death sound.
+     */
+    public void setDeathSound(AudioClip deathSound) {
+        this.deathSound = deathSound;
+    }
+
+    /**
+     * A method to set the ship moving sound.
+     * @param shipMovingSound This is the file path of the ship moving sound.
+     */
+    public void setShipMovingSound(AudioClip shipMovingSound)
+    {
+        this.shipMovingSound = shipMovingSound;
+    }
+
+    /**
+     * A method to set the ship hit sound.
+     * @param shipHitSound This is the file path of the ship hit sound.
+     */
+    public void setShipHitSound(AudioClip shipHitSound)
+    {
+        this.shipHitSound = shipHitSound;
     }
 
     /**
@@ -165,7 +184,6 @@ public abstract class Ship
     public void setHitPoints(int hitPoints)
     {
         this.hitPoints = hitPoints;
-
     }
 
     /**
@@ -224,6 +242,13 @@ public abstract class Ship
      */
     public abstract ArrayList<Group> getAmmo();
 
+    /**
+     * Method that returns true if a collision is detected.
+     * @param ammo The ammo shot to check for collisions.
+     * @param damage The ammount of damage to deal if hit.
+     * @param score The score object to manage health of ship.
+     * @return returns true if ship is hit by ammo.
+     */
     public boolean checkForShipDestruction(Group ammo, int damage, Score score)
     {
 
@@ -237,6 +262,12 @@ public abstract class Ship
         return false;
 
     }
+
+    /**
+     * Method to manage the destruction of the ship.
+     * @param damage An int to manage the damage dealt to the ship.
+     * @param score The score object to track health.
+     */
     public void shipDestruct(int damage, Score score)
     {
         if(score.getHitPoints() > damage)

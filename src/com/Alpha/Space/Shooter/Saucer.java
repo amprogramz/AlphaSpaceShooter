@@ -1,9 +1,13 @@
 package com.Alpha.Space.Shooter;
+/**
+ * Author: Alec McDaugale
+ * This is a class to define a flying saucer which extends Enemy.
+ */
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
+
 
 import java.util.ArrayList;
 
@@ -52,7 +56,6 @@ public class Saucer extends Enemy
     @Override
     public void move(double screenWidth, double screenHeight, Ship ship, Score score)
     {
-        //boolean directionX;
         if (saucer.getParent().getLayoutX() < screenWidth
                 && directionX == true
                 && !Colideable.collision(ship.getShipObj(), getEnemy()))
@@ -90,9 +93,9 @@ public class Saucer extends Enemy
         }
 
         if (saucer.getParent().getLayoutX() > 0 && saucer.getParent().getLayoutX() < screenWidth && saucer.getParent().getLayoutY() > 0) {
-            int shootRandom = (int) (Math.random() * 50);
+            int shootRandom = (int) (Math.random() * 100);
 
-//        System.out.println(shootRandom); //test random
+
             if (shootRandom == 3) {
                 setShot(ship, score);
             }
