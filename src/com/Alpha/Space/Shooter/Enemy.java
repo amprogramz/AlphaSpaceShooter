@@ -73,6 +73,14 @@ public abstract class Enemy implements Moveable
         this.hitPoints = hitPoints;
         currentHitPoints = hitPoints;
     }
+    public void setMovement(double movement)
+    {
+        this.movement = movement;
+    }
+    public double getMovement()
+    {
+        return movement;
+    }
 
     /**
      * Sets the moving sound to parameter.

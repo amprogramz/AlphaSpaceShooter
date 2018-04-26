@@ -32,6 +32,7 @@ public class Saucer extends Enemy
 
         super.setTargetIndex(index);
         super.setHitPoints(40);
+        super.setMovement(1);
 
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
     }
@@ -60,43 +61,80 @@ public class Saucer extends Enemy
     double initialY;
     double radiusX;
     double radiusY;
-    int dex;
+    double currentX;
+    double currentY;
+    double lastX;
+    double lastY;
+    int index = 0;
+    int randomMoves;
     boolean temp = true;
     @Override
     public void move(double screenWidth, double screenHeight, Ship ship, Score score)
     {
-        if (temp)
-        {
-            moveDown(200);
-            moveRight(300);
-            temp = false;
-        }
+
         if (completeCircle)
         {
+            if (index < randomMoves)
+            {
+                if (isDirectionX == true
+                        && saucer.getParent().getLayoutX() <= screenWidth
+                        && !Colideable.collision(ship.getShipObj(), getEnemy()))
+                {
+                    moveDown(getMovement());
+                    moveRight(getMovement());
 
-            radius = 50;//Math.random()* 50;
-            initialX = saucer.getParent().getLayoutX();
-            initialY = saucer.getParent().getLayoutY();
-            radiusX = initialX + radius;
-            radiusY = initialY;
-            completeCircle = false;
-        }else
+                }else if (saucer.getParent().getLayoutX() >= screenWidth
+                    || Colideable.collision(ship.getShipObj(), getEnemy())
+                     && saucer.getParent().getLayoutX() <= ship.getX())
+                {
+                     isDirectionX = false;
+                     moveLeft(getMovement());
+                     moveDown(getMovement());
+                }
+                else if (saucer.getParent().getLayoutX() > 0
+                    && isDirectionX == false
+                    && !Colideable.collision(ship.getShipObj(), getEnemy()))
+                {
 
-        if (!completeCircle)
+                    moveLeft(getMovement());
+                    moveDown(getMovement());
+                }else if (saucer.getParent().getLayoutX() <= 0
+                    || Colideable.collision(ship.getShipObj(), getEnemy())
+                    && saucer.getParent().getLayoutX() >= ship.getX())
+                {
+                    isDirectionX = true;
+                    moveRight(getMovement());
+                }
+
+                index++;
+
+            } else if (randomMoves == 0)
+            {
+                randomMoves = (int)(Math.random() * 300);
+            }else
+            {
+                completeCircle = false;
+                radius = (int)(Math.random() * 200);
+                System.out.println(radius);
+                initialX = saucer.getParent().getLayoutX();
+                initialY = saucer.getParent().getLayoutY();
+                randomMoves = 0;
+                index = 0;
+            }
+        }else if (!completeCircle)
         {
-//            dex++;
-//            saucer.getParent().setLayoutX(radiusX + (Math.cos(initialX) * radius));
-//            saucer.getParent().setLayoutY(radiusY + (Math.sin(initialY) * radius));
-//            System.out.println((dex));
-//            initialX++;
-//            initialY++;
-
+            if (saucer.getParent().getLayoutX() < 0
+                    || saucer.getParent().getLayoutX() > screenWidth
+                    || saucer.getParent().getLayoutY() < 0)
+            {
+                completeCircle = true;
+            }
 //            1st quad
             if (isDirectionX == true
                     && isDirectionY == true)
             {
-                moveRight(1);
-                moveDown(1);
+                    moveRight(1);
+                    moveDown(1);
 
                 if (saucer.getParent().getLayoutX() == initialX + radius
                         && saucer.getParent().getLayoutY() == initialY + radius)
@@ -145,49 +183,13 @@ public class Saucer extends Enemy
                 {
                     isDirectionX = true;
                     isDirectionY = true;
+                    completeCircle = true;
                 }
-                //completeCircle = true;
+
 
             }
 
         }
-
-//        if (saucer.getParent().getLayoutX() < screenWidth
-//                && isDirectionX == true
-//                && isDirectionY == true
-//                && !Colideable.collision(ship.getShipObj(), getEnemy()))
-//        {
-//
-//            moveRight(.1);
-//            moveDown((radiusY + Math.sqrt(radius - Math.pow((.1-radiusX), 2))) - saucer.getParent().getLayoutX());
-//            if (saucer.getParent().getLayoutX() == initialX + radius)
-//            {
-//                isDirectionX = false;
-//            }
-//        }
-//        else if (saucer.getParent().getLayoutX() >= screenWidth
-//                || Colideable.collision(ship.getShipObj(), getEnemy())
-//                && saucer.getParent().getLayoutX() <= ship.getX())
-//        {
-//            isDirectionX = false;
-//            moveLeft(1);
-//            moveDown(1);
-//        }
-//        else if (saucer.getParent().getLayoutX() > 0
-//                && isDirectionX == false
-//                && !Colideable.collision(ship.getShipObj(), getEnemy()))
-//        {
-//
-//            moveLeft(.1);
-//            moveDown(radiusY - Math.sqrt(radius - Math.pow((.1-radiusX), 2)));
-//        }else if (saucer.getParent().getLayoutX() <= 0
-//                || Colideable.collision(ship.getShipObj(), getEnemy())
-//                && saucer.getParent().getLayoutX() >= ship.getX())
-//        {
-//            isDirectionX = true;
-//            moveRight(1);
-//           // moveUp((radiusY + Math.sqrt(radius - Math.pow((.1-radiusX), 2)))- saucer.getParent().getLayoutY() );
-//        }
 
 
         if (saucer.getParent().getLayoutY() == screenHeight)
@@ -204,7 +206,7 @@ public class Saucer extends Enemy
             }
         }
 
-        System.out.println("x " + saucer.getParent().getLayoutX() + " Y " +saucer.getParent().getLayoutY());
+        //System.out.println("x " + saucer.getParent().getLayoutX() + " Y " +saucer.getParent().getLayoutY());
 
     }
 }
