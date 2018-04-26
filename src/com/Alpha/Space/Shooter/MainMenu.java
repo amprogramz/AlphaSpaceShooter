@@ -1,13 +1,21 @@
 package com.Alpha.Space.Shooter;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -18,10 +26,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class MainMenu extends Application
+public class MainMenu extends Application implements EventHandler<KeyEvent> 
 {
-	private static final Font FONT = Font.font("", FontWeight.BOLD, 18);
-	
+	private Stage stage;
+	private static final Font font = Font.font("", FontWeight.BOLD, 30);
+	private static final Font titleFont = Font.font("", FontWeight.BOLD, 60);
 	private VBox menuList;
 	
 	private int currentItem = 0;
@@ -33,34 +42,104 @@ public class MainMenu extends Application
 		Pane menu = new Pane();
 		menu.setPrefSize(1000, 800);
 		Rectangle background = new Rectangle(1000, 800);
-		
 		MenuItem itemExit = new MenuItem("EXIT");
-		//MenuItem itemStart = new MenuItem("START");
+		MenuItem itemSettings = new MenuItem("SETTINGS");
+		MenuItem itemHangar = new MenuItem("SHIP HANGAR");
 		
 		itemExit.setOnActivate(() -> System.exit(0));
-		//itemStart.setOnActivate(() -> SpaceShooter.start());
+		//itemStart.setOnActivate(() -> 
+		itemSettings.setOnActivate(() -> stage.setScene(settings()));
+		itemHangar.setOnActivate(() -> stage.setScene(hangar()));
 		menuList = new VBox(10,
 				   new MenuItem("START"),
-				   new MenuItem("SETTINGS"),
-				   new MenuItem("SAVES"),
-				   new MenuItem("SELECT LEVEL"),
-				   new MenuItem("SHIP HANGAR"),
+				   itemSettings,	   
+				   itemHangar,
+				   itemExit);
+		menuList.setAlignment(Pos.TOP_CENTER);
+		menuList.setTranslateX(381);
+		
+		menuList.setTranslateY(300);
+		
+		Text title = new Text("ALPHA SPACE SHOOTER");
+		title.setTranslateX(150);
+		title.setTranslateY(100);
+		title.setFill(Color.WHITE);
+		title.setFont(titleFont);
+		
+		getMenuItem(0).setActive(true);
+		
+		
+		menu.getChildren().addAll(background,menuList,title);
+		return menu;
+		
+	}
+	public Scene settings()
+	{
+		Pane settings = new Pane();
+		settings.setPrefSize(1000, 800);
+		Rectangle background = new Rectangle(1000, 800);
+		MenuItem mouse = new MenuItem("Mouse input");
+		MenuItem keyboard = new MenuItem("Keyboard input");
+		MenuItem itemExit = new MenuItem("EXIT");
+		
+		itemExit.setOnActivate(() -> System.exit(0));
+		menuList = new VBox(10,
+				   mouse,
+				   keyboard,
 				   itemExit);
 		menuList.setAlignment(Pos.TOP_CENTER);
 		menuList.setTranslateX(400);
 		menuList.setTranslateY(300);
 		
-		Text title = new Text("ALPHA SPACE SHOOTER");
+		Text title = new Text("SETTINGS");
 		title.setTranslateX(400);
 		title.setTranslateY(100);
 		title.setFill(Color.WHITE);
-		title.setFont(FONT);
+		title.setFont(titleFont);
 		
 		getMenuItem(0).setActive(true);
 		
-		menu.getChildren().addAll(background,menuList,title);
-		return menu;
+		settings.getChildren().addAll(background,menuList,title);
 		
+		settings.setOnKeyPressed(this);
+		
+		return new Scene(settings);
+	}
+	public Scene hangar() 
+	{
+		Pane hangar = new Pane();
+		Text title = new Text("SHIP HANGAR");
+		hangar.setPrefSize(1000, 800);
+		Rectangle background = new Rectangle(1000, 800);
+		title.setTranslateX(275);
+		title.setTranslateY(100);
+		title.setFill(Color.WHITE);
+		title.setFont(titleFont);
+		Rectangle rectangle1 = new Rectangle(150,150);
+		rectangle1.setTranslateX(200);
+		rectangle1.setTranslateY(200);
+		rectangle1.setStroke(Color.WHITE);
+		Text ship1 = new Text("ship 1");
+		ship1.setTranslateX(200);
+		ship1.setTranslateY(300);
+		ship1.setFill(Color.WHITE);
+		ship1.setFont(font);
+		Rectangle rectangle2 = new Rectangle(150,150);
+		rectangle2.setTranslateX(400);
+		rectangle2.setTranslateY(200);
+		rectangle2.setStroke(Color.WHITE);
+		Rectangle rectangle3 = new Rectangle(150,150);
+		rectangle3.setTranslateX(600);
+		rectangle3.setTranslateY(200);
+		rectangle3.setStroke(Color.WHITE);
+		
+		
+		
+		hangar.getChildren().addAll(background, title, rectangle1, rectangle2, rectangle3, ship1);
+		
+		
+		
+		return new Scene(hangar);
 	}
 	
 	
@@ -75,7 +154,7 @@ public class MainMenu extends Application
 			setAlignment(Pos.CENTER);
 			
 			text = new Text(name);
-			text.setFont(FONT);
+			text.setFont(font);
 			
 			getChildren().addAll(text);
 			setActive(false);
@@ -105,10 +184,44 @@ public class MainMenu extends Application
 	}
 	
 	@Override
+	public void handle(KeyEvent event)
+	{
+		switch(event.getCode())
+		{
+		case UP:
+			if(currentItem > 0)
+			{
+				getMenuItem(currentItem).setActive(false);
+				getMenuItem(--currentItem).setActive(true);
+			}
+			break;
+		case DOWN:
+			if(currentItem < menuList.getChildren().size()-1)
+			{
+				getMenuItem(currentItem).setActive(false);
+				getMenuItem(++currentItem).setActive(true);
+			}
+			break;
+		case ENTER:
+			getMenuItem(currentItem).activate();
+			break;
+			
+		}
+	}
+	 
+	        	
+	      
+
+	
+	@Override
 	public void start(Stage primaryStage) throws Exception 
 	{
+		stage = primaryStage;
 		Scene scene = new Scene(createContent());
-		scene.setOnKeyPressed(event ->
+		scene.setOnKeyPressed(this);
+		
+		
+		/*stage.getScene().setOnKeyPressed(event ->
 		{
 			if(event.getCode() == KeyCode.UP)
 			{
@@ -131,6 +244,9 @@ public class MainMenu extends Application
 				getMenuItem(currentItem).activate();
 			}	
 		});
+		
+		
+		*/
 		primaryStage.setScene(scene);
 		primaryStage.setOnCloseRequest(event ->
 		{
