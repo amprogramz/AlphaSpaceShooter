@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -111,10 +112,18 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 		title.setFill(Color.WHITE);
 		title.setFont(titleFont);
 		Rectangle rectangle1 = new Rectangle(150,150);
+
+
 		rectangle1.setTranslateX(200);
 		rectangle1.setTranslateY(200);
 		rectangle1.setStroke(Color.WHITE);
 		Text ship1 = new Text("ship 1");
+		ImageView freightCruizerImage = SpriteTool.getImage("sprite/Spaceship_tut/Spaceship_tut.png",
+				rectangle1.getTranslateX(),
+				rectangle1.getTranslateY(),
+				rectangle1.getWidth(),
+				rectangle1.getHeight(),
+				true);
 		ship1.setTranslateX(200);
 		ship1.setTranslateY(300);
 		ship1.setFill(Color.WHITE);
@@ -130,7 +139,7 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 		
 		
 		
-		hangar.getChildren().addAll(background, title, rectangle1, rectangle2, rectangle3, ship1);
+		hangar.getChildren().addAll(background, title, rectangle1, rectangle2, rectangle3, ship1, freightCruizerImage);
 		
 		
 		
