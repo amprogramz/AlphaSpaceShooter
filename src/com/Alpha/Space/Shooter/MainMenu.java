@@ -1,20 +1,12 @@
 package com.Alpha.Space.Shooter;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -32,24 +24,26 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 	private static final Font font = Font.font("", FontWeight.BOLD, 30);
 	private static final Font titleFont = Font.font("", FontWeight.BOLD, 60);
 	private VBox menuList;
-	
 	private int currentItem = 0;
 	
-	private ScheduledExecutorService backgroundThread = Executors.newSingleThreadScheduledExecutor();
+	public Scene setting = new Scene(settings());
 	
-	private Parent createContent()
+	private ScheduledExecutorService backgroundThread = Executors.newSingleThreadScheduledExecutor();
+	//creates method to create Main Menu
+	private Parent createMenu()
 	{
 		Pane menu = new Pane();
 		menu.setPrefSize(1000, 800);
 		Rectangle background = new Rectangle(1000, 800);
+		//creating items for menu list
 		MenuItem itemExit = new MenuItem("EXIT");
 		MenuItem itemSettings = new MenuItem("SETTINGS");
 		MenuItem itemHangar = new MenuItem("SHIP HANGAR");
-		
-		itemExit.setOnActivate(() -> System.exit(0));
-		//itemStart.setOnActivate(() -> 
-		itemSettings.setOnActivate(() -> stage.setScene(settings()));
+		//setting actions for menuItems
+		itemSettings.setOnActivate(() -> stage.setScene(setting));
 		itemHangar.setOnActivate(() -> stage.setScene(hangar()));
+		itemExit.setOnActivate(() -> System.exit(0));
+		//setting up menuList
 		menuList = new VBox(10,
 				   new MenuItem("START"),
 				   itemSettings,	   
@@ -57,15 +51,14 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 				   itemExit);
 		menuList.setAlignment(Pos.TOP_CENTER);
 		menuList.setTranslateX(381);
-		
 		menuList.setTranslateY(300);
-		
+		//setting up main title
 		Text title = new Text("ALPHA SPACE SHOOTER");
 		title.setTranslateX(150);
 		title.setTranslateY(100);
 		title.setFill(Color.WHITE);
 		title.setFont(titleFont);
-		
+		//sets currently selected item to true
 		getMenuItem(0).setActive(true);
 		
 		
@@ -73,15 +66,16 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 		return menu;
 		
 	}
-	public Scene settings()
+	public Parent settings()
 	{
 		Pane settings = new Pane();
 		settings.setPrefSize(1000, 800);
 		Rectangle background = new Rectangle(1000, 800);
+		//creating menuItems for settings
 		MenuItem mouse = new MenuItem("Mouse input");
 		MenuItem keyboard = new MenuItem("Keyboard input");
 		MenuItem itemExit = new MenuItem("EXIT");
-		
+		//settings actions for menu item
 		itemExit.setOnActivate(() -> System.exit(0));
 		menuList = new VBox(10,
 				   mouse,
@@ -90,7 +84,7 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 		menuList.setAlignment(Pos.TOP_CENTER);
 		menuList.setTranslateX(400);
 		menuList.setTranslateY(300);
-		
+		//creating settings title
 		Text title = new Text("SETTINGS");
 		title.setTranslateX(400);
 		title.setTranslateY(100);
@@ -102,14 +96,15 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 		settings.getChildren().addAll(background,menuList,title);
 		
 		settings.setOnKeyPressed(this);
-		
-		return new Scene(settings);
+		return settings;
+		//return new Scene(settings);
 	}
 	public Scene hangar() 
 	{
 		Pane hangar = new Pane();
 		Text title = new Text("SHIP HANGAR");
 		hangar.setPrefSize(1000, 800);
+		//creating rectangles to showcase ship choices
 		Rectangle background = new Rectangle(1000, 800);
 		title.setTranslateX(275);
 		title.setTranslateY(100);
@@ -142,7 +137,7 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 		return new Scene(hangar);
 	}
 	
-	
+	//constructor for MenuItem
 	private static class MenuItem extends HBox
 	{
 		private Text text;
@@ -158,31 +153,33 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 			
 			getChildren().addAll(text);
 			setActive(false);
-			setOnActivate(() -> System.out.println(name + "activated"));
+			
 			
 		}
-
+		//takes current menuItem and highlights it white. If not selected stays grey
 		public void setActive(boolean b) 
 		{
 			// "? :" shorthand for if then statement 
 			text.setFill(b ? Color.WHITE : Color.GREY);
 		}
+		//activates menuItem action
 		public void setOnActivate(Runnable r)
 		{
 			script = r;
 		}
+		//if menuItem action is not null runs the action
 		public void activate()
 		{
 			if(script != null)
 				script.run();
 		}
 	}
-
+	//gets menuItem index
 	private MenuItem getMenuItem(int index)
 	{
 		return(MenuItem)menuList.getChildren().get(index);
 	}
-	
+	//event handler for keys
 	@Override
 	public void handle(KeyEvent event)
 	{
@@ -217,37 +214,12 @@ public class MainMenu extends Application implements EventHandler<KeyEvent>
 	public void start(Stage primaryStage) throws Exception 
 	{
 		stage = primaryStage;
-		Scene scene = new Scene(createContent());
-		scene.setOnKeyPressed(this);
+		Scene menu = new Scene(createMenu());
+		menu.setOnKeyPressed(this);
 		
+		setting.setOnKeyPressed(this);
 		
-		/*stage.getScene().setOnKeyPressed(event ->
-		{
-			if(event.getCode() == KeyCode.UP)
-			{
-				if(currentItem > 0)
-				{
-					getMenuItem(currentItem).setActive(false);
-					getMenuItem(--currentItem).setActive(true);
-				}
-			}
-			if(event.getCode() == KeyCode.DOWN)
-			{
-				if(currentItem < menuList.getChildren().size()-1)
-				{
-					getMenuItem(currentItem).setActive(false);
-					getMenuItem(++currentItem).setActive(true);
-				}
-			}
-			if(event.getCode() == KeyCode.ENTER)
-			{
-				getMenuItem(currentItem).activate();
-			}	
-		});
-		
-		
-		*/
-		primaryStage.setScene(scene);
+		primaryStage.setScene(menu);
 		primaryStage.setOnCloseRequest(event ->
 		{
 			backgroundThread.shutdownNow();
