@@ -63,6 +63,7 @@ public class FreightCruizer extends Ship
             ammoList.add(ammo.getRound());
             ammoList.add(ammo2.getRound());
             ammoList.add(ammo.getHitExplosionSprite());
+            ammoList.add(ammo2.getHitExplosionSprite());
             return ammoList;
         }
         @Override

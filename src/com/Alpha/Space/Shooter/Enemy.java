@@ -172,7 +172,7 @@ public abstract class Enemy implements Moveable
      * Abstract method to return the ammo.
      * @return Returns an array list of the ammo for the ship.
      */
-    public abstract ArrayList<Group> getAmmo();
+    public abstract ArrayList<Node> getAmmo();
 
 
 

@@ -12,9 +12,13 @@ public class Explosion
         private ImageView hitExplosionSprite =  new ImageView(SpriteTool.setImage("sprite/explosion.png"));
         Group explosion = new Group();
 
+
+       int index = 0;
+       double width = 64;
         public Explosion()
         {
-            hitExplosionSprite.setViewport(new Rectangle2D(190,0,65,75));
+            hitExplosionSprite.setVisible(false);
+            hitExplosionSprite.setViewport(new Rectangle2D(index * width,0,63.33,63.33));
             explosion.getChildren().add(hitExplosionSprite);
 
         }
@@ -22,21 +26,23 @@ public class Explosion
         public void setHitExplosion(double x, double y)
         {
 
-            hitExplosionSprite.getParent().setVisible(true);
+            hitExplosionSprite.setVisible(true);
             explosion.setLayoutX(x);
             explosion.setLayoutY(y);
-
+            hitExplosionSprite.setViewport(new Rectangle2D(index * width,0,63,63.33));
+            index++;
         }
         public void animateHitExplosion(double x, double y)
         {
-//            Timeline timeline = new Timeline(new KeyFrame(
-//                    Duration.millis(10),
-//                    ae ->  setHitExplosion(x, y) ));
-//
-//
-//            timeline.setCycleCount(70);
-//            timeline.play();
-            setHitExplosion(x, y);
+            index = 0;
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(20),
+                    ae ->  setHitExplosion(x, y) ));
+
+
+            timeline.setCycleCount(100);
+            timeline.play();
+           // setHitExplosion(x, y);
 
         }
 

@@ -1,6 +1,7 @@
 package com.Alpha.Space.Shooter;
 
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.lang.Math;
@@ -44,10 +45,11 @@ public class Target extends Enemy
     }
 
     @Override
-    public ArrayList<Group> getAmmo()
+    public ArrayList<Node> getAmmo()
     {
-        ArrayList<Group> ammoList = new ArrayList<>();
+        ArrayList<Node> ammoList = new ArrayList<>();
         ammoList.add(ammo.getRound());
+        ammoList.add(ammo.getHitExplosionSprite());
 
         return ammoList;
     }

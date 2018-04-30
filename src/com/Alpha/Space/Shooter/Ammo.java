@@ -115,6 +115,7 @@ public abstract class Ammo
         boolean hit = ship.checkForShipDestruction(round, damage, score);
         if (hit)
         {
+            explosion.animateHitExplosion(round.getLayoutX(), round.getLayoutY());
             setRoundLocation(-200, 0);
         }
     }

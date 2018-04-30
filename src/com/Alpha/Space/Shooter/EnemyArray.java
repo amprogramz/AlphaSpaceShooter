@@ -5,6 +5,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.util.Duration;
 
 
@@ -73,13 +74,16 @@ public class EnemyArray
 //        enemyArray.get(4).setShot(ship, score);
     }
 
-    public ArrayList<Group> getAllAmmo()
+    public ArrayList<Node> getAllAmmo()
     {
-        ArrayList<Group> ammo = new ArrayList<>();
+        ArrayList<Node> ammo = new ArrayList<>();
         for (int index = 0; index < enemyArray.size(); index++ )
         {
+            for (int index2 = 0; index2 < enemyArray.get(index).getAmmo().size(); index2++ )
+            {
+                ammo.add(enemyArray.get(index).getAmmo().get(index2));
+            }
 
-            ammo.add(enemyArray.get(index).getAmmo().get(0));
         }
         return ammo;
 
