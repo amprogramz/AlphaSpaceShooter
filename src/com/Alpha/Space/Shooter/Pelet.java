@@ -3,22 +3,25 @@ package com.Alpha.Space.Shooter;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-/**
- * Author Alec McDaugale
- * This is a class which is derived from ammo.
- */
-public class FiftyCaliber extends Ammo
+public class Pelet extends Ammo
 {
-
     private String shotSoundFile = "Sounds/SoundEffects/Futuristic Shotgun Single Shot.wav";
+    private Rectangle ammo = new Rectangle();
+    int xMovement;
 
-    public FiftyCaliber()
+
+    public Pelet(int xMovement)
     {
-        Rectangle ammo = new Rectangle();
-        ammo.setWidth(2);
+
+        ammo.setWidth(5);
         ammo.setHeight(10);
-        ammo.setFill(Color.RED);
+        ammo.setFill(Color.BLUE);
         super.setRound(ammo);
+
+        this.xMovement = xMovement;
+
+
+
         super.setMovement(15);
         super.setDamage(10);
         super.setShotSound(SoundTool.getAudioClip(shotSoundFile));
@@ -28,7 +31,9 @@ public class FiftyCaliber extends Ammo
     public void shipShoot(EnemyArray enemy, Score score)
     {
 
-        getRound().setLayoutY(getRound().getLayoutY() - getMovement());
+        ammo.getParent().setLayoutY(ammo.getParent().getLayoutY() - getMovement());
+        ammo.getParent().setLayoutX(ammo.getParent().getLayoutX() + xMovement);
+
         enemyColishionCheck(enemy, score);
     }
     public void enemyShoot(Ship ship, Score score)
@@ -36,6 +41,5 @@ public class FiftyCaliber extends Ammo
         getRound().setLayoutY(getRound().getLayoutY() + getMovement());
         shipColishionCheck(ship, score);
     }
-
 
 }

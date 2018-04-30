@@ -114,7 +114,8 @@ public abstract class Enemy implements Moveable
             score.setScore(score.getScore() + 10);
             for (int index = 0; index < enemyShip.getChildren().size(); index++)
             {
-                enemyShip.setLayoutX(-1000);
+                enemyShip.setLayoutX((int)(Math.random() * 1000));
+                System.out.println("Enemy location:" + enemyShip  .getLayoutX());
                 enemyShip.setLayoutY(-1500);
                 currentHitPoints = hitPoints;
                 deathSound.play();

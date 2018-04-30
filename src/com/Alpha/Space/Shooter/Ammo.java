@@ -29,6 +29,8 @@ public abstract class Ammo
         round.getChildren().add(ammo);
     }
 
+    public void setRound(Ammo ammo){round.getChildren().add(ammo.getRound());}
+
     /**
      * Method to set the location of the round.
      * @param x Value of x.
