@@ -31,6 +31,15 @@ public class ShotGun extends Ammo
         ammo2.shipShoot(enemy, score);
         ammo3.shipShoot(enemy, score);
     }
+
+    @Override
+    public void setRoundLocation(double x, double y)
+    {
+        ammo.setRoundLocation(x,y);
+        ammo2.setRoundLocation(x,y);
+        ammo3.setRoundLocation(x,y);
+
+    }
     public void enemyShoot(Ship ship, Score score)
     {
         getRound().setLayoutY(getRound().getLayoutY() + getMovement());
