@@ -1,6 +1,7 @@
 package com.Alpha.Space.Shooter;
 
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 
@@ -16,8 +17,8 @@ public class FreightCruizer extends Ship
 
         private Rectangle hull = new Rectangle();
         private Rectangle wings = new Rectangle();
-        private Ammo ammo = new ShotGun();
-        private Ammo ammo2 = new Phaser();
+        private Ammo ammo = new Phaser();
+        private Ammo ammo2 = new Missile();
 
         private String imageFileName = "sprite/Spaceship_tut/Spaceship_tut.png";
         private String deathSoundFile = "Sounds/SoundnEffects/Futuristic Explosion.wav";
@@ -56,11 +57,12 @@ public class FreightCruizer extends Ship
         }
 
         @Override
-        public ArrayList<Group> getAmmo()
+        public ArrayList<Node> getAmmo()
         {
-            ArrayList<Group> ammoList = new ArrayList<>();
+            ArrayList<Node> ammoList = new ArrayList<>();
             ammoList.add(ammo.getRound());
             ammoList.add(ammo2.getRound());
+            ammoList.add(ammo.getHitExplosionSprite());
             return ammoList;
         }
         @Override

@@ -55,5 +55,12 @@ public class SpriteTool
     {
         return getImage(filePath, 0, 0, width, height, true);
     }
+    public static ImageView getImage(String filePath)
+    {
+        ImageView imageView = new ImageView();
+        imageView.setImage(setImage(filePath));
+        imageView.setVisible(false);
+        return imageView;
+    }
 
 }

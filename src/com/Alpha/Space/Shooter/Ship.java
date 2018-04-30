@@ -240,7 +240,7 @@ public abstract class Ship
      * Abstract method to reurnthe ammo.
      * @return A Group containing the ammo.
      */
-    public abstract ArrayList<Group> getAmmo();
+    public abstract ArrayList<Node> getAmmo();
 
     /**
      * Method that returns true if a collision is detected.

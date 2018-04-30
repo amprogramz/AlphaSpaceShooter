@@ -8,10 +8,13 @@ package com.Alpha.Space.Shooter;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
+
 
 public abstract class Ammo
 {
@@ -19,6 +22,7 @@ public abstract class Ammo
     private double movement;
     private int damage;
     private AudioClip shotSound;
+    private Explosion explosion = new Explosion();
 
     /**
      * Method to set the ammo elements.
@@ -87,6 +91,11 @@ public abstract class Ammo
         this.shotSound = shotSound;
     }
 
+    public AudioClip getShotSound()
+    {
+        return shotSound;
+    }
+
     /**
      * Checks for collision and moves the ammo off the screen if a collision happens.
      * @param enemy The enemy array to test the collisions against.
@@ -96,7 +105,9 @@ public abstract class Ammo
         boolean hit = enemy.checkForDestruction(round, damage, score);
         if (hit)
         {
+            explosion.animateHitExplosion(round.getLayoutX(), round.getLayoutY());
             setRoundLocation(-200, 0);
+
         }
     }
     public void shipColishionCheck(Ship ship, Score score)
@@ -127,12 +138,13 @@ public abstract class Ammo
                 ae ->  shipShoot(enemy, score) ));
 
 
-        timeline.setCycleCount(50);
+        timeline.setCycleCount(70);
         timeline.play();
 
         shotSound.play();
 
     }
+
     public void invokeEnemyShot(Ship ship, Score score)
     {
 
@@ -141,11 +153,16 @@ public abstract class Ammo
                 ae ->  enemyShoot(ship, score) ));
 
 
-        timeline.setCycleCount(50);
-        //timeline.delayProperty().setValue(Duration.seconds(2));
+        timeline.setCycleCount(70);
         timeline.play();
 
         shotSound.play();
 
     }
+
+    public Group getHitExplosionSprite()
+    {
+        return explosion.getHitExplosionSprite();
+    }
+
 }
