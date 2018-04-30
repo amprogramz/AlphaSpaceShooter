@@ -67,8 +67,8 @@
       <file leaf-file-name="Explosion.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Explosion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="70">
+              <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -418,12 +418,12 @@
       <workItem from="1523939589884" duration="10482000" />
       <workItem from="1524147810825" duration="51149000" />
       <workItem from="1524750831115" duration="20006000" />
-      <workItem from="1524963768590" duration="15463000" />
+      <workItem from="1524963768590" duration="16707000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252602000" />
+    <option name="totallyTimeSpent" value="253846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -945,8 +945,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/Explosion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="70">
+          <caret line="47" column="23" lean-forward="false" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

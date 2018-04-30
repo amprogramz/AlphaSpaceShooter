@@ -14,11 +14,14 @@ public class Explosion
 
 
        int index = 0;
+       int index2 = 0;
        double width = 64;
+       double height = 64;
+
         public Explosion()
         {
             hitExplosionSprite.setVisible(false);
-            hitExplosionSprite.setViewport(new Rectangle2D(index * width,0,63.33,63.33));
+            hitExplosionSprite.setViewport(new Rectangle2D(0,0,63.33,63.33));
             explosion.getChildren().add(hitExplosionSprite);
 
         }
@@ -29,12 +32,20 @@ public class Explosion
             hitExplosionSprite.setVisible(true);
             explosion.setLayoutX(x);
             explosion.setLayoutY(y);
-            hitExplosionSprite.setViewport(new Rectangle2D(index * width,0,63,63.33));
-            index++;
+            if (index < 8) {
+                hitExplosionSprite.setViewport(new Rectangle2D(index * width, index2 * height, 63, 63.33));
+                index++;
+            }else
+            {
+                hitExplosionSprite.setViewport(new Rectangle2D(index * width, index2 * height, 63, 63.33));
+                index = 0;
+                index2++;
+            }
         }
         public void animateHitExplosion(double x, double y)
         {
             index = 0;
+            index2 = 0;
             Timeline timeline = new Timeline(new KeyFrame(
                     Duration.millis(20),
                     ae ->  setHitExplosion(x, y) ));
