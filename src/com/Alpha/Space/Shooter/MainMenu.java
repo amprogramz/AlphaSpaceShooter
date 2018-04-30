@@ -7,6 +7,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
@@ -19,221 +22,122 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class MainMenu extends Application implements EventHandler<KeyEvent> 
+public class MainMenu extends Application 
 {
-	private Stage stage;
-	private static final Font font = Font.font("", FontWeight.BOLD, 30);
-	private static final Font titleFont = Font.font("", FontWeight.BOLD, 60);
-	private VBox menuList;
-	private int currentItem = 0;
-	
-	public Scene setting = new Scene(settings());
-	
-	private ScheduledExecutorService backgroundThread = Executors.newSingleThreadScheduledExecutor();
-	//creates method to create Main Menu
-	private Parent createMenu()
+	Stage menu;
+	Scene mainMenu, play, settings, hangar;
+	final double maxFont = 60.0;
+	//method to create main menu layout
+	public VBox menuLayout()
 	{
-		Pane menu = new Pane();
-		menu.setPrefSize(1000, 800);
-		Rectangle background = new Rectangle(1000, 800);
-		//creating items for menu list
-		MenuItem itemExit = new MenuItem("EXIT");
-		MenuItem itemSettings = new MenuItem("SETTINGS");
-		MenuItem itemHangar = new MenuItem("SHIP HANGAR");
-		//setting actions for menuItems
-		itemSettings.setOnActivate(() -> stage.setScene(setting));
-		itemHangar.setOnActivate(() -> stage.setScene(hangar()));
-		itemExit.setOnActivate(() -> System.exit(0));
-		//setting up menuList
-		menuList = new VBox(10,
-				   new MenuItem("START"),
-				   itemSettings,	   
-				   itemHangar,
-				   itemExit);
-		menuList.setAlignment(Pos.TOP_CENTER);
-		menuList.setTranslateX(381);
-		menuList.setTranslateY(300);
-		//setting up main title
-		Text title = new Text("ALPHA SPACE SHOOTER");
-		title.setTranslateX(150);
-		title.setTranslateY(100);
-		title.setFill(Color.WHITE);
-		title.setFont(titleFont);
-		//sets currently selected item to true
-		getMenuItem(0).setActive(true);
+		VBox layout = new VBox(20);
+		//Creating and styling text
+		Text titleMain = new Text("ALPHA SPACE SHOOTER");
+		titleMain.setFont(new Font(maxFont));
+		titleMain.setFill(Color.LIGHTGRAY);
 		
+		//creating, styling  and setting action for play button
+		Button playButton = new Button("PLAY");
+		playButton.setOnAction(e -> menu.setScene(play));
+		playButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
 		
-		menu.getChildren().addAll(background,menuList,title);
-		return menu;
+		//creating, styling and setting action for settings button
+		Button settingsButton = new Button("SETTINGS");
+		settingsButton.setOnAction(e -> menu.setScene(settings));
+		settingsButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		
+		//creating, styling and setting action for hangar button
+		Button hangarButton = new Button("HANGAR");
+		hangarButton.setOnAction(e -> menu.setScene(hangar));
+		hangarButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		
+		//creating, styling and setting action for exit button
+		Button exit = new Button("EXIT");
+		exit.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		exit.setOnAction(e -> System.exit(0));
+		
+		//setting alignment and background color for vbox
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
+		layout.getChildren().addAll(titleMain, playButton, settingsButton, hangarButton, exit);
+		
+		return layout;
 		
 	}
-	public Parent settings()
+	//method to create settings layout
+	public VBox settingsLayout()
 	{
-		Pane settings = new Pane();
-		settings.setPrefSize(1000, 800);
-		Rectangle background = new Rectangle(1000, 800);
-		//creating menuItems for settings
-		MenuItem mouse = new MenuItem("Mouse input");
-		MenuItem keyboard = new MenuItem("Keyboard input");
-		MenuItem itemExit = new MenuItem("EXIT");
-		//settings actions for menu item
-		itemExit.setOnActivate(() -> System.exit(0));
-		menuList = new VBox(10,
-				   mouse,
-				   keyboard,
-				   itemExit);
-		menuList.setAlignment(Pos.TOP_CENTER);
-		menuList.setTranslateX(400);
-		menuList.setTranslateY(300);
-		//creating settings title
-		Text title = new Text("SETTINGS");
-		title.setTranslateX(400);
-		title.setTranslateY(100);
-		title.setFill(Color.WHITE);
-		title.setFont(titleFont);
-		
-		getMenuItem(0).setActive(true);
-		
-		settings.getChildren().addAll(background,menuList,title);
-		
-		settings.setOnKeyPressed(this);
-		return settings;
-		//return new Scene(settings);
+		VBox layout = new VBox(20);
+		//Creating and styling text
+		Text options = new Text("MOUSE OR KEYBOARD");
+		options.setFont(new Font(maxFont));
+		options.setFill(Color.LIGHTGRAY);
+		Button mouse = new Button("MOUSE");
+		mouse.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		Button keyboard = new Button("KEYBOARD");
+		keyboard.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		Button back = new Button("BACK");
+		back.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		back.setOnAction(e -> menu.setScene(mainMenu));
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
+		layout.getChildren().addAll(options, mouse, keyboard,back);
+		return layout;
 	}
-	public Scene hangar() 
+	//method to create hangar layout
+	public VBox hangarLayout()
 	{
-		Pane hangar = new Pane();
-		Text title = new Text("SHIP HANGAR");
-		hangar.setPrefSize(1000, 800);
-		//creating rectangles to showcase ship choices
-		Rectangle background = new Rectangle(1000, 800);
-		title.setTranslateX(275);
-		title.setTranslateY(100);
-		title.setFill(Color.WHITE);
-		title.setFont(titleFont);
-		Rectangle rectangle1 = new Rectangle(150,150);
-
-
-		rectangle1.setTranslateX(200);
-		rectangle1.setTranslateY(200);
-		rectangle1.setStroke(Color.WHITE);
-		Text ship1 = new Text("ship 1");
-		ImageView freightCruizerImage = SpriteTool.getImage("sprite/Spaceship_tut/Spaceship_tut.png",
-				rectangle1.getTranslateX(),
-				rectangle1.getTranslateY(),
-				rectangle1.getWidth(),
-				rectangle1.getHeight(),
-				true);
-		ship1.setTranslateX(200);
-		ship1.setTranslateY(300);
-		ship1.setFill(Color.WHITE);
-		ship1.setFont(font);
-		Rectangle rectangle2 = new Rectangle(150,150);
-		rectangle2.setTranslateX(400);
-		rectangle2.setTranslateY(200);
-		rectangle2.setStroke(Color.WHITE);
-		Rectangle rectangle3 = new Rectangle(150,150);
-		rectangle3.setTranslateX(600);
-		rectangle3.setTranslateY(200);
-		rectangle3.setStroke(Color.WHITE);
+		VBox layout = new VBox(10);
+		//creating HBox for ship image
+		HBox ships = new HBox(10);
+		ships.setAlignment(Pos.CENTER);
 		
+		//Creating and styling text
+		Text select = new Text("SELECT YOUR SHIP");
+		select.setFont(new Font(maxFont));
+		select.setFill(Color.LIGHTGRAY);
 		
+		//creates buttons and adds ship image to buttons
+		//freight cruizer image is set to all buttons as placeholder
+		Button ship1 = new Button("");
+		Image ship1Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
+		ship1.setGraphic(new ImageView(ship1Image));
 		
-		hangar.getChildren().addAll(background, title, rectangle1, rectangle2, rectangle3, ship1, freightCruizerImage);
+		Button ship2 = new Button("");
+		Image ship2Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
+		ship2.setGraphic(new ImageView(ship2Image));
 		
+		Button ship3 = new Button("");
+		Image ship3Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
+		ship3.setGraphic(new ImageView(ship3Image));
 		
+		Button ship4 = new Button("");
+		Image ship4Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
+		ship4.setGraphic(new ImageView(ship4Image));
 		
-		return new Scene(hangar);
+		//creating  and styling back button to return to main menu
+		Button back = new Button("BACK");
+		back.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		back.setOnAction(e -> menu.setScene(mainMenu));
+		
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
+		//add ships to hbox
+		ships.getChildren().addAll(ship1, ship2, ship3, ship4);
+		//add title, hbox and back button to scene
+		layout.getChildren().addAll(select, ships ,back);
+		return layout;
 	}
-	
-	//constructor for MenuItem
-	private static class MenuItem extends HBox
-	{
-		private Text text;
-		private Runnable script;
-		
-		public MenuItem(String name)
-		{
-			super(15);
-			setAlignment(Pos.CENTER);
-			
-			text = new Text(name);
-			text.setFont(font);
-			
-			getChildren().addAll(text);
-			setActive(false);
-			
-			
-		}
-		//takes current menuItem and highlights it white. If not selected stays grey
-		public void setActive(boolean b) 
-		{
-			// "? :" shorthand for if then statement 
-			text.setFill(b ? Color.WHITE : Color.GREY);
-		}
-		//activates menuItem action
-		public void setOnActivate(Runnable r)
-		{
-			script = r;
-		}
-		//if menuItem action is not null runs the action
-		public void activate()
-		{
-			if(script != null)
-				script.run();
-		}
-	}
-	//gets menuItem index
-	private MenuItem getMenuItem(int index)
-	{
-		return(MenuItem)menuList.getChildren().get(index);
-	}
-	//event handler for keys
-	@Override
-	public void handle(KeyEvent event)
-	{
-		switch(event.getCode())
-		{
-		case UP:
-			if(currentItem > 0)
-			{
-				getMenuItem(currentItem).setActive(false);
-				getMenuItem(--currentItem).setActive(true);
-			}
-			break;
-		case DOWN:
-			if(currentItem < menuList.getChildren().size()-1)
-			{
-				getMenuItem(currentItem).setActive(false);
-				getMenuItem(++currentItem).setActive(true);
-			}
-			break;
-		case ENTER:
-			getMenuItem(currentItem).activate();
-			break;
-			
-		}
-	}
-	 
-	        	
-	      
-
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception 
 	{
-		stage = primaryStage;
-		Scene menu = new Scene(createMenu());
-		menu.setOnKeyPressed(this);
-		
-		setting.setOnKeyPressed(this);
-		
-		primaryStage.setScene(menu);
-		primaryStage.setOnCloseRequest(event ->
-		{
-			backgroundThread.shutdownNow();
-		});
-		primaryStage.show();
+		menu = primaryStage;
+		mainMenu = new Scene(menuLayout(), 1000, 800);
+		settings = new Scene(settingsLayout(),1000,800);	
+		hangar = new Scene(hangarLayout(),1000,800);
+		menu.setScene(mainMenu);
+		menu.show();
 		
 	}
 	
