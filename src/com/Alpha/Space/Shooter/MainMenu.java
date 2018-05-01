@@ -78,7 +78,7 @@ public class MainMenu extends Application
 		
 		//creating, styling  and setting action for play button
 		Button playButton = new Button("PLAY");
-		playButton.setOnAction(e -> menu.setScene(play));
+		playButton.setOnAction(e -> menu.setScene(spaceShooter()));
 		playButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
 		
 		//creating, styling and setting action for settings button
@@ -175,7 +175,7 @@ public class MainMenu extends Application
 	public void start(Stage primaryStage) throws Exception 
 	{
 		menu = primaryStage;
-		play = spaceShooter();
+		//play = spaceShooter();
 		mainMenu = new Scene(menuLayout(), 1000, 800);
 		settings = new Scene(settingsLayout(),1000,800);	
 		hangar = new Scene(hangarLayout(),1000,800);

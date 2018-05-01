@@ -1,7 +1,10 @@
 package com.Alpha.Space.Shooter;
 
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
+import java.util.ArrayList;
 
 public class ShotGun extends Ammo
 {
@@ -44,6 +47,17 @@ public class ShotGun extends Ammo
     {
         getRound().setLayoutY(getRound().getLayoutY() + getMovement());
         shipColishionCheck(ship, score);
+    }
+
+    @Override
+    public Group getHitExplosionSprite()
+    {
+        Group explosion = new Group();
+        explosion.getChildren().addAll(ammo.getHitExplosionSprite());
+        explosion.getChildren().addAll(ammo2.getHitExplosionSprite());
+        explosion.getChildren().addAll(ammo3.getHitExplosionSprite());
+
+        return explosion;
     }
 
 }
