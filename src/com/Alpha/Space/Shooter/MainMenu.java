@@ -20,12 +20,10 @@ import javafx.stage.Stage;
 public class MainMenu extends Application 
 {
 	Stage menu;
-	//Scene mainMenu, play, settings, hangar;
-	//final double maxFont = 60.0;
-	//method to create main menu layout
 
 	final int WINDOW_WIDTH = 1000;
 	final int WINDOW_HEIGHT = 800;
+
 	Ship ship;
 
 	public Scene spaceShooter()
@@ -34,71 +32,49 @@ public class MainMenu extends Application
 		 //String background1 = "sprite/Space-Background-1.jpg";
 		 String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
 
-		 Background background = new Background(background2, 3000, 2400);
-		  //ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
-		 EnemyArray enemies = new EnemyArray(6);
-
-
-		 Score score = new Score(5, ship.getHitPoints());
-	
-		 //private Score score = new Score(5);
-		 MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
+		Background background = new Background(background2, 3000, 2400);
+		EnemyArray enemies = new EnemyArray(6);
+		Score score = new Score(5, ship.getHitPoints());
+		MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
 		
-		 Group gameGroup = new Group();
-	     ObservableList gameList = gameGroup.getChildren();
-	     gameList.add(background.getBackground());
-	     gameList.addAll(ship.getShip(WINDOW_WIDTH, WINDOW_HEIGHT));
-	     gameList.addAll(ship.getAmmo());
-	     gameList.addAll(enemies.getEnemies());
-	     gameList.addAll(enemies.getAllAmmo());
+		Group gameGroup = new Group();
+		ObservableList gameList = gameGroup.getChildren();
+		gameList.add(background.getBackground());
+		gameList.addAll(ship.getShip(WINDOW_WIDTH, WINDOW_HEIGHT));
+		gameList.addAll(ship.getAmmo());
+		gameList.addAll(enemies.getEnemies());
+		gameList.addAll(enemies.getAllAmmo());
+		gameList.addAll(score.getScoreLivesOut());
 
+		Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
+		Controls controls = new Controls(scene, ship, enemies, score, WINDOW_WIDTH, WINDOW_HEIGHT);
 
+		soundTrack.play();
+		enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
 
-	     gameList.addAll(score.getScoreLivesOut());
+		background.moveForward();
 
-
-
-
-	     Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
-	     Controls controls = new Controls(scene, ship, enemies, score, WINDOW_WIDTH, WINDOW_HEIGHT);
-
-	     soundTrack.play();
-	     enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
-
-	     background.moveForward();
-
-
-	     return scene;
+		return scene;
 	}
 
 	
 	public Scene menu()
 	{
-		VBox layout = new VBox(20);
-
 		Text titleMain = StylingTool.textCreator("ALPHA SPACE SHOOTER");
-		
-		//creating, styling  and setting action for play button
-		Button playButton = new Button("PLAY");
+
+		Button playButton = StylingTool.buttonCreator("PLAY");
 		playButton.setOnAction(e -> menu.setScene(hangar()));
-		playButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
-		
-		//creating, styling and setting action for settings button
-		Button settingsButton = new Button("SETTINGS");
+
+		Button settingsButton = StylingTool.buttonCreator("SETTINGS");
 		settingsButton.setOnAction(e -> menu.setScene(settings()));
-		settingsButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
-		
-		//creating, styling and setting action for hangar button
-		Button hangarButton = new Button("HANGAR");
+
+		Button hangarButton = StylingTool.buttonCreator("HANGAR");
 		hangarButton.setOnAction(e -> menu.setScene(hangar()));
-		hangarButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
-		
-		//creating, styling and setting action for exit button
-		Button exit = new Button("EXIT");
-		exit.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+
+		Button exit = StylingTool.buttonCreator("EXIT");
 		exit.setOnAction(e -> System.exit(0));
-		
-		//setting alignment and background color for vbox
+
+		VBox layout = new VBox(20);
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
 		layout.getChildren().addAll(titleMain, playButton, settingsButton, hangarButton, exit);
@@ -106,27 +82,29 @@ public class MainMenu extends Application
 		return new Scene(layout, 1000, 800);
 		
 	}
+
 	//method to create settings layout
 	public Scene settings()
 	{
-		VBox layout = new VBox(20);
-		//Creating and styling text
 		Text options = StylingTool.textCreator("MOUSE OR KEYBOARD");
 
-		Button mouse = new Button("MOUSE");
-		mouse.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		Button mouse = StylingTool.buttonCreator("MOUSE");
 		mouse.setOnAction(Controls.setKeyBoard(false));
-		Button keyboard = new Button("KEYBOARD");
-		keyboard.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+
+		Button keyboard = StylingTool.buttonCreator("KEYBOARD");
 		keyboard.setOnAction(Controls.setKeyBoard(true));
-		Button back = new Button("BACK");
-		back.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+
+		Button back = StylingTool.buttonCreator("BACK");
 		back.setOnAction(e -> menu.setScene(menu()));
+
+		VBox layout = new VBox(20);
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
 		layout.getChildren().addAll(options, mouse, keyboard,back);
+
 		return new Scene(layout,1000,800);
 	}
+	
 	//method to create hangar layout
 	public Scene hangar()
 	{
@@ -142,7 +120,6 @@ public class MainMenu extends Application
 		Image ship1Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship1.setGraphic(new ImageView(ship1Image));
 		ship1.setOnAction(e -> menu.setScene(selectAmmo(1)));
-			//ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT));
 		ship1.setStyle("-fx-background-color: #000000");
 
 		
@@ -176,9 +153,6 @@ public class MainMenu extends Application
 
 	public Scene selectAmmo(int shipChoice)
 	{
-
-		VBox layout = new VBox(10);
-
 		Text selectAmmo = StylingTool.textCreator("SELECT AMMO");
 
 		ComboBox<String> ammoChoices = new ComboBox<>();
@@ -190,23 +164,15 @@ public class MainMenu extends Application
 		ammoChoices2.getItems().addAll(choices);
 		ammoChoices2.setValue("Ammo 2");
 
-
-
-		layout.setAlignment(Pos.CENTER);
-		layout.setStyle("-fx-background-color: #000000");
-
-
-
-		Button play = new Button("Ok");
-		play.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		Button play = StylingTool.buttonCreator("Play");
 		play.setOnAction(e -> setShipAndAmmo(shipChoice, ammoSelection(ammoChoices.getValue()), ammoSelection(ammoChoices2.getValue())));
 
+		VBox layout = new VBox(10);
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
 		layout.getChildren().addAll(selectAmmo, ammoChoices, ammoChoices2, play);
 
-
-
 		return new Scene(layout,1000,800);
-
 
 	}
 	public int ammoSelection(String ammoChoices)
@@ -234,8 +200,6 @@ public class MainMenu extends Application
 
 	public void setShipAndAmmo(int shipSelection, int ammoSelection1, int ammoSelection2)
 	{
-
-
 		if(shipSelection == 1)
 		{
 			if(ammoSelection1 == 1)
@@ -301,7 +265,6 @@ public class MainMenu extends Application
 				}
 			}
 		}
-
 
 		menu.setScene(spaceShooter());
 	}
