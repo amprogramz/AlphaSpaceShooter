@@ -2,6 +2,10 @@ package com.Alpha.Space.Shooter;
 
 import javax.swing.Timer;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+
 /**
  * Author Alec McDaugale
  * This is the JavaFX Aplication area where we define the windows for the game.
@@ -12,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.media.MediaPlayer;
 
 
