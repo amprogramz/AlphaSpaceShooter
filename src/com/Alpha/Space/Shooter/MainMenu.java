@@ -148,11 +148,9 @@ public class MainMenu extends Application
 		Button ship1 = new Button("");
 		Image ship1Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship1.setGraphic(new ImageView(ship1Image));
-<<<<<<< HEAD
 		ship1.setOnAction(e -> ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT));
-=======
 		ship1.setStyle("-fx-background-color: #000000");
->>>>>>> 2f71330be10588939bddc5c81e553ecf652baa8d
+
 		
 		Button ship2 = new Button("");
 		Image ship2Image = new Image(getClass().getResourceAsStream("sprite/DurrrSpaceShip.png"));
