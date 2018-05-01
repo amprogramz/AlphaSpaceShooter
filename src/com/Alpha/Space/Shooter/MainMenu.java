@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 public class MainMenu extends Application 
 {
 	Stage menu;
-	Scene mainMenu, play, settings, hangar;
+	//Scene mainMenu, play, settings, hangar;
 	final double maxFont = 60.0;
 	//method to create main menu layout
 
@@ -84,7 +84,7 @@ public class MainMenu extends Application
 		
 		//creating, styling  and setting action for play button
 		Button playButton = new Button("PLAY");
-		playButton.setOnAction(e -> menu.setScene(spaceShooter()));
+		playButton.setOnAction(e -> menu.setScene(hangar()));
 		playButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
 		
 		//creating, styling and setting action for settings button
@@ -185,12 +185,10 @@ public class MainMenu extends Application
 
 	public Scene selectAmmo(int shipChoice)
 	{
-		int ammoSelection1 = 0;
-		int ammoSelection2 = 0;
+
 		VBox layout = new VBox(10);
 
-//		HBox ships = new HBox(10);
-//		ships.setAlignment(Pos.CENTER);
+
 
 		Text selectAmmo = new Text("SELECT AMMO");
 		selectAmmo.setFont(new Font(maxFont));
@@ -211,36 +209,6 @@ public class MainMenu extends Application
 		layout.setStyle("-fx-background-color: #000000");
 
 
-//		switch (ammoChoices.getValue())
-//		{
-//			case "Fifty Caliber" :
-//				ammoSelection1 = 1;
-//				break;
-//			case "Phaser":
-//				ammoSelection1 = 2;
-//				break;
-//			case "Missile":
-//				ammoSelection1 = 3;
-//				break;
-//			case "Shot Gun":
-//				ammoSelection1 = 4;
-//				break;
-//		}
-//		switch (ammoChoices2.getValue())
-//		{
-//			case "Fifty Caliber" :
-//				ammoSelection2 = 1;
-//				break;
-//			case "Phaser":
-//				ammoSelection2 = 2;
-//				break;
-//			case "Missile":
-//				ammoSelection2 = 3;
-//				break;
-//			case "Shot Gun":
-//				ammoSelection2 = 4;
-//				break;
-//		}
 
 		Button play = new Button("Ok");
 		play.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
