@@ -185,6 +185,8 @@ public class MainMenu extends Application
 
 	public Scene selectAmmo(int shipChoice)
 	{
+		int ammoSelection1 = 0;
+		int ammoSelection2 = 0;
 		VBox layout = new VBox(10);
 
 //		HBox ships = new HBox(10);
@@ -203,26 +205,150 @@ public class MainMenu extends Application
 		ammoChoices2.getItems().addAll(choices);
 		ammoChoices2.setValue("Ammo 2");
 
-		switch (ammoChoices.getValue())
-		{
-			case "Fifty Caliber" :
-				break;
-		}
+
+
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
 
 
+//		switch (ammoChoices.getValue())
+//		{
+//			case "Fifty Caliber" :
+//				ammoSelection1 = 1;
+//				break;
+//			case "Phaser":
+//				ammoSelection1 = 2;
+//				break;
+//			case "Missile":
+//				ammoSelection1 = 3;
+//				break;
+//			case "Shot Gun":
+//				ammoSelection1 = 4;
+//				break;
+//		}
+//		switch (ammoChoices2.getValue())
+//		{
+//			case "Fifty Caliber" :
+//				ammoSelection2 = 1;
+//				break;
+//			case "Phaser":
+//				ammoSelection2 = 2;
+//				break;
+//			case "Missile":
+//				ammoSelection2 = 3;
+//				break;
+//			case "Shot Gun":
+//				ammoSelection2 = 4;
+//				break;
+//		}
+
 		Button play = new Button("Ok");
 		play.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
-		play.setOnAction(e -> menu.setScene(spaceShooter() ));
-		
+		play.setOnAction(e -> setShipAndAmmo(shipChoice, ammoSelection(ammoChoices.getValue()), ammoSelection(ammoChoices2.getValue())));
+
 		layout.getChildren().addAll(selectAmmo, ammoChoices, ammoChoices2, play);
-		ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new ShotGun());
+
 
 
 		return new Scene(layout,1000,800);
 
 
+	}
+	public int ammoSelection(String ammoChoices)
+	{
+
+		int ammoSelection = 0;
+		switch (ammoChoices)
+		{
+			case "Fifty Caliber" :
+				ammoSelection = 1;
+				break;
+			case "Phaser":
+				ammoSelection = 2;
+				break;
+			case "Missile":
+				ammoSelection = 3;
+				break;
+			case "Shot Gun":
+				ammoSelection = 4;
+				break;
+		}
+
+		return ammoSelection;
+	}
+
+	public void setShipAndAmmo(int shipSelection, int ammoSelection1, int ammoSelection2)
+	{
+
+
+		if(shipSelection == 1)
+		{
+			if(ammoSelection1 == 1)
+			{
+				if(ammoSelection2 == 1)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new FiftyCaliber());
+				}else if(ammoSelection2 == 2)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Phaser());
+				}else if(ammoSelection2 == 3)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Missile());
+				}else if(ammoSelection2 == 4)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new ShotGun());
+				}
+			}else if(ammoSelection1 == 2)
+			{
+				if(ammoSelection2 == 1)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new FiftyCaliber());
+				}else if(ammoSelection2 == 2)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Phaser());
+				}else if(ammoSelection2 == 3)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Missile());
+				}else if(ammoSelection2 == 4)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new ShotGun());
+				}
+
+			}else if(ammoSelection1 == 3)
+			{
+				if(ammoSelection2 == 1)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new FiftyCaliber());
+				}else if(ammoSelection2 == 2)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Phaser());
+				}else if(ammoSelection2 == 3)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Missile());
+				}else if(ammoSelection2 == 4)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new ShotGun());
+				}
+			}else if(ammoSelection1 == 4)
+			{
+				if(ammoSelection2 == 1)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new FiftyCaliber());
+				}else if(ammoSelection2 == 2)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Phaser());
+				}else if(ammoSelection2 == 3)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Missile());
+				}else if(ammoSelection2 == 4)
+				{
+					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
+				}
+			}
+		}
+
+
+		menu.setScene(play);
 	}
 	
 	@Override
