@@ -9,14 +9,11 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -24,7 +21,7 @@ public class MainMenu extends Application
 {
 	Stage menu;
 	//Scene mainMenu, play, settings, hangar;
-	final double maxFont = 60.0;
+	//final double maxFont = 60.0;
 	//method to create main menu layout
 
 	final int WINDOW_WIDTH = 1000;
@@ -70,6 +67,7 @@ public class MainMenu extends Application
 
 	     background.moveForward();
 
+
 	     return scene;
 	}
 
@@ -77,10 +75,8 @@ public class MainMenu extends Application
 	public Scene menu()
 	{
 		VBox layout = new VBox(20);
-		//Creating and styling text
-		Text titleMain = new Text("ALPHA SPACE SHOOTER");
-		titleMain.setFont(new Font(maxFont));
-		titleMain.setFill(Color.LIGHTGRAY);
+
+		Text titleMain = StylingTool.textCreator("ALPHA SPACE SHOOTER");
 		
 		//creating, styling  and setting action for play button
 		Button playButton = new Button("PLAY");
@@ -115,9 +111,8 @@ public class MainMenu extends Application
 	{
 		VBox layout = new VBox(20);
 		//Creating and styling text
-		Text options = new Text("MOUSE OR KEYBOARD");
-		options.setFont(new Font(maxFont));
-		options.setFill(Color.LIGHTGRAY);
+		Text options = StylingTool.textCreator("MOUSE OR KEYBOARD");
+
 		Button mouse = new Button("MOUSE");
 		mouse.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
 		mouse.setOnAction(Controls.setKeyBoard(false));
@@ -139,14 +134,10 @@ public class MainMenu extends Application
 		//creating HBox for ship image
 		HBox ships = new HBox(10);
 		ships.setAlignment(Pos.CENTER);
-		
-		//Creating and styling text
-		Text select = new Text("SELECT YOUR SHIP");
-		select.setFont(new Font(maxFont));
-		select.setFill(Color.LIGHTGRAY);
-		
-		//creates buttons and adds ship image to buttons
-		//freight cruizer image is set to all buttons as placeholder
+
+		Text select = StylingTool.textCreator("SELECT YOUR SHIP");
+
+
 		Button ship1 = new Button("");
 		Image ship1Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship1.setGraphic(new ImageView(ship1Image));
@@ -188,11 +179,7 @@ public class MainMenu extends Application
 
 		VBox layout = new VBox(10);
 
-
-
-		Text selectAmmo = new Text("SELECT AMMO");
-		selectAmmo.setFont(new Font(maxFont));
-		selectAmmo.setFill(Color.LIGHTGRAY);
+		Text selectAmmo = StylingTool.textCreator("SELECT AMMO");
 
 		ComboBox<String> ammoChoices = new ComboBox<>();
 		ObservableList<String> choices = FXCollections.observableArrayList("Fifty Caliber", "Phaser", "Missile", "Shot Gun");
