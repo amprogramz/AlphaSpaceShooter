@@ -144,19 +144,22 @@ public class MainMenu extends Application
 		Button ship1 = new Button("");
 		Image ship1Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship1.setGraphic(new ImageView(ship1Image));
+		ship1.setStyle("-fx-background-color: #000000");
 		
 		Button ship2 = new Button("");
 		Image ship2Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship2.setGraphic(new ImageView(ship2Image));
+		ship2.setStyle("-fx-background-color: #000000");
 		
 		Button ship3 = new Button("");
 		Image ship3Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship3.setGraphic(new ImageView(ship3Image));
+		ship3.setStyle("-fx-background-color: #000000");
 		
 		Button ship4 = new Button("");
 		Image ship4Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship4.setGraphic(new ImageView(ship4Image));
-		
+		ship4.setStyle("-fx-background-color: #000000");
 		//creating  and styling back button to return to main menu
 		Button back = new Button("BACK");
 		back.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
