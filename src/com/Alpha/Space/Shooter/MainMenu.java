@@ -150,7 +150,7 @@ public class MainMenu extends Application
 		Button ship1 = new Button("");
 		Image ship1Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship1.setGraphic(new ImageView(ship1Image));
-		ship1.setOnAction(e -> menu.setScene(selectAmmo()));
+		ship1.setOnAction(e -> menu.setScene(selectAmmo(1)));
 			//ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT));
 		ship1.setStyle("-fx-background-color: #000000");
 
@@ -183,7 +183,7 @@ public class MainMenu extends Application
 		return new Scene(layout,1000,800);
 	}
 
-	public Scene selectAmmo()
+	public Scene selectAmmo(int shipChoice)
 	{
 		VBox layout = new VBox(10);
 
@@ -195,15 +195,34 @@ public class MainMenu extends Application
 		selectAmmo.setFill(Color.LIGHTGRAY);
 
 		ComboBox<String> ammoChoices = new ComboBox<>();
-		ObservableList<String> choices = FXCollections.observableArrayList(Ammo.class.getClasses().getClass().getName());
+		ObservableList<String> choices = FXCollections.observableArrayList("Fifty Caliber", "Phaser", "Missile", "Shot Gun");
 		ammoChoices.getItems().addAll(choices);
+		ammoChoices.setValue("Ammo 1");
 
+		ComboBox<String> ammoChoices2 = new ComboBox<>();
+		ammoChoices2.getItems().addAll(choices);
+		ammoChoices2.setValue("Ammo 2");
+
+		switch (ammoChoices.getValue())
+		{
+			case "Fifty Caliber" :
+				break;
+		}
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
 
-		layout.getChildren().addAll(selectAmmo, ammoChoices);
+
+		Button play = new Button("Ok");
+		play.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		play.setOnAction(e -> menu.setScene(spaceShooter() ));
+		
+		layout.getChildren().addAll(selectAmmo, ammoChoices, ammoChoices2, play);
+		ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new ShotGun());
+
 
 		return new Scene(layout,1000,800);
+
+
 	}
 	
 	@Override
