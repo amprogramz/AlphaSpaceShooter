@@ -348,7 +348,7 @@ public class MainMenu extends Application
 		}
 
 
-		menu.setScene(play);
+		menu.setScene(spaceShooter());
 	}
 	
 	@Override
