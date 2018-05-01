@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -23,16 +24,19 @@ public class MainMenu extends Application
 	Scene mainMenu, play, settings, hangar;
 	final double maxFont = 60.0;
 	//method to create main menu layout
-	
+
+	final int WINDOW_WIDTH = 1000;
+	final int WINDOW_HEIGHT = 800;
+	Ship ship;
+
 	public Scene spaceShooter()
 	{
-		 final int WINDOW_WIDTH = 1000;
-		 final int WINDOW_HEIGHT = 800;
+
 		 //String background1 = "sprite/Space-Background-1.jpg";
 		 String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
 
 		 Background background = new Background(background2, 3000, 2400);
-		 Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
+		  //ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
 		 EnemyArray enemies = new EnemyArray(6);
 
 
@@ -48,7 +52,7 @@ public class MainMenu extends Application
 	     gameList.addAll(ship.getAmmo());
 	     gameList.addAll(enemies.getEnemies());
 	     gameList.addAll(enemies.getAllAmmo());
-	     // gameList.addAll()
+
 
 
 	     gameList.addAll(score.getScoreLivesOut());
@@ -63,12 +67,12 @@ public class MainMenu extends Application
 	     enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
 
 	     background.moveForward();
-		 //return play;
-		 //return gameGroup;
+
 	     return scene;
 	}
+
 	
-	public VBox menuLayout()
+	public Scene menu()
 	{
 		VBox layout = new VBox(20);
 		//Creating and styling text
@@ -83,12 +87,12 @@ public class MainMenu extends Application
 		
 		//creating, styling and setting action for settings button
 		Button settingsButton = new Button("SETTINGS");
-		settingsButton.setOnAction(e -> menu.setScene(settings));
+		settingsButton.setOnAction(e -> menu.setScene(settings()));
 		settingsButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
 		
 		//creating, styling and setting action for hangar button
 		Button hangarButton = new Button("HANGAR");
-		hangarButton.setOnAction(e -> menu.setScene(hangar));
+		hangarButton.setOnAction(e -> menu.setScene(hangar()));
 		hangarButton.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
 		
 		//creating, styling and setting action for exit button
@@ -101,11 +105,11 @@ public class MainMenu extends Application
 		layout.setStyle("-fx-background-color: #000000");
 		layout.getChildren().addAll(titleMain, playButton, settingsButton, hangarButton, exit);
 		
-		return layout;
+		return new Scene(layout, 1000, 800);
 		
 	}
 	//method to create settings layout
-	public VBox settingsLayout()
+	public Scene settings()
 	{
 		VBox layout = new VBox(20);
 		//Creating and styling text
@@ -120,14 +124,14 @@ public class MainMenu extends Application
 		keyboard.setOnAction(Controls.setKeyBoard(true));
 		Button back = new Button("BACK");
 		back.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
-		back.setOnAction(e -> menu.setScene(mainMenu));
+		back.setOnAction(e -> menu.setScene(menu()));
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
 		layout.getChildren().addAll(options, mouse, keyboard,back);
-		return layout;
+		return new Scene(layout,1000,800);
 	}
 	//method to create hangar layout
-	public VBox hangarLayout()
+	public Scene hangar()
 	{
 		VBox layout = new VBox(10);
 		//creating HBox for ship image
@@ -144,9 +148,10 @@ public class MainMenu extends Application
 		Button ship1 = new Button("");
 		Image ship1Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship1.setGraphic(new ImageView(ship1Image));
+		ship1.setOnAction(e -> ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT));
 		
 		Button ship2 = new Button("");
-		Image ship2Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
+		Image ship2Image = new Image(getClass().getResourceAsStream("sprite/DurrrSpaceShip.png"));
 		ship2.setGraphic(new ImageView(ship2Image));
 		
 		Button ship3 = new Button("");
@@ -160,7 +165,7 @@ public class MainMenu extends Application
 		//creating  and styling back button to return to main menu
 		Button back = new Button("BACK");
 		back.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
-		back.setOnAction(e -> menu.setScene(mainMenu));
+		back.setOnAction(e -> menu.setScene(menu() ));
 		
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
@@ -168,7 +173,7 @@ public class MainMenu extends Application
 		ships.getChildren().addAll(ship1, ship2, ship3, ship4);
 		//add title, hbox and back button to scene
 		layout.getChildren().addAll(select, ships ,back);
-		return layout;
+		return new Scene(layout,1000,800);
 	}
 	
 	@Override
@@ -176,10 +181,10 @@ public class MainMenu extends Application
 	{
 		menu = primaryStage;
 		//play = spaceShooter();
-		mainMenu = new Scene(menuLayout(), 1000, 800);
-		settings = new Scene(settingsLayout(),1000,800);	
-		hangar = new Scene(hangarLayout(),1000,800);
-		menu.setScene(mainMenu);
+		//mainMenu = new Scene(menuLayout(), 1000, 800);
+		//settings = new Scene(settingsLayout(),1000,800);
+		//hangar = new Scene(hangarLayout(),1000,800);
+		menu.setScene(menu());
 		menu.show();
 		
 	}
