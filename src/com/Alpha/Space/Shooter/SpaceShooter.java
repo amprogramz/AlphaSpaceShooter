@@ -29,7 +29,7 @@ public class SpaceShooter extends Application
     private String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
 
     private Background background = new Background(background2, 3000, 2400);
-    private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
+    private Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
     private EnemyArray enemies = new EnemyArray(6);
 
 

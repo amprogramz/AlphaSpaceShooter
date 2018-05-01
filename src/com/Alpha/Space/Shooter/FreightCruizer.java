@@ -16,13 +16,13 @@ public class FreightCruizer extends Ship
 
         private Rectangle hull = new Rectangle();
         private Rectangle wings = new Rectangle();
-        private Ammo ammo = new ShotGun();
-        private Ammo ammo2 = new ShotGun();
+        private Ammo ammo;
+        private Ammo ammo2;
 
         private String imageFileName = "sprite/Spaceship_tut/Spaceship_tut.png";
         private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
 
-        public FreightCruizer(double windowWidth, double windowHeight)
+        public FreightCruizer(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)
         {
 
             hull.setX(25);
@@ -41,8 +41,13 @@ public class FreightCruizer extends Ship
 
             ImageView image = SpriteTool.getImage(imageFileName, wings.getX(),hull.getY(),wings.getWidth(), hull.getHeight(), false);
 
-            ammo.setRoundLocation(-200, -200);
-            ammo2.setRoundLocation(-200, -200);
+            this.ammo = ammo1;
+            this.ammo2 = ammo2;
+
+            this.ammo.setRoundLocation(-200, -200);
+            this.ammo2.setRoundLocation(-200, -200);
+
+
 
 
             super.addShipParts(hull);

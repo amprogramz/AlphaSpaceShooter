@@ -2,11 +2,13 @@ package com.Alpha.Space.Shooter;
 
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -148,7 +150,8 @@ public class MainMenu extends Application
 		Button ship1 = new Button("");
 		Image ship1Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
 		ship1.setGraphic(new ImageView(ship1Image));
-		ship1.setOnAction(e -> ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT));
+		ship1.setOnAction(e -> menu.setScene(selectAmmo()));
+			//ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT));
 		ship1.setStyle("-fx-background-color: #000000");
 
 		
@@ -179,15 +182,34 @@ public class MainMenu extends Application
 		layout.getChildren().addAll(select, ships ,back);
 		return new Scene(layout,1000,800);
 	}
+
+	public Scene selectAmmo()
+	{
+		VBox layout = new VBox(10);
+
+//		HBox ships = new HBox(10);
+//		ships.setAlignment(Pos.CENTER);
+
+		Text selectAmmo = new Text("SELECT AMMO");
+		selectAmmo.setFont(new Font(maxFont));
+		selectAmmo.setFill(Color.LIGHTGRAY);
+
+		ComboBox<String> ammoChoices = new ComboBox<>();
+		ObservableList<String> choices = FXCollections.observableArrayList(Ammo.class.getClasses().getClass().getName());
+		ammoChoices.getItems().addAll(choices);
+
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
+
+		layout.getChildren().addAll(selectAmmo, ammoChoices);
+
+		return new Scene(layout,1000,800);
+	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception 
 	{
 		menu = primaryStage;
-		//play = spaceShooter();
-		//mainMenu = new Scene(menuLayout(), 1000, 800);
-		//settings = new Scene(settingsLayout(),1000,800);
-		//hangar = new Scene(hangarLayout(),1000,800);
 		menu.setScene(menu());
 		menu.show();
 		
