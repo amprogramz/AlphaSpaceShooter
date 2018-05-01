@@ -4,6 +4,7 @@ package com.Alpha.Space.Shooter;
  * This is a class to define the controles in the game
  */
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
@@ -11,7 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class Controls {
-    boolean keyboard = true;
+    private static boolean keyboard = true;
     EventHandler<KeyEvent> keyboardControls;
     EventHandler<MouseEvent> mouseMoved;
     EventHandler<MouseEvent> mousePressed;
@@ -140,5 +141,12 @@ public class Controls {
         scene.addEventHandler(MouseEvent.MOUSE_DRAGGED, mouseDragged);
         scene.addEventHandler(MouseEvent.MOUSE_PRESSED, mousePressed);
         scene.addEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
-        };
+        }
+	//sets keyboard to true or false in settings menu
+    public static EventHandler<ActionEvent> setKeyBoard(boolean b) 
+	{
+		keyboard = b;
+		return null;
+	};
+        
     }

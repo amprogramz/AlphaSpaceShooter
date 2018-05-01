@@ -1,24 +1,19 @@
 package com.Alpha.Space.Shooter;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
+
 import javafx.application.Application;
-import javafx.event.EventHandler;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -28,6 +23,51 @@ public class MainMenu extends Application
 	Scene mainMenu, play, settings, hangar;
 	final double maxFont = 60.0;
 	//method to create main menu layout
+	
+	public Scene spaceShooter()
+	{
+		 final int WINDOW_WIDTH = 1000;
+		 final int WINDOW_HEIGHT = 800;
+		 //String background1 = "sprite/Space-Background-1.jpg";
+		 String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
+
+		 Background background = new Background(background2, 3000, 2400);
+		 Ship ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT);
+		 EnemyArray enemies = new EnemyArray(6);
+
+
+		 Score score = new Score(5, ship.getHitPoints());
+	
+		 //private Score score = new Score(5);
+		 MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
+		
+		 Group gameGroup = new Group();
+	     ObservableList gameList = gameGroup.getChildren();
+	     gameList.add(background.getBackground());
+	     gameList.addAll(ship.getShip(WINDOW_WIDTH, WINDOW_HEIGHT));
+	     gameList.addAll(ship.getAmmo());
+	     gameList.addAll(enemies.getEnemies());
+	     gameList.addAll(enemies.getAllAmmo());
+	     // gameList.addAll()
+
+
+	     gameList.addAll(score.getScoreLivesOut());
+
+
+
+
+	     Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
+	     Controls controls = new Controls(scene, ship, enemies, score, WINDOW_WIDTH, WINDOW_HEIGHT);
+
+	     soundTrack.play();
+	     enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
+
+	     background.moveForward();
+		 //return play;
+		 //return gameGroup;
+	     return scene;
+	}
+	
 	public VBox menuLayout()
 	{
 		VBox layout = new VBox(20);
@@ -74,8 +114,10 @@ public class MainMenu extends Application
 		options.setFill(Color.LIGHTGRAY);
 		Button mouse = new Button("MOUSE");
 		mouse.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		mouse.setOnAction(Controls.setKeyBoard(false));
 		Button keyboard = new Button("KEYBOARD");
 		keyboard.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		keyboard.setOnAction(Controls.setKeyBoard(true));
 		Button back = new Button("BACK");
 		back.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
 		back.setOnAction(e -> menu.setScene(mainMenu));
@@ -133,6 +175,7 @@ public class MainMenu extends Application
 	public void start(Stage primaryStage) throws Exception 
 	{
 		menu = primaryStage;
+		play = spaceShooter();
 		mainMenu = new Scene(menuLayout(), 1000, 800);
 		settings = new Scene(settingsLayout(),1000,800);	
 		hangar = new Scene(hangarLayout(),1000,800);
