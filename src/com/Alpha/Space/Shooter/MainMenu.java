@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -68,16 +69,13 @@ public class MainMenu extends Application
 		Button settingsButton = StylingTool.buttonCreator("SETTINGS");
 		settingsButton.setOnAction(e -> menu.setScene(settings()));
 
-		Button hangarButton = StylingTool.buttonCreator("HANGAR");
-		hangarButton.setOnAction(e -> menu.setScene(hangar()));
-
 		Button exit = StylingTool.buttonCreator("EXIT");
 		exit.setOnAction(e -> System.exit(0));
 
 		VBox layout = new VBox(20);
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
-		layout.getChildren().addAll(titleMain, playButton, settingsButton, hangarButton, exit);
+		layout.getChildren().addAll(titleMain, playButton, settingsButton, exit);
 		
 		return new Scene(layout, 1000, 800);
 		
@@ -129,8 +127,9 @@ public class MainMenu extends Application
 		ship2.setStyle("-fx-background-color: #000000");
 		
 		Button ship3 = new Button("");
-		Image ship3Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
+		Image ship3Image = new Image(getClass().getResourceAsStream("sprite/Titan.png"));
 		ship3.setGraphic(new ImageView(ship3Image));
+		ship3.setOnAction(e -> menu.setScene(selectAmmo(1)));
 		ship3.setStyle("-fx-background-color: #000000");
 		
 		Button ship4 = new Button("");
@@ -148,6 +147,18 @@ public class MainMenu extends Application
 		ships.getChildren().addAll(ship1, ship2, ship3, ship4);
 		//add title, hbox and back button to scene
 		layout.getChildren().addAll(select, ships ,back);
+		return new Scene(layout,1000,800);
+	}
+	public Scene playerDeath()
+	{
+		Text death = StylingTool.textCreator("YOU HAVE DIED");
+		death.setFill(Color.RED);
+		VBox layout = new VBox(10);
+		Button returnMenu = StylingTool.buttonCreator("Main Menu");
+		returnMenu.setOnAction(e -> menu.setScene(menu()));
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
+		layout.getChildren().addAll(death, returnMenu);
 		return new Scene(layout,1000,800);
 	}
 
