@@ -38,7 +38,7 @@ public class Background
     {
     	//repaint frame 50 times a second
     	Timeline timeline = new Timeline(new KeyFrame(
-    	        Duration.millis(20),
+    	        Duration.millis(15),
     	        ae -> move()));
     	timeline.setCycleCount(Animation.INDEFINITE);
     	timeline.play();
@@ -51,7 +51,7 @@ public class Background
     	BGheight += 1;
     	
     	//when it reaches top, reset
-    	if (BGheight >= 2800){
+    	if (BGheight >= 2700){
     		BGheight = -400;
     		BGwidth -=1000;
     	}

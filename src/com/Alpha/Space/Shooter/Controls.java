@@ -1,7 +1,7 @@
 package com.Alpha.Space.Shooter;
 /**
  * Author Alec McDaugale
- * This is a class to define the controles in the game
+ * This is a class to define the controls in the game
  */
 
 import javafx.animation.Animation;
