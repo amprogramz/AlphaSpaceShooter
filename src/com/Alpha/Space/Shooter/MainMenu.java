@@ -112,10 +112,10 @@ public class MainMenu extends Application
 		ship1.setOnAction(e -> menu.setScene(selectAmmo(1)));
 
 		Button ship2 = StylingTool.imageButtonCreator("sprite/batWingShip/batwingRed.png");
-		ship2.setOnAction(e -> menu.setScene(selectAmmo(1)));
+		ship2.setOnAction(e -> menu.setScene(selectAmmo(2)));
 
 		Button ship3 = StylingTool.imageButtonCreator("sprite/Titan.png");
-		ship3.setOnAction(e -> menu.setScene(selectAmmo(1)));
+		ship3.setOnAction(e -> menu.setScene(selectAmmo(3)));
 
 		Button ship4 = StylingTool.imageButtonCreator("sprite/Spaceship_tut/Spaceship_tut.png");
 		ship4.setOnAction(e -> menu.setScene(selectAmmo(1)));
@@ -282,7 +282,7 @@ public class MainMenu extends Application
 					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
 				}
 			}
-			
+
 		}else if (shipSelection == 3) {
 			if (ammoSelection1 == 1) {
 				if (ammoSelection2 == 1) {
