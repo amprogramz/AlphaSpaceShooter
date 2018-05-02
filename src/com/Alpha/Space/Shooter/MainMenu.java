@@ -70,13 +70,16 @@ public class MainMenu extends Application
 		Button settingsButton = StylingTool.buttonCreator("SETTINGS");
 		settingsButton.setOnAction(e -> menu.setScene(settings()));
 
+		Button creditsButton = StylingTool.buttonCreator("CREDITS");
+		creditsButton.setOnAction(e -> menu.setScene(credits()));
+		
 		Button exit = StylingTool.buttonCreator("EXIT");
 		exit.setOnAction(e -> System.exit(0));
 
 		VBox layout = new VBox(20);
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
-		layout.getChildren().addAll(titleMain, playButton, settingsButton, exit);
+		layout.getChildren().addAll(titleMain, playButton, settingsButton, creditsButton, exit);
 		
 		return new Scene(layout, 1000, 800);
 		
@@ -178,12 +181,27 @@ public class MainMenu extends Application
 
 		return new Scene(layout,1000,800);
 	}
+	
+	public Scene credits()
+	{
+		VBox layout = new VBox(10);
+		Text credits = StylingTool.textCreator("CREDITS");
+		Text freightCredits = StylingTool.textCreator("Spaceship-tut_thin.png by Skorpio",20);
+		Text titanCredits = StylingTool.textCreator("Titan.png by Skorpio for the kit and Kanadaj for the design",20);
+		Button returnMenu = StylingTool.buttonCreator("MAIN MENU");
+		returnMenu.setOnAction(e -> menu.setScene(menu()));
+		
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
+		layout.getChildren().addAll(credits, freightCredits, titanCredits,  returnMenu);
+		return new Scene(layout,1000,800);
+	}
 	public Scene playerDeath()
 	{
 		Text death = StylingTool.textCreator("YOU HAVE DIED");
 		death.setFill(Color.RED);
 		VBox layout = new VBox(10);
-		Button returnMenu = StylingTool.buttonCreator("Main Menu");
+		Button returnMenu = StylingTool.buttonCreator("MAIN MENU");
 		returnMenu.setOnAction(e -> menu.setScene(menu()));
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
