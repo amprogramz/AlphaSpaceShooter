@@ -19,9 +19,9 @@ public class Dreadnought extends Ship
     
     public Dreadnought(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)
     {
-    	hull.setX(25);
+    	hull.setX(37.5);
         hull.setY(0);
-        hull.setWidth(50);
+        hull.setWidth(25);
         hull.setHeight(150);
         hull.setArcWidth(50);
         hull.setArcHeight(100);

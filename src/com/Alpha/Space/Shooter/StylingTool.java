@@ -45,4 +45,13 @@ public class StylingTool
 
         return button;
     }
+
+    public static Button imageButtonCreator(String FilePath, double size)
+    {
+        Button button = new Button("");
+        button.setGraphic(SpriteTool.getImage(FilePath, size, size));
+        button.setStyle("-fx-background-color: #000000");
+
+        return button;
+    }
 }

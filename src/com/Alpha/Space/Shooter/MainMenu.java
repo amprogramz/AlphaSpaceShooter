@@ -26,14 +26,15 @@ public class MainMenu extends Application
 	final int WINDOW_HEIGHT = 800;
 
 	Ship ship;
+	Background background;
 
 	public Scene spaceShooter()
 	{
 
-		 //String background1 = "sprite/Space-Background-1.jpg";
-		 String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
+//		 //String background1 = "sprite/Space-Background-1.jpg";
+//		 String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
 
-		Background background = new Background(background2, 3000, 2400);
+//		Background background = new Background(background2, 3000, 2400);
 		EnemyArray enemies = new EnemyArray(6);
 		Score score = new Score(5, ship.getHitPoints());
 		MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
@@ -64,7 +65,7 @@ public class MainMenu extends Application
 		Text titleMain = StylingTool.textCreator("ALPHA SPACE SHOOTER");
 
 		Button playButton = StylingTool.buttonCreator("PLAY");
-		playButton.setOnAction(e -> menu.setScene(hangar()));
+		playButton.setOnAction(e -> menu.setScene(levelSelect()));
 
 		Button settingsButton = StylingTool.buttonCreator("SETTINGS");
 		settingsButton.setOnAction(e -> menu.setScene(settings()));
@@ -102,7 +103,50 @@ public class MainMenu extends Application
 
 		return new Scene(layout,1000,800);
 	}
-	
+
+	public Scene levelSelect()
+	{
+		Text select = StylingTool.textCreator("SELECT LEVEL");
+
+		Button ship1 = StylingTool.imageButtonCreator("sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 150);
+		ship1.setOnAction(e -> {
+			background = new Background("sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 3000, 2400);
+			menu.setScene(hangar());
+		});
+
+		Button ship2 = StylingTool.imageButtonCreator("Sprite/Space-Background-2.jpg", 150);
+		ship2.setOnAction(e -> {
+			background = new Background("Sprite/Space-Background-2.jpg", 3000, 2400);
+			menu.setScene(hangar());
+		});
+
+		Button ship3 = StylingTool.imageButtonCreator("Sprite/Space-Background-3.jpg", 150);
+		ship3.setOnAction(e -> {
+			background = new Background("Sprite/Space-Background-3.jpg", 3000, 2400);
+			menu.setScene(hangar());
+		});
+
+		Button ship4 = StylingTool.imageButtonCreator("Sprite/Space-Background-4.jpg", 150);
+		ship4.setOnAction(e -> {
+			background = new Background("Sprite/Space-Background-4.jpg", 3000, 2400);
+			menu.setScene(hangar());
+		});
+
+		Button back = StylingTool.buttonCreator("BACK");
+		back.setOnAction(e -> menu.setScene(menu() ));
+
+		HBox ships = new HBox(10);
+		ships.setAlignment(Pos.CENTER);
+		ships.getChildren().addAll(ship1, ship2, ship3, ship4);
+
+		VBox layout = new VBox(10);
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
+		layout.getChildren().addAll(select, ships ,back);
+
+		return new Scene(layout,1000,800);
+	}
+
 	//method to create hangar layout
 	public Scene hangar()
 	{
