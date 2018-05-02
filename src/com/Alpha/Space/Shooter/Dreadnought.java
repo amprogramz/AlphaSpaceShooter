@@ -64,6 +64,7 @@ public class Dreadnought extends Ship
         ammoList.add(ammo2.getRound());
         ammoList.add(ammo.getHitExplosionSprite());
         ammoList.add(ammo2.getHitExplosionSprite());
+
         return ammoList;
 	}
 

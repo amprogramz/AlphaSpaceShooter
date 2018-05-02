@@ -1,6 +1,7 @@
 package com.Alpha.Space.Shooter;
 
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
@@ -51,13 +52,17 @@ public class BatwingRed extends Ship {
 
 	}
 	   @Override
-       public ArrayList<Group> getAmmo()
+       public ArrayList<Node> getAmmo()
        {
-           ArrayList<Group> ammoList = new ArrayList<>();
+           ArrayList<Node> ammoList = new ArrayList<>();
            ammoList.add(ammo1.getRound());
            ammoList.add(ammo2.getRound());
            ammoList.add(ammo3.getRound());
            ammoList.add(ammo4.getRound());
+           ammoList.add(ammo1.getHitExplosionSprite());
+           ammoList.add(ammo2.getHitExplosionSprite());
+           ammoList.add(ammo3.getHitExplosionSprite());
+           ammoList.add(ammo4.getHitExplosionSprite());
            return ammoList;
        }
        @Override

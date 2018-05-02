@@ -125,12 +125,11 @@ public class MainMenu extends Application
 		Image ship2Image = new Image(getClass().getResourceAsStream("sprite/DurrrSpaceShip.png"));
 		ship2.setGraphic(new ImageView(ship2Image));
 		ship2.setStyle("-fx-background-color: #000000");
-		
-		Button ship3 = new Button("");
-		Image ship3Image = new Image(getClass().getResourceAsStream("sprite/Titan.png"));
-		ship3.setGraphic(new ImageView(ship3Image));
+
+
+		Button ship3 = StylingTool.imageButtonCreator("sprite/Titan.png");
 		ship3.setOnAction(e -> menu.setScene(selectAmmo(1)));
-		ship3.setStyle("-fx-background-color: #000000");
+
 		
 		Button ship4 = new Button("");
 		Image ship4Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
