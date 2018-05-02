@@ -27,6 +27,7 @@ public abstract class Ship
     private AudioClip deathSound;
     private Group ship = new Group();
 
+
     private ObservableList shipParts = ship.getChildren();
 
     /**
@@ -129,9 +130,12 @@ public abstract class Ship
     /**
      * Moves ship group right.
      */
-    public void moveShipRight()
+    public void moveShipRight(double width)
     {
-        ship.setLayoutX(ship.getLayoutX() + movement);
+        if(ship.getLayoutX() < width - this.getWidth())
+        {
+            ship.setLayoutX(ship.getLayoutX() + movement);
+        }
     }
 
     /**
@@ -139,7 +143,10 @@ public abstract class Ship
      */
     public  void moveShipLeft()
     {
-        ship.setLayoutX(ship.getLayoutX() - movement);
+        if (ship.getLayoutX() > 0)
+        {
+            ship.setLayoutX(ship.getLayoutX() - movement);
+        }
     }
 
     /**
@@ -147,15 +154,21 @@ public abstract class Ship
      */
     public void moveShipUp()
     {
-        ship.setLayoutY(ship.getLayoutY() - movement);
+        if(ship.getLayoutY() > 0)
+        {
+            ship.setLayoutY(ship.getLayoutY() - movement);
+        }
     }
 
     /**
      * Moves ship group down.
      */
-    public void moveShipDown()
+    public void moveShipDown(double height)
     {
-        ship.setLayoutY(ship.getLayoutY() + movement);
+        if (ship.getLayoutY() < height - this.getHeight())
+        {
+            ship.setLayoutY(ship.getLayoutY() + movement);
+        }
     }
 
 

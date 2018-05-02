@@ -194,6 +194,7 @@ public class MainMenu extends Application
 		return ammoSelection;
 	}
 
+	//Obnoxious if statement
 	public void setShipAndAmmo(int shipSelection, int ammoSelection1, int ammoSelection2) {
 		if (shipSelection == 1) {
 			if (ammoSelection1 == 1) {

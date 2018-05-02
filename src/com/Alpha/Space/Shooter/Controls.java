@@ -44,10 +44,10 @@ public class Controls {
     	Timeline timeline = new Timeline(new KeyFrame(
     			Duration.millis(20),
     			ae -> {
-    				if(rightPress){ship.moveShipRight();}
+    				if(rightPress){ship.moveShipRight(width);}
     				if(leftPress){ship.moveShipLeft();}
     				if(upPress){ship.moveShipUp();}
-    				if(downPress){ship.moveShipDown();}
+    				if(downPress){ship.moveShipDown(height);}
     				if(spacePress & charge >= 20){ship.setShot(enemy, score); charge = 0;}
     				if(mousePress & charge >= 20){ship.setShot(enemy, score); charge = 0;}
     				if(vPress){enemy.startShooting(ship, score);}
