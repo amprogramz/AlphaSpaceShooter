@@ -14,15 +14,15 @@ import java.util.ArrayList;
 
         private Rectangle hull = new Rectangle();
         private Rectangle wings = new Rectangle();
-        private Ammo ammo1 = new FiftyCaliber();
-        private Ammo ammo2 = new FiftyCaliber();
-        private Ammo ammo3 = new Phaser();
-        private Ammo ammo4 = new Phaser();
+        private Ammo ammo1;
+        private Ammo ammo2;
+        private Ammo ammo3;
+        private Ammo ammo4;
 
         private String imageFileName = "sprite/batWingShip/batwingRed.png";
         private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
 
-        public BatwingRed(double windowWidth, double windowHeight) {
+        public BatwingRed(double windowWidth, double windowHeight, Ammo ammo1_2, Ammo ammo3_4) {
 
 
             hull.setX(58);
@@ -39,8 +39,13 @@ import java.util.ArrayList;
 
             ImageView image = SpriteTool.getImage(imageFileName, wings.getX(),hull.getY(),150.0, 150.0, false);
 
-            ammo2.setRoundLocation(-200, -200);
-            ammo2.setRoundLocation(-200, -200);
+
+            this.ammo1 = ammo1_2;
+            this.ammo2 = ammo1_2;
+            this.ammo3 = ammo3_4;
+            this.ammo4 = ammo3_4;
+//            ammo2.setRoundLocation(-200, -200);
+//            ammo2.setRoundLocation(-200, -200);
 
 
             super.addShipParts(hull);

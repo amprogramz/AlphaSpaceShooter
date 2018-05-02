@@ -194,77 +194,143 @@ public class MainMenu extends Application
 		return ammoSelection;
 	}
 
-	public void setShipAndAmmo(int shipSelection, int ammoSelection1, int ammoSelection2)
-	{
-		if(shipSelection == 1)
-		{
-			if(ammoSelection1 == 1)
-			{
-				if(ammoSelection2 == 1)
-				{
+	public void setShipAndAmmo(int shipSelection, int ammoSelection1, int ammoSelection2) {
+		if (shipSelection == 1) {
+			if (ammoSelection1 == 1) {
+				if (ammoSelection2 == 1) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new FiftyCaliber());
-				}else if(ammoSelection2 == 2)
-				{
+				} else if (ammoSelection2 == 2) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Phaser());
-				}else if(ammoSelection2 == 3)
-				{
+				} else if (ammoSelection2 == 3) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Missile());
-				}else if(ammoSelection2 == 4)
-				{
+				} else if (ammoSelection2 == 4) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new ShotGun());
 				}
-			}else if(ammoSelection1 == 2)
-			{
-				if(ammoSelection2 == 1)
-				{
+			} else if (ammoSelection1 == 2) {
+				if (ammoSelection2 == 1) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new FiftyCaliber());
-				}else if(ammoSelection2 == 2)
-				{
+				} else if (ammoSelection2 == 2) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Phaser());
-				}else if(ammoSelection2 == 3)
-				{
+				} else if (ammoSelection2 == 3) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Missile());
-				}else if(ammoSelection2 == 4)
-				{
+				} else if (ammoSelection2 == 4) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new ShotGun());
 				}
 
-			}else if(ammoSelection1 == 3)
-			{
-				if(ammoSelection2 == 1)
-				{
+			} else if (ammoSelection1 == 3) {
+				if (ammoSelection2 == 1) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new FiftyCaliber());
-				}else if(ammoSelection2 == 2)
-				{
+				} else if (ammoSelection2 == 2) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Phaser());
-				}else if(ammoSelection2 == 3)
-				{
+				} else if (ammoSelection2 == 3) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Missile());
-				}else if(ammoSelection2 == 4)
-				{
+				} else if (ammoSelection2 == 4) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new ShotGun());
 				}
-			}else if(ammoSelection1 == 4)
-			{
-				if(ammoSelection2 == 1)
-				{
+			} else if (ammoSelection1 == 4) {
+				if (ammoSelection2 == 1) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new FiftyCaliber());
-				}else if(ammoSelection2 == 2)
-				{
+				} else if (ammoSelection2 == 2) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Phaser());
-				}else if(ammoSelection2 == 3)
-				{
+				} else if (ammoSelection2 == 3) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Missile());
-				}else if(ammoSelection2 == 4)
-				{
+				} else if (ammoSelection2 == 4) {
 					ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
+				}
+			}
+
+		}else if (shipSelection == 2) {
+			if (ammoSelection1 == 1) {
+				if (ammoSelection2 == 1) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new ShotGun());
+				}
+			} else if (ammoSelection1 == 2) {
+				if (ammoSelection2 == 1) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new ShotGun());
+				}
+
+			} else if (ammoSelection1 == 3) {
+				if (ammoSelection2 == 1) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new ShotGun());
+				}
+			} else if (ammoSelection1 == 4) {
+				if (ammoSelection2 == 1) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new BatwingRed(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
+				}
+			}
+			
+		}else if (shipSelection == 3) {
+			if (ammoSelection1 == 1) {
+				if (ammoSelection2 == 1) {
+					ship = new Dreadnought (WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new ShotGun());
+				}
+			} else if (ammoSelection1 == 2) {
+				if (ammoSelection2 == 1) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new ShotGun());
+				}
+
+			} else if (ammoSelection1 == 3) {
+				if (ammoSelection2 == 1) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new ShotGun());
+				}
+			} else if (ammoSelection1 == 4) {
+				if (ammoSelection2 == 1) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
 				}
 			}
 		}
 
 		menu.setScene(spaceShooter());
 	}
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception 
 	{

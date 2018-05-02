@@ -59,7 +59,7 @@ public class SpriteTool
     {
         ImageView imageView = new ImageView();
         imageView.setImage(setImage(filePath));
-        imageView.setVisible(false);
+        //imageView.setVisible(false);
         return imageView;
     }
 
