@@ -106,46 +106,32 @@ public class MainMenu extends Application
 	//method to create hangar layout
 	public Scene hangar()
 	{
-		VBox layout = new VBox(10);
-		//creating HBox for ship image
-		HBox ships = new HBox(10);
-		ships.setAlignment(Pos.CENTER);
-
 		Text select = StylingTool.textCreator("SELECT YOUR SHIP");
 
-
-		Button ship1 = new Button("");
-		Image ship1Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
-		ship1.setGraphic(new ImageView(ship1Image));
+		Button ship1 = StylingTool.imageButtonCreator("sprite/Spaceship_tut/Spaceship_tut.png");
 		ship1.setOnAction(e -> menu.setScene(selectAmmo(1)));
-		ship1.setStyle("-fx-background-color: #000000");
 
-		
-		Button ship2 = new Button("");
-		Image ship2Image = new Image(getClass().getResourceAsStream("sprite/DurrrSpaceShip.png"));
-		ship2.setGraphic(new ImageView(ship2Image));
-		ship2.setStyle("-fx-background-color: #000000");
-
+		Button ship2 = StylingTool.imageButtonCreator("sprite/batWingShip/batwingRed.png");
+		ship2.setOnAction(e -> menu.setScene(selectAmmo(1)));
 
 		Button ship3 = StylingTool.imageButtonCreator("sprite/Titan.png");
 		ship3.setOnAction(e -> menu.setScene(selectAmmo(1)));
 
-		
-		Button ship4 = new Button("");
-		Image ship4Image = new Image(getClass().getResourceAsStream("sprite/Spaceship_tut/Spaceship_tut.png"));
-		ship4.setGraphic(new ImageView(ship4Image));
-		ship4.setStyle("-fx-background-color: #000000");
-		//creating  and styling back button to return to main menu
-		Button back = new Button("BACK");
-		back.setStyle("-fx-background-color: #000000; -fx-text-fill: #ffffff; -fx-font-size: 2em");
+		Button ship4 = StylingTool.imageButtonCreator("sprite/Spaceship_tut/Spaceship_tut.png");
+		ship4.setOnAction(e -> menu.setScene(selectAmmo(1)));
+
+		Button back = StylingTool.buttonCreator("BACK");
 		back.setOnAction(e -> menu.setScene(menu() ));
-		
+
+		HBox ships = new HBox(10);
+		ships.setAlignment(Pos.CENTER);
+		ships.getChildren().addAll(ship1, ship2, ship3, ship4);
+
+		VBox layout = new VBox(10);
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
-		//add ships to hbox
-		ships.getChildren().addAll(ship1, ship2, ship3, ship4);
-		//add title, hbox and back button to scene
 		layout.getChildren().addAll(select, ships ,back);
+
 		return new Scene(layout,1000,800);
 	}
 	public Scene playerDeath()
