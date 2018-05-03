@@ -39,7 +39,7 @@ public class SpaceShooter extends Application
     private EnemyArray enemies = new EnemyArray(10);
 
 
-    private Score score = new Score(5, ship.getHitPoints());
+    private Score score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
     
     
 

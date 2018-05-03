@@ -30,7 +30,7 @@ public class Score
     private Text youDied;
     private Text gameOver;
 
-    public Score(int lives, double hitPoints)
+    public Score(int lives, double hitPoints, double screenHeight, double screenWidth)
     {
 
         score = 0;
@@ -57,6 +57,19 @@ public class Score
         setHitPointOut();
         hitPointOut.setX(500);
         hitPointOut.setY(25);
+
+
+        gameOver = StylingTool.inGameTextCreator();
+        gameOver.setText("GAME OVER");
+        gameOver.setX(screenWidth / 2);
+        gameOver.setY(screenHeight / 2);
+        gameOver.setVisible(false);
+
+        youDied = StylingTool.inGameTextCreator();
+        youDied.setText("YOU DIED");
+        youDied.setX(screenWidth / 2);
+        youDied.setY(screenHeight / 2);
+        youDied.setVisible(false);
 
     }
 
@@ -97,6 +110,8 @@ public class Score
         UIOut.add(livesOut);
         UIOut.add(hitPointOut);
         UIOut.add(hitPointBar);
+        UIOut.add(gameOver);
+        UIOut.add(youDied);
         return UIOut;
     }
     public void setHitPoints(int hitPoints)
@@ -122,6 +137,16 @@ public class Score
     public void setHitPointBar()
     {
         hitPointBar.setProgress(hitPoints/100);
+    }
+
+    public void setYouDiedVisible(boolean visible)
+    {
+        youDied.setVisible(visible);
+    }
+
+    public void setGameOverVisible(boolean visible)
+    {
+        gameOver.setVisible(visible);
     }
 
 
