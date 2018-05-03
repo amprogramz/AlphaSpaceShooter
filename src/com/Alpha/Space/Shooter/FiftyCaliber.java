@@ -15,8 +15,8 @@ public class FiftyCaliber extends Ammo
     public FiftyCaliber()
     {
         Rectangle ammo = new Rectangle();
-        ammo.setWidth(2);
-        ammo.setHeight(10);
+        ammo.setWidth(4);
+        ammo.setHeight(15);
         ammo.setFill(Color.RED);
         super.setRound(ammo);
         super.setMovement(15);
