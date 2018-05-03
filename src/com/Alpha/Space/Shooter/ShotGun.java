@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class ShotGun extends Ammo
 {
     private String shotSoundFile = "Sounds/SoundEffects/Futuristic Shotgun Single Shot.wav";
-    private Ammo ammo = new Pelet(0.0, Color.BLUE);
-    private Ammo ammo2 = new Pelet(-10.0, Color.BLUE);
-    private Ammo ammo3 = new Pelet(10.0, Color.BLUE);
+    private Ammo ammo = new Pelet(0.0);
+    private Ammo ammo2 = new Pelet(-10.0);
+    private Ammo ammo3 = new Pelet(10.0);
 
     public ShotGun()
     {
