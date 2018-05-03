@@ -6,7 +6,9 @@ package com.Alpha.Space.Shooter;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.image.ImageView;
 
@@ -18,18 +20,27 @@ public class Squid extends Enemy
     Ammo ammo = new FiftyCaliber();
     ImageView saucer = SpriteTool.getImage("Sprite/Squid.png");
 
+    private String imageFileName = "Sprite/SpaceShooter1/PNG/Sprites X2/Ships/spaceShips_006.png";
+    
     String deathSoundFile = "Sounds/SoundEffects/Small Futuristic Explosion.mp3";
     public Squid(double x, double y, int index)
     {
 
         saucer.setLayoutX(0);
         saucer.setLayoutY(0);
+<<<<<<< HEAD:src/com/Alpha/Space/Shooter/Squid.java
+=======
+        saucer.setRadius(25);
+>>>>>>> 437e3abaabc5657ac4589319cc4c2f4a26c0494e:src/com/Alpha/Space/Shooter/Saucer.java
 
         super.setEnemy(saucer);
 
         saucer.getParent().setLayoutX(x);
         saucer.getParent().setLayoutY(y);
 
+        Image image = SpriteTool.getImage(imageFileName, saucer.getCenterX(), saucer.getCenterY(), 20, 20, false).getImage();
+        saucer.setFill(new ImagePattern(image));
+        
         super.setTargetIndex(index);
         super.setHitPoints(40);
         super.setMovement(1);

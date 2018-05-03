@@ -2,7 +2,11 @@ package com.Alpha.Space.Shooter;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import java.lang.Math;
 import java.util.ArrayList;
@@ -17,6 +21,7 @@ public class Target extends Enemy
     Ammo ammo = new FiftyCaliber();
     Rectangle target = new Rectangle();
 
+    private String imageFileName = "Sprite/Squid.png";
     String deathSoundFile = "Sounds/SoundEffects/Small Futuristic Explosion.mp3";
     public Target(double x, double y, int index)
     {
@@ -30,10 +35,13 @@ public class Target extends Enemy
 
         target.getParent().setLayoutX(x);
         target.getParent().setLayoutY(y);
-
+        
+        Image image = SpriteTool.getImage(imageFileName, target.getX(), target.getY(), target.getWidth(), target.getHeight(), false).getImage();
+        target.setFill(new ImagePattern(image));
+        
         super.setTargetIndex(index);
         super.setHitPoints(30);
-
+        
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
     }
 
@@ -96,7 +104,7 @@ public class Target extends Enemy
         }
 
         if (target.getParent().getLayoutX() > 0 && target.getParent().getLayoutX() < screenWidth && target.getParent().getLayoutY() > 0) {
-            int shootRandom = (int) (Math.random() * 50);
+            int shootRandom = (int) (Math.random() * 100);
 
 //        System.out.println(shootRandom); //test random
             if (shootRandom == 3) {
