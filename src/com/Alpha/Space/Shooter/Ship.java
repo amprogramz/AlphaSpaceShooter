@@ -326,8 +326,6 @@ public abstract class Ship
     {
         keepPlaying.setVisible(true);
 
-            //score.setHitPoints(hitPoints);
-
     }
     public Button getKeepPlaying(Score score)
     {
