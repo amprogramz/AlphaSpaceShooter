@@ -26,7 +26,7 @@ public class EnemyArray
             double temp = (25 + ((25 * index) + (100 * index)));
             enemyArray.add(new Target(temp, 20, index));
             index++;
-            enemyArray.add(new Saucer(temp, 20, index));
+            enemyArray.add(new Squid(temp, 20, index));
         }
     }
 

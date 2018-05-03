@@ -19,6 +19,7 @@ public class Dreadnought extends Ship
     private Ammo ammo;
     private Ammo ammo2;
 
+    private String movingSoundFile = "Sounds/SoundEffects/shipEngine3.wav";
     private String imageFileName = "sprite/Titan.png";
     private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
     
@@ -51,6 +52,7 @@ public class Dreadnought extends Ship
         super.setMovement(3);
         super.setHitPoints(300);
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
+        super.setShipMovingSound(SoundTool.getAudioClip(movingSoundFile));
     }
 	@Override
 	public void setShot(EnemyArray enemy, Score score) 

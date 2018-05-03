@@ -8,24 +8,23 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.image.ImageView;
 
 
 import java.util.ArrayList;
 
-public class Saucer extends Enemy
+public class Squid extends Enemy
 {
     Ammo ammo = new FiftyCaliber();
-    Circle saucer = new Circle();
+    ImageView saucer = SpriteTool.getImage("Sprite/Squid.png");
 
     String deathSoundFile = "Sounds/SoundEffects/Small Futuristic Explosion.mp3";
-    public Saucer(double x, double y, int index)
+    public Squid(double x, double y, int index)
     {
 
         saucer.setLayoutX(0);
         saucer.setLayoutY(0);
-        saucer.setRadius(20);
 
-        saucer.setFill(Color.GRAY);
         super.setEnemy(saucer);
 
         saucer.getParent().setLayoutX(x);
