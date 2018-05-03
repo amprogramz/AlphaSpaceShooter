@@ -19,7 +19,7 @@ public class Saucer extends Enemy
     Ammo ammo = new FiftyCaliber();
     Circle saucer = new Circle();
 
-    private String imageFileName = "Sprite/SpaceShooter1/PNG/Sprites X2/Ships/spaceShips_006.png";
+    private String imageFileName = "Sprite/SpaceShooter1/PNG/SpritesX2/Ships/spaceShips_006.png";
     
     String deathSoundFile = "Sounds/SoundEffects/Small Futuristic Explosion.mp3";
     public Saucer(double x, double y, int index)
