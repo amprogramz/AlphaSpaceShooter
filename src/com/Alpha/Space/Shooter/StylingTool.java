@@ -40,9 +40,9 @@ public class StylingTool
         return  text;
     }
 
-    public static Text inGameTextCreator(String stringToDisplay)
+    public static Text inGameTextCreator()
     {
-        Text text = new Text(stringToDisplay);
+        Text text = new Text();
         text.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
         text.setStrokeWidth(1);
         text.setStroke(Color.BLACK);
