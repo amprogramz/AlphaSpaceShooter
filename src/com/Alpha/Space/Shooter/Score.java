@@ -37,35 +37,26 @@ public class Score
         this.lives = lives;
         this.hitPoints = hitPoints;
 
+        scoreOut = StylingTool.inGameTextCreator();
         updateScoreOut();
         scoreOut.setX(5);
         scoreOut.setY(25);
-        scoreOut.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
-        scoreOut.setStrokeWidth(1);
-        scoreOut.setStroke(Color.BLACK);
-        scoreOut.setFill(Color.RED);
 
+        livesOut = StylingTool.inGameTextCreator();
         updateLivesOut();
         livesOut.setX(150);
         livesOut.setY(25);
-        livesOut.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
-        livesOut.setStrokeWidth(1);
-        livesOut.setStroke(Color.BLACK);
-        livesOut.setFill(Color.RED);
+
 
         setHitPointBar();
         hitPointBar.setMaxWidth(500);
         hitPointBar.setLayoutX(650);
         hitPointBar.setLayoutY(10);
 
+        hitPointOut = StylingTool.inGameTextCreator();
         setHitPointOut();
         hitPointOut.setX(500);
         hitPointOut.setY(25);
-        hitPointOut.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
-        hitPointOut.setStrokeWidth(1);
-        hitPointOut.setStroke(Color.BLACK);
-        hitPointOut.setFill(Color.RED);
-
 
     }
 
