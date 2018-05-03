@@ -304,18 +304,18 @@ public abstract class Ship
         {
             score.reduceHitPoints(damage);
             System.out.println("Health: " + score.getHitPoints());
-        }else if (score.getLives() > 0) {
+        }else if (score.getLives() > 1) {
             ship.setLayoutX(ship.getLayoutX() - 2000);
-            //ship.setVisible(false);
             score.setYouDiedVisible(true);
             score.decrementLives();
             System.out.println("Dead.");
             deathSound.play();
             buttonKeepPlaying();
 
-        }else if(score.getLives() == 0)
+        }else if(score.getLives() == 1)
         {
             ship.setLayoutX(ship.getLayoutX() -2000);
+            score.decrementLives();
             score.setGameOverVisible(true);
         }
 
@@ -332,7 +332,8 @@ public abstract class Ship
     public Button getKeepPlaying(Score score)
     {
         keepPlaying.setLayoutY((screenHeight / 2) + 100);
-        keepPlaying.setLayoutX(screenWidth / 2 - 100);keepPlaying.setOnAction(e -> {
+        keepPlaying.setLayoutX(screenWidth / 2 - 100);
+        keepPlaying.setOnMouseClicked(e -> {
         score.setHitPoints(hitPoints);
         score.setYouDiedVisible(false);
         keepPlaying.setVisible(false);
