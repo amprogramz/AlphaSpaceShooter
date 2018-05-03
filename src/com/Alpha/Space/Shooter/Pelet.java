@@ -12,7 +12,7 @@ public class Pelet extends Ammo
     Double xMovement;
 
 
-    public Pelet(Double xMovement, Paint color)
+    public Pelet(Double xMovement)
     {
 
         
