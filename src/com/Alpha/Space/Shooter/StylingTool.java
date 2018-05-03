@@ -7,11 +7,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-
-
+/**
+ * @author Alec McDaugale
+ *The Styling tool class contains methods to easily construct Text and buttons with a set style
+ */
 public class StylingTool
 {
-    public static Text textCreator(String stringToDisplay)
+	/**
+     * Method to create Text with set size,font and color
+     * @return text that will be displayed
+     */
+	public static Text textCreator(String stringToDisplay)
     {
         Text text = new Text(stringToDisplay);
         text.setFont(new Font(60));
@@ -19,7 +25,10 @@ public class StylingTool
 
         return  text;
     }
-
+	/**
+     * Method to create text with set font and color. Font size can be altered
+     * @return text that will be displayed
+     */
     public static Text textCreator(String stringToDisplay, int fontSize)
     {
         Text text = new Text(stringToDisplay);
@@ -28,7 +37,10 @@ public class StylingTool
 
         return  text;
     }
-
+    /**
+     * Method to create button with set background color, font color and font size
+     * @return button that was created
+     */
     public static Button buttonCreator (String stringToDisplay)
     {
         Button button = new Button(stringToDisplay);
@@ -36,7 +48,10 @@ public class StylingTool
 
         return button;
     }
-
+    /**
+     * Method to create button with image on top of the button
+     * @return button that was created
+     */
     public static Button imageButtonCreator(String FilePath)
     {
         Button button = new Button("");
@@ -45,7 +60,10 @@ public class StylingTool
 
         return button;
     }
-
+    /**
+     * Method to create button with image on top of the button and set button size
+     * @return button that was created
+     */
     public static Button imageButtonCreator(String FilePath, double size)
     {
         Button button = new Button("");

@@ -4,27 +4,20 @@ import java.util.ArrayList;
 
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-/**
- * @author Henry Gray
- * Dreadnought ship inherits the abstract class ship
- *
- */
-public class Dreadnought extends Ship
+public class StarShip extends Ship
 {
 	private Rectangle hull = new Rectangle();
     private Rectangle wings = new Rectangle();
     private Ammo ammo;
     private Ammo ammo2;
 
-    private String imageFileName = "sprite/Titan.png";
+    private String imageFileName = "sprite/cartoonshipPurple.png";
     private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
-    
-    public Dreadnought(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)
-    {
-    	hull.setX(37.5);
+	public StarShip(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)
+	{
+		hull.setX(37.5);
         hull.setY(0);
         hull.setWidth(25);
         hull.setHeight(150);
@@ -48,20 +41,21 @@ public class Dreadnought extends Ship
         super.addShipParts(wings);
         super.addShipParts(image);
 
-        super.setMovement(3);
-        super.setHitPoints(300);
+        super.setMovement(30);
+        super.setHitPoints(50);
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
-    }
-	@Override
+	}
+    
+    @Override
 	public void setShot(EnemyArray enemy, Score score) 
-	{
-		 ammo.setRoundLocation(wings.getParent().getLayoutX() + 21, wings.getParent().getLayoutY());
+    {
+    	 ammo.setRoundLocation(wings.getParent().getLayoutX() + 21, wings.getParent().getLayoutY());
          ammo.invokeShipShot(enemy, score);
          ammo2.setRoundLocation(wings.getParent().getLayoutX() + 78, wings.getParent().getLayoutY());
          ammo2.invokeShipShot(enemy, score);
+		
 	}
-	
-	
+
 	@Override
 	public ArrayList<Node> getAmmo() 
 	{
