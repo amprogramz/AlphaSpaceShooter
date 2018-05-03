@@ -23,6 +23,9 @@ public abstract class Ammo
     private int damage;
     private AudioClip shotSound;
     private Explosion explosion = new Explosion();
+    
+    
+  
 
     /**
      * Method to set the ammo elements.
