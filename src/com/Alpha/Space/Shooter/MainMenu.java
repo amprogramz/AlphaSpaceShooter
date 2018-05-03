@@ -182,7 +182,7 @@ public class MainMenu extends Application
 		ship3.setOnAction(e -> menu.setScene(selectAmmo(3)));
 
 		Button ship4 = StylingTool.imageButtonCreator("sprite/cartoonshipPurple.png", 150);
-		ship4.setOnAction(e -> menu.setScene(selectAmmo(1)));
+		ship4.setOnAction(e -> menu.setScene(selectAmmo(4)));
 
 		Button back = StylingTool.buttonCreator("BACK");
 		back.setOnAction(e -> menu.setScene(menu() ));
@@ -429,7 +429,7 @@ public class MainMenu extends Application
 					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
 				}
 			}
-			else if (shipSelection == 4) 
+		}else if (shipSelection == 4) 
 			{
 				if (ammoSelection1 == 1) {
 					if (ammoSelection2 == 1) {
@@ -473,7 +473,6 @@ public class MainMenu extends Application
 						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
 					}
 				}
-			}
 		}
 
 		menu.setScene(spaceShooter());
