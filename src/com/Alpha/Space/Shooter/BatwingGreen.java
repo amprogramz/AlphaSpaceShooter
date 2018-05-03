@@ -17,7 +17,7 @@ public class BatwingGreen extends Ship
     private Ammo ammo4;
    
   
-  
+    private String movingSoundFile = "Sounds/SoundEffects/shipEngine2.wav";
     private String imageFileName = "sprite/batWingShip/batwingGreen.png";
     private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
     
@@ -52,6 +52,7 @@ public class BatwingGreen extends Ship
         super.setMovement(30);
         super.setHitPoints(100);
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
+        super.setShipMovingSound(SoundTool.getAudioClip(movingSoundFile));
     }
 	@Override
 	public void setShot(EnemyArray enemy, Score score) 
