@@ -23,6 +23,8 @@ public class BatwingGreen extends Ship
     
     public BatwingGreen(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2, Ammo ammo3, Ammo ammo4)
     {
+    	   
+    	
     	   hull.setX(58);
            hull.setY(0);
            hull.setWidth(30);
