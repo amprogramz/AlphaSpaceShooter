@@ -11,14 +11,17 @@ public class BatwingGreen extends Ship
 {
 	private Rectangle hull = new Rectangle();
     private Rectangle wings = new Rectangle();
-    private Ammo ammo;
+    private Ammo ammo1;
+    private Ammo ammo2;
+    private Ammo ammo3;
+    private Ammo ammo4;
    
   
   
-    private String imageFileName = "sprite/batWingShip/batwingGreen.png";
+    private String imageFileName = "sprite/batWingShip/batwingRed.png";
     private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
     
-    public BatwingGreen(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)
+    public BatwingGreen(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2, Ammo ammo3, Ammo ammo4)
     {
     	   hull.setX(58);
            hull.setY(0);
@@ -34,11 +37,14 @@ public class BatwingGreen extends Ship
        
         ImageView image = SpriteTool.getImage(imageFileName, wings.getX(),hull.getY(),wings.getWidth(), hull.getHeight(), false);
 
-        ammo = ammo1;
-        
+        this.ammo1 = ammo1;
+        this.ammo2 = ammo2;
+
+        this.ammo3 = ammo3;
+        this.ammo4 = ammo4;
       
 
-        ammo.setRoundLocation(-200, -200);
+        //ammo.setRoundLocation(-200, -200);
         
       
        
@@ -54,16 +60,28 @@ public class BatwingGreen extends Ship
 	@Override
 	public void setShot(EnemyArray enemy, Score score) 
 	{
-		 ammo.setRoundLocation(wings.getParent().getLayoutX() + 75, wings.getParent().getLayoutY());
-         ammo.invokeShipShot(enemy, score); 
+        ammo1.setRoundLocation(wings.getParent().getLayoutX() + 0, wings.getParent().getLayoutY());
+        ammo1.invokeShipShot(enemy, score);
+        ammo2.setRoundLocation(wings.getParent().getLayoutX() + 150, wings.getParent().getLayoutY());
+        ammo2.invokeShipShot(enemy, score);
+        ammo3.setRoundLocation(wings.getParent().getLayoutX() + 50, wings.getParent().getLayoutY());
+        ammo3.invokeShipShot(enemy, score);
+        ammo4.setRoundLocation(wings.getParent().getLayoutX() + 100, wings.getParent().getLayoutY());
+        ammo4.invokeShipShot(enemy, score);
 	}
 
 	@Override
 	public ArrayList<Node> getAmmo() 
 	{
-		ArrayList<Node> ammoList = new ArrayList<>();
-        ammoList.add(ammo.getRound());
-        ammoList.add(ammo.getHitExplosionSprite());
+        ArrayList<Node> ammoList = new ArrayList<>();
+	    ammoList.add(ammo1.getRound());
+        ammoList.add(ammo2.getRound());
+        ammoList.add(ammo3.getRound());
+        ammoList.add(ammo4.getRound());
+        ammoList.add(ammo1.getHitExplosionSprite());
+        ammoList.add(ammo2.getHitExplosionSprite());
+        ammoList.add(ammo3.getHitExplosionSprite());
+        ammoList.add(ammo4.getHitExplosionSprite());
         return ammoList;
 	}
 
