@@ -136,7 +136,7 @@ public abstract class Ship
         if(ship.getLayoutX() < width - this.getWidth())
         {
             ship.setLayoutX(ship.getLayoutX() + movement);
-            shipMovingSound.play();
+            //shipMovingSound.play();
         }
     }
 
@@ -148,7 +148,7 @@ public abstract class Ship
         if (ship.getLayoutX() > 0)
         {
             ship.setLayoutX(ship.getLayoutX() - movement);
-            shipMovingSound.play();
+            //shipMovingSound.play();
         }
     }
 
@@ -160,7 +160,7 @@ public abstract class Ship
         if(ship.getLayoutY() > 0)
         {
             ship.setLayoutY(ship.getLayoutY() - movement);
-            shipMovingSound.play();
+            //shipMovingSound.play();
         }
     }
 
@@ -172,7 +172,7 @@ public abstract class Ship
         if (ship.getLayoutY() < height - this.getHeight())
         {
             ship.setLayoutY(ship.getLayoutY() + movement);
-            shipMovingSound.play();
+            //shipMovingSound.play();
         }
     }
 
