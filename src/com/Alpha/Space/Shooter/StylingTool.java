@@ -5,6 +5,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 /**
@@ -40,7 +42,13 @@ public class StylingTool
 
     public static Text inGameTextCreator(String stringToDisplay)
     {
-        
+        Text text = new Text(stringToDisplay);
+        text.setFont(Font.font("Bauhaus 93", FontWeight.BOLD, FontPosture.REGULAR, 25));
+        text.setStrokeWidth(1);
+        text.setStroke(Color.BLACK);
+        text.setFill(Color.RED);
+
+        return text;
     }
     /**
      * Method to create button with set background color, font color and font size
