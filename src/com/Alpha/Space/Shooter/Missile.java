@@ -3,7 +3,6 @@ package com.Alpha.Space.Shooter;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class Missile extends Ammo

@@ -7,7 +7,7 @@ public class Phaser extends Ammo{
 	
 	
 	private String shotSound = "Sounds/SoundEffects/Laser Shot.wav";
-	private ImageView image = SpriteTool.getImage("Sprite/ballBlue.png");
+	 private ImageView image = SpriteTool.getImage("Sprite/bulbYellow.png");
 	
 	
 	public Phaser() {
