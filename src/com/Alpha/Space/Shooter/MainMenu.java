@@ -79,8 +79,8 @@ public class MainMenu extends Application
 		Button playButton = StylingTool.buttonCreator("PLAY");
 		playButton.setOnAction(e -> menu.setScene(levelSelect()));
 
-		Button settingsButton = StylingTool.buttonCreator("SETTINGS");
-		settingsButton.setOnAction(e -> menu.setScene(settings()));
+		//Button settingsButton = StylingTool.buttonCreator("SETTINGS");
+		//settingsButton.setOnAction(e -> menu.setScene(settings()));
 
 		Button creditsButton = StylingTool.buttonCreator("CREDITS");
 		creditsButton.setOnAction(e -> menu.setScene(credits()));
@@ -91,7 +91,7 @@ public class MainMenu extends Application
 		VBox layout = new VBox(20);
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
-		layout.getChildren().addAll(titleMain, playButton, settingsButton, creditsButton, exit);
+		layout.getChildren().addAll(titleMain, playButton, creditsButton, exit);
 		
 		return new Scene(layout, 1000, 800);
 		
