@@ -201,7 +201,7 @@ public class MainMenu extends Application
 		ship4.setOnAction(e -> menu.setScene(selectAmmo(4)));
 
 		Button back = StylingTool.buttonCreator("BACK");
-		back.setOnAction(e -> menu.setScene(menu() ));
+		back.setOnAction(e -> menu.setScene(levelSelect() ));
 
 		HBox ships = new HBox(10);
 		ships.setAlignment(Pos.CENTER);
@@ -253,13 +253,15 @@ public class MainMenu extends Application
 		ammoChoices2.getItems().addAll(choices);
 		ammoChoices2.setValue("Ammo 2");
 
-		Button play = StylingTool.buttonCreator("Play");
+		Button play = StylingTool.buttonCreator("PLAY");
 		play.setOnAction(e -> setShipAndAmmo(shipChoice, ammoSelection(ammoChoices.getValue()), ammoSelection(ammoChoices2.getValue())));
 
+		Button back = StylingTool.buttonCreator("BACK");
+		back.setOnAction(e -> menu.setScene(hangar()));
 		VBox layout = new VBox(10);
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
-		layout.getChildren().addAll(selectAmmo, ammoChoices, ammoChoices2, play);
+		layout.getChildren().addAll(selectAmmo, ammoChoices, ammoChoices2, play, back);
 
 		return new Scene(layout,1000,800);
 
