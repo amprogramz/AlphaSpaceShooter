@@ -145,7 +145,7 @@ public abstract class Ammo
         timeline.setCycleCount(70);
         timeline.play();
 
-        shotSound.play();
+        shotSound.play(0);
 
     }
 

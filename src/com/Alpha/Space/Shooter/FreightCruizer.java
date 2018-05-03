@@ -20,6 +20,7 @@ public class FreightCruizer extends Ship
         private Ammo ammo;
         private Ammo ammo2;
 
+        private String movingSoundFile = "Sounds/SoundEffects/shipEngine1.wav";
         private String imageFileName = "Sprite/Spaceship_tut/Spaceship_tut.png";
         private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
 
@@ -58,7 +59,7 @@ public class FreightCruizer extends Ship
             super.setMovement(15);
             super.setHitPoints(100);
             super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
-
+            super.setShipMovingSound(SoundTool.getAudioClip(movingSoundFile));
         }
 
         @Override
