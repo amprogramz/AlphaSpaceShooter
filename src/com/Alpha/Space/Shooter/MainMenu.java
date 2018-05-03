@@ -225,14 +225,15 @@ public class MainMenu extends Application
 		Text credits = StylingTool.textCreator("CREDITS");
 		Text freightCredits = StylingTool.textCreator("Spaceship-tut_thin.png by Skorpio",20);
 		Text titanCredits = StylingTool.textCreator("Titan.png by Skorpio for the kit and Kanadaj for the design",20);
-		Text batwingCredits = StylingTool.textCreator("Batwing sprites by Skorpio");
-		Text starShipCredits = StylingTool.textCreator("StarShip sprites by Skorpio");
+		Text batwingCredits = StylingTool.textCreator("Batwing sprites by Skorpio",20);
+		Text starShipCredits = StylingTool.textCreator("StarShip sprites by Skorpio",20);
+		Text missleCredits = StylingTool.textCreator("Missile sprites by Kenney Vleugels",20);
 		Button returnMenu = StylingTool.buttonCreator("MAIN MENU");
 		returnMenu.setOnAction(e -> menu.setScene(menu()));
 		
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
-		layout.getChildren().addAll(credits, freightCredits, titanCredits, batwingCredits, starShipCredits, returnMenu);
+		layout.getChildren().addAll(credits, freightCredits, titanCredits, batwingCredits, starShipCredits, missleCredits, returnMenu);
 		return new Scene(layout,1000,800);
 	}
 

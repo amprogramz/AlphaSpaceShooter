@@ -136,6 +136,7 @@ public abstract class Ship
     	ship.setAutoSizeChildren(true);
     	ship.setLayoutX(x);
     	ship.setLayoutY(y);
+    	
     }
 
     /**
@@ -146,6 +147,7 @@ public abstract class Ship
         if(ship.getLayoutX() < width - this.getWidth())
         {
             ship.setLayoutX(ship.getLayoutX() + movement);
+            //shipMovingSound.play();
         }
     }
 
@@ -157,6 +159,7 @@ public abstract class Ship
         if (ship.getLayoutX() > 0)
         {
             ship.setLayoutX(ship.getLayoutX() - movement);
+            //shipMovingSound.play();
         }
     }
 
@@ -168,6 +171,7 @@ public abstract class Ship
         if(ship.getLayoutY() > 0)
         {
             ship.setLayoutY(ship.getLayoutY() - movement);
+            //shipMovingSound.play();
         }
     }
 
@@ -179,6 +183,7 @@ public abstract class Ship
         if (ship.getLayoutY() < height - this.getHeight())
         {
             ship.setLayoutY(ship.getLayoutY() + movement);
+            //shipMovingSound.play();
         }
     }
 
@@ -190,6 +195,7 @@ public abstract class Ship
     public void setMovement(int movement)
     {
         this.movement = movement;
+        
     }
 
     /**

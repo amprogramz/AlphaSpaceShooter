@@ -14,6 +14,7 @@ public class StarShip extends Ship
     private Ammo ammo;
     private Ammo ammo2;
 
+    private String movingSoundFile = "Sounds/SoundEffects/shipEngine4.wav";
     private String imageFileName = "sprite/cartoonshipPurple.png";
     private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
 	public StarShip(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)
@@ -45,6 +46,7 @@ public class StarShip extends Ship
         super.setMovement(30);
         super.setHitPoints(50);
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
+        super.setShipMovingSound(SoundTool.getAudioClip(movingSoundFile));
 	}
     
     @Override
