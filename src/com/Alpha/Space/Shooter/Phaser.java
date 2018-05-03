@@ -1,19 +1,21 @@
 package com.Alpha.Space.Shooter;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.ImageView;
 
 public class Phaser extends Ammo{
 	
+	
 	private String shotSound = "Sounds/SoundEffects/Laser Shot.wav";
+	private ImageView image = SpriteTool.getImage("Sprite/ballBlue.png");
+	
 	
 	public Phaser() {
-		Rectangle ammo = new Rectangle();
-		ammo.setWidth(5);
-		ammo.setHeight(40);
-		ammo.setFill(Color.CORNFLOWERBLUE);
-		super.setRound(ammo);
-		super.setMovement(18.8);
+		
+		
+		
+		super.setRound(image);
+		super.setMovement(17.8);
 		super.setDamage(20);
 		super.setShotSound(SoundTool.getAudioClip(shotSound));
 	}
