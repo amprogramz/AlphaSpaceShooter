@@ -36,9 +36,9 @@ public class MainMenu extends Application
 	 * Scene for the game user will play
 	 * @return created scene
 	 */
-	public Scene spaceShooter()
+	public Scene spaceShooter(int difficulty)
 	{
-		EnemyArray enemies = new EnemyArray(8);
+		EnemyArray enemies = new EnemyArray(difficulty * 2);
 		Score score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
 		MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
 		
@@ -121,28 +121,28 @@ public class MainMenu extends Application
 	{
 		Text select = StylingTool.textCreator("SELECT LEVEL");
 
-		Button ship1 = StylingTool.imageButtonCreator("easy", "Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 150);
+		Button ship1 = StylingTool.imageButtonCreator("EASY", "Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 150);
 		ship1.setOnAction(e -> {
 			background = new Background("Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 3000, 2400);
-			menu.setScene(hangar());
+			menu.setScene(hangar(4));
 		});
 
-		Button ship2 = StylingTool.imageButtonCreator("Sprite/Space-Background-2.jpg", 150);
+		Button ship2 = StylingTool.imageButtonCreator("MEDIUM", "Sprite/Space-Background-2.jpg", 150);
 		ship2.setOnAction(e -> {
 			background = new Background("Sprite/Space-Background-2.jpg", 3000, 2400);
-			menu.setScene(hangar());
+			menu.setScene(hangar(5));
 		});
 
-		Button ship3 = StylingTool.imageButtonCreator("Sprite/Space-Background-3.jpg", 150);
+		Button ship3 = StylingTool.imageButtonCreator("HARD", "Sprite/Space-Background-3.jpg", 150);
 		ship3.setOnAction(e -> {
 			background = new Background("Sprite/Space-Background-3.jpg", 3000, 2400);
-			menu.setScene(hangar());
+			menu.setScene(hangar(7));
 		});
 
-		Button ship4 = StylingTool.imageButtonCreator("Sprite/Space-Background-4.jpg", 150);
+		Button ship4 = StylingTool.imageButtonCreator("BEZERK", "Sprite/Space-Background-4.jpg", 150);
 		ship4.setOnAction(e -> {
 			background = new Background("Sprite/Space-Background-4.jpg", 3000, 2400);
-			menu.setScene(hangar());
+			menu.setScene(hangar(16));
 		});
 
 		Button back = StylingTool.buttonCreator("BACK");
@@ -180,21 +180,21 @@ public class MainMenu extends Application
 	 * Scene that allows user to select their ship before gameplay
 	 * @return created scene
 	 */
-	public Scene hangar()
+	public Scene hangar(int difficulty)
 	{
 		Text select = StylingTool.textCreator("SELECT YOUR SHIP");
 
 		Button ship1 = StylingTool.imageButtonCreator("Sprite/Spaceship_tut/Spaceship_tut.png",150);
-		ship1.setOnAction(e -> menu.setScene(selectAmmo(1)));
+		ship1.setOnAction(e -> menu.setScene(selectAmmo(1,difficulty)));
 
 		Button ship2 = StylingTool.imageButtonCreator("Sprite/batWingShip/batwingGreen.png", 150);
-		ship2.setOnAction(e -> menu.setScene(selectAmmo(2)));
+		ship2.setOnAction(e -> menu.setScene(selectAmmo(2,difficulty)));
 
 		Button ship3 = StylingTool.imageButtonCreator("Sprite/Titan.png", 150);
-		ship3.setOnAction(e -> menu.setScene(selectAmmo(3)));
+		ship3.setOnAction(e -> menu.setScene(selectAmmo(3,difficulty)));
 
 		Button ship4 = StylingTool.imageButtonCreator("Sprite/cartoonshipPurple.png", 150);
-		ship4.setOnAction(e -> menu.setScene(selectAmmo(4)));
+		ship4.setOnAction(e -> menu.setScene(selectAmmo(4,difficulty)));
 
 		Button back = StylingTool.buttonCreator("BACK");
 		back.setOnAction(e -> menu.setScene(levelSelect() ));
@@ -237,7 +237,7 @@ public class MainMenu extends Application
 	 * @param shipChoice selects which ship to add ammo to
 	 * @return created scene
 	 */
-	public Scene selectAmmo(int shipChoice)
+	public Scene selectAmmo(int shipChoice, int difficulty)
 	{
 		Text selectAmmo = StylingTool.textCreator("SELECT AMMO");
 
@@ -251,10 +251,10 @@ public class MainMenu extends Application
 		ammoChoices2.setValue("Ammo 2");
 
 		Button play = StylingTool.buttonCreator("PLAY");
-		play.setOnAction(e -> setShipAndAmmo(shipChoice, ammoSelection(ammoChoices.getValue()), ammoSelection(ammoChoices2.getValue())));
+		play.setOnAction(e -> setShipAndAmmo(shipChoice, ammoSelection(ammoChoices.getValue()), ammoSelection(ammoChoices2.getValue()), difficulty));
 
 		Button back = StylingTool.buttonCreator("BACK");
-		back.setOnAction(e -> menu.setScene(hangar()));
+		back.setOnAction(e -> menu.setScene(hangar(difficulty)));
 		VBox layout = new VBox(10);
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
@@ -297,7 +297,7 @@ public class MainMenu extends Application
 	 * @param ammoSelection2 index for ammo 2 selection
 	 */
 	//Obnoxious if statement
-	public void setShipAndAmmo(int shipSelection, int ammoSelection1, int ammoSelection2) {
+	public void setShipAndAmmo(int shipSelection, int ammoSelection1, int ammoSelection2, int difficulty) {
 		if (shipSelection == 1) {
 			if (ammoSelection1 == 1) {
 				if (ammoSelection2 == 1) {
@@ -476,7 +476,7 @@ public class MainMenu extends Application
 
 		}
 
-		menu.setScene(spaceShooter());
+		menu.setScene(spaceShooter(difficulty));
 	}
 
 	@Override

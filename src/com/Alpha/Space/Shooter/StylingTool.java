@@ -67,7 +67,7 @@ public class StylingTool
      */
     public static Button imageButtonCreator(String stringToDisplay, String FilePath, double size)
     {
-        Button button = new Button("");
+        Button button = new Button(stringToDisplay);
         button.setGraphic(SpriteTool.getImage(FilePath, size, size));
         button.setStyle("-fx-background-color: #000000");
 
