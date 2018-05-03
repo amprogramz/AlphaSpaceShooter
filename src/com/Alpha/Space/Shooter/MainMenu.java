@@ -486,8 +486,12 @@ public class MainMenu extends Application
 	public void start(Stage primaryStage) throws Exception 
 	{
 		menu = primaryStage;
+		Image icon = new Image(getClass().getResourceAsStream("Sprite/Squid.png"));
+		menu.getIcons().add(icon);
 		menu.setScene(menu());
 		menu.show();
+		
+		
 		
 	}
 	
