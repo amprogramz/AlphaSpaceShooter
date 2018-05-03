@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Node;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.media.AudioClip;
 
 
@@ -21,11 +23,18 @@ public abstract class Ship
 {
     private double movement;
 
+    private double screenWidth;
+    private double screenHeight;
+
     private int hitPoints;
     private AudioClip shipMovingSound;
     private AudioClip shipHitSound;
     private AudioClip deathSound;
     private Group ship = new Group();
+
+    Button keepPlaying = StylingTool.buttonCreator("Continue");
+    private boolean respawn = false;
+
 
 
     private ObservableList<Node> shipParts = ship.getChildren();
@@ -38,6 +47,8 @@ public abstract class Ship
      */
     private void defaultShip(double width, double height)
     {
+        this.screenWidth = width;
+        this.screenHeight = height;
           ship.setLayoutX(width / 2); //center x
         ship.setLayoutY((height / 4) * 3); //bottom quadrant y
     }
@@ -283,22 +294,49 @@ public abstract class Ship
      */
     public void shipDestruct(int damage, Score score)
     {
-        if(score.getHitPoints() > damage)
+        if(score.getHitPoints() > 0)
         {
             score.reduceHitPoints(damage);
             System.out.println("Health: " + score.getHitPoints());
-        }else
-        {
+        }else if (score.getLives() > 0) {
+            ship.setLayoutX(ship.getLayoutX() - 2000);
+            //ship.setVisible(false);
+            score.setYouDiedVisible(true);
             score.decrementLives();
-            score.setHitPoints(hitPoints);
-
             System.out.println("Dead.");
             deathSound.play();
+            buttonKeepPlaying();
 
-
+        }else if(score.getLives() == 0)
+        {
+            ship.setLayoutX(ship.getLayoutX() -2000);
+            score.setGameOverVisible(true);
         }
+
+
     }
 
+    public void buttonKeepPlaying()
+    {
+        keepPlaying.setVisible(true);
+
+            //score.setHitPoints(hitPoints);
+
+    }
+    public Button getKeepPlaying(Score score)
+    {
+        keepPlaying.setLayoutY((screenHeight / 2) + 100);
+        keepPlaying.setLayoutX(screenWidth / 2 - 100);keepPlaying.setOnAction(e -> {
+        score.setHitPoints(hitPoints);
+        score.setYouDiedVisible(false);
+        keepPlaying.setVisible(false);
+        ship.setLayoutX(ship.getLayoutX() + 2000);
+
+        });
+
+        keepPlaying.setVisible(false);
+        return keepPlaying;
+    }
 
 
 

@@ -1,6 +1,7 @@
 package com.Alpha.Space.Shooter;
 
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -29,6 +30,9 @@ public class Score
 
     private Text youDied;
     private Text gameOver;
+
+    //private Button keepPlaying = StylingTool.buttonCreator("Continue");
+
 
     public Score(int lives, double hitPoints, double screenHeight, double screenWidth)
     {
@@ -71,6 +75,8 @@ public class Score
         youDied.setY(screenHeight / 2);
         youDied.setVisible(false);
 
+
+
     }
 
     public void setScore(int score)
@@ -112,6 +118,7 @@ public class Score
         UIOut.add(hitPointBar);
         UIOut.add(gameOver);
         UIOut.add(youDied);
+        //UIOut.add(keepPlaying);
         return UIOut;
     }
     public void setHitPoints(int hitPoints)
@@ -142,6 +149,10 @@ public class Score
     public void setYouDiedVisible(boolean visible)
     {
         youDied.setVisible(visible);
+
+//        keepPlaying.setLayoutX(300);
+//        keepPlaying.setLayoutY(300);
+
     }
 
     public void setGameOverVisible(boolean visible)

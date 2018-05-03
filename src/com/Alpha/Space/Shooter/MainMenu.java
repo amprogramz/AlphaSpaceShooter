@@ -55,6 +55,7 @@ public class MainMenu extends Application
 		gameList.addAll(enemies.getEnemies());
 		gameList.addAll(enemies.getAllAmmo());
 		gameList.addAll(score.getScoreLivesOut());
+		gameList.addAll((ship.getKeepPlaying(score )));
 
 		Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
 		Controls controls = new Controls(scene, ship, enemies, score, WINDOW_WIDTH, WINDOW_HEIGHT);
