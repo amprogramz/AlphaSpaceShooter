@@ -37,6 +37,11 @@ public class StylingTool
 
         return  text;
     }
+
+    public static Text inGameTextCreator(String stringToDisplay)
+    {
+        
+    }
     /**
      * Method to create button with set background color, font color and font size
      * @return button that was created

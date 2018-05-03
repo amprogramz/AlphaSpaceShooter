@@ -163,6 +163,22 @@ public class MainMenu extends Application
 
 		return new Scene(layout,1000,800);
 	}
+	/**
+	 * Scene that is displayed when player dies in game and allows the user to return to the menu
+	 * @return created scene
+	 */
+	public Scene playerDeath()
+	{
+		Text death = StylingTool.textCreator("YOU HAVE DIED");
+		death.setFill(Color.RED);
+		VBox layout = new VBox(10);
+		Button returnMenu = StylingTool.buttonCreator("MAIN MENU");
+		returnMenu.setOnAction(e -> menu.setScene(menu()));
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
+		layout.getChildren().addAll(death, returnMenu);
+		return new Scene(layout,1000,800);
+	}
 
 	/**
 	 * Scene that allows user to select their ship before gameplay
@@ -218,22 +234,7 @@ public class MainMenu extends Application
 		layout.getChildren().addAll(credits, freightCredits, titanCredits, batwingCredits, starShipCredits, returnMenu);
 		return new Scene(layout,1000,800);
 	}
-	/**
-	 * Scene that is displayed when player dies in game and allows the user to return to the menu
-	 * @return created scene
-	 */
-	public Scene playerDeath()
-	{
-		Text death = StylingTool.textCreator("YOU HAVE DIED");
-		death.setFill(Color.RED);
-		VBox layout = new VBox(10);
-		Button returnMenu = StylingTool.buttonCreator("MAIN MENU");
-		returnMenu.setOnAction(e -> menu.setScene(menu()));
-		layout.setAlignment(Pos.CENTER);
-		layout.setStyle("-fx-background-color: #000000");
-		layout.getChildren().addAll(death, returnMenu);
-		return new Scene(layout,1000,800);
-	}
+
 	/**
 	 * Scene that allows user to add different ammo to their ship
 	 * @param shipChoice selects which ship to add ammo to

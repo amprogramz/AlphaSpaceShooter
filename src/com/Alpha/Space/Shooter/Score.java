@@ -27,6 +27,9 @@ public class Score
     private Text hitPointOut = new Text();
     private ProgressBar hitPointBar = new ProgressBar();
 
+    private Text youDied;
+    private Text gameOver;
+
     public Score(int lives, double hitPoints)
     {
 
