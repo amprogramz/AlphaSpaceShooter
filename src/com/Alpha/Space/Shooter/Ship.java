@@ -28,7 +28,7 @@ public abstract class Ship
     private Group ship = new Group();
 
 
-    private ObservableList shipParts = ship.getChildren();
+    private ObservableList<Node> shipParts = ship.getChildren();
 
     /**
      * This is a way to default the ship to the bottom center of the scene. This works regaurdless of where the ship was
@@ -76,7 +76,7 @@ public abstract class Ship
      * A way to add an ObservableList of parts to the ship.
      * @param shipParts The list of parts to add.
      */
-    public void addShipParts(ObservableList shipParts)
+    public void addShipParts(ObservableList<Node> shipParts)
     {
         this.shipParts.addAll(shipParts);
     }

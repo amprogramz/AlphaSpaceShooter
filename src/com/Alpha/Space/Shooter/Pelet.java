@@ -1,21 +1,22 @@
 package com.Alpha.Space.Shooter;
 
-import javafx.scene.paint.Color;
+
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 public class Pelet extends Ammo
 {
     private String shotSoundFile = "Sounds/SoundEffects/Futuristic Shotgun Single Shot.wav";
     private Rectangle ammo = new Rectangle();
-    int xMovement;
+    Double xMovement;
 
 
-    public Pelet(int xMovement)
+    public Pelet(Double xMovement, Paint color)
     {
 
         ammo.setWidth(5);
         ammo.setHeight(10);
-        ammo.setFill(Color.BLUE);
+        ammo.setFill(color);
         super.setRound(ammo);
 
         this.xMovement = xMovement;
@@ -41,5 +42,7 @@ public class Pelet extends Ammo
         getRound().setLayoutY(getRound().getLayoutY() + getMovement());
         shipColishionCheck(ship, score);
     }
+    
+    
 
 }

@@ -3,6 +3,7 @@ package com.Alpha.Space.Shooter;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -31,13 +32,13 @@ public class FreightCruizer extends Ship
             hull.setHeight(150);
             hull.setArcWidth(50);
             hull.setArcHeight(100);
-            //hull.setFill(Color.TRANSPARENT);
+            hull.setFill(Color.TRANSPARENT);
 
             wings.setX((0));
             wings.setY((hull.getY() + hull.getHeight()) - 60);
             wings.setWidth(100);
             wings.setHeight(30);
-            //wings.setFill(Color.TRANSPARENT);
+            wings.setFill(Color.TRANSPARENT);
 
             ImageView image = SpriteTool.getImage(imageFileName, wings.getX(),hull.getY(),wings.getWidth(), hull.getHeight(), false);
 

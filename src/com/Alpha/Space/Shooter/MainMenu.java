@@ -158,7 +158,7 @@ public class MainMenu extends Application
 		Button ship1 = StylingTool.imageButtonCreator("sprite/Spaceship_tut/Spaceship_tut.png");
 		ship1.setOnAction(e -> menu.setScene(selectAmmo(1)));
 
-		Button ship2 = StylingTool.imageButtonCreator("sprite/batWingShip/batwingRed.png");
+		Button ship2 = StylingTool.imageButtonCreator("sprite/batWingShip/batwingGreen.png");
 		ship2.setOnAction(e -> menu.setScene(selectAmmo(2)));
 
 		Button ship3 = StylingTool.imageButtonCreator("sprite/Titan.png");
