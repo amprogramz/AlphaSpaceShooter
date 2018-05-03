@@ -44,7 +44,7 @@ public class MainMenu extends Application
 
 //		Background background = new Background(background2, 3000, 2400);
 		EnemyArray enemies = new EnemyArray(6);
-		Score score = new Score(5, ship.getHitPoints());
+		Score score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
 		MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
 		
 		Group gameGroup = new Group();
