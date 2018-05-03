@@ -164,7 +164,7 @@ public class MainMenu extends Application
 		Button ship3 = StylingTool.imageButtonCreator("sprite/Titan.png", 150);
 		ship3.setOnAction(e -> menu.setScene(selectAmmo(3)));
 
-		Button ship4 = StylingTool.imageButtonCreator("sprite/Spaceship_tut/Spaceship_tut.png", 150);
+		Button ship4 = StylingTool.imageButtonCreator("sprite/cartoonshipPurple.png", 150);
 		ship4.setOnAction(e -> menu.setScene(selectAmmo(1)));
 
 		Button back = StylingTool.buttonCreator("BACK");
@@ -188,12 +188,14 @@ public class MainMenu extends Application
 		Text credits = StylingTool.textCreator("CREDITS");
 		Text freightCredits = StylingTool.textCreator("Spaceship-tut_thin.png by Skorpio",20);
 		Text titanCredits = StylingTool.textCreator("Titan.png by Skorpio for the kit and Kanadaj for the design",20);
+		Text batwingCredits = StylingTool.textCreator("Batwing sprites by Skorpio");
+		Text starShipCredits = StylingTool.textCreator("StarShip sprites by Skorpio");
 		Button returnMenu = StylingTool.buttonCreator("MAIN MENU");
 		returnMenu.setOnAction(e -> menu.setScene(menu()));
 		
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
-		layout.getChildren().addAll(credits, freightCredits, titanCredits,  returnMenu);
+		layout.getChildren().addAll(credits, freightCredits, titanCredits, batwingCredits, starShipCredits, returnMenu);
 		return new Scene(layout,1000,800);
 	}
 	public Scene playerDeath()
@@ -387,6 +389,51 @@ public class MainMenu extends Application
 					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Missile());
 				} else if (ammoSelection2 == 4) {
 					ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
+				}
+			}
+			else if (shipSelection == 4) 
+			{
+				if (ammoSelection1 == 1) {
+					if (ammoSelection2 == 1) {
+						ship = new StarShip (WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new FiftyCaliber());
+					} else if (ammoSelection2 == 2) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Phaser());
+					} else if (ammoSelection2 == 3) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Missile());
+					} else if (ammoSelection2 == 4) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new ShotGun());
+					}
+				} else if (ammoSelection1 == 2) {
+					if (ammoSelection2 == 1) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new FiftyCaliber());
+					} else if (ammoSelection2 == 2) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Phaser());
+					} else if (ammoSelection2 == 3) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Missile());
+					} else if (ammoSelection2 == 4) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new ShotGun());
+					}
+
+				} else if (ammoSelection1 == 3) {
+					if (ammoSelection2 == 1) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new FiftyCaliber());
+					} else if (ammoSelection2 == 2) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Phaser());
+					} else if (ammoSelection2 == 3) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Missile());
+					} else if (ammoSelection2 == 4) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new ShotGun());
+					}
+				} else if (ammoSelection1 == 4) {
+					if (ammoSelection2 == 1) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new FiftyCaliber());
+					} else if (ammoSelection2 == 2) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Phaser());
+					} else if (ammoSelection2 == 3) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Missile());
+					} else if (ammoSelection2 == 4) {
+						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
+					}
 				}
 			}
 		}
