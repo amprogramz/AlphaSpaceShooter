@@ -2,21 +2,20 @@ package com.Alpha.Space.Shooter;
 
 
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.ImageView;
 
 public class Pelet extends Ammo
 {
     private String shotSoundFile = "Sounds/SoundEffects/Futuristic Shotgun Single Shot.wav";
-    private Rectangle ammo = new Rectangle();
+   
+    private ImageView ammo = SpriteTool.getImage("Sprite/ballBlue.png");
     Double xMovement;
 
 
-    public Pelet(Double xMovement, Paint color)
+    public Pelet(Double xMovement)
     {
 
-        ammo.setWidth(5);
-        ammo.setHeight(10);
-        ammo.setFill(color);
+        
         super.setRound(ammo);
 
         this.xMovement = xMovement;

@@ -44,12 +44,6 @@ public class BatwingGreen extends Ship
 
         this.ammo3 = ammo3;
         this.ammo4 = ammo4;
-      
-
-        
-        
-      
-       
 
         super.addShipParts(hull);
         super.addShipParts(wings);

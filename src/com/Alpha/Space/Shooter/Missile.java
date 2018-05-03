@@ -2,21 +2,18 @@ package com.Alpha.Space.Shooter;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class Missile extends Ammo
 {
     private String shotSoundFile = "Sounds/SoundEffects/Futuristic Shotgun Single Shot.wav";
-    private Rectangle ammo = new Rectangle();
-
+    private ImageView ammo = SpriteTool.getImage("Sprite/spaceMissiles_005small.png");
+    
     public Missile()
     {
 
-        ammo.setWidth(10);
-        ammo.setHeight(22);
-        ammo.setFill(Color.RED);
+       
         super.setRound(ammo);
 
         super.setMovement(15);

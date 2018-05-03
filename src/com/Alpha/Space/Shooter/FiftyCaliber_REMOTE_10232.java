@@ -14,7 +14,8 @@ public class FiftyCaliber extends Ammo
     private String shotSoundFile = "Sounds/SoundEffects/Futuristic Shotgun Single Shot.wav";
     private ImageView image = SpriteTool.getImage("Sprite/straightOrangeSmall.png");
     public FiftyCaliber()
-    {   
+    {
+        
         super.setRound(image);
         super.setMovement(15);
         super.setDamage(10);

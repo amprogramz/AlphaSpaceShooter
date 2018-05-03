@@ -1,6 +1,5 @@
 package com.Alpha.Space.Shooter;
 
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -12,10 +11,14 @@ public class FiftyCaliber extends Ammo
 {
 
     private String shotSoundFile = "Sounds/SoundEffects/Futuristic Shotgun Single Shot.wav";
-    private ImageView image = SpriteTool.getImage("Sprite/straightOrangeSmall.png");
+
     public FiftyCaliber()
-    {   
-        super.setRound(image);
+    {
+        Rectangle ammo = new Rectangle();
+        ammo.setWidth(2);
+        ammo.setHeight(10);
+        ammo.setFill(Color.RED);
+        super.setRound(ammo);
         super.setMovement(15);
         super.setDamage(10);
         super.setShotSound(SoundTool.getAudioClip(shotSoundFile));
