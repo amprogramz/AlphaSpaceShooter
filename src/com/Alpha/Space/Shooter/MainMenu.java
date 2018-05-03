@@ -18,6 +18,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * @author Henry Gray and Alec McDaugale 
+ *  Class that creates and launches the main menu and any following scenes
+ */
+
 public class MainMenu extends Application 
 {
 	Stage menu;
@@ -27,7 +32,10 @@ public class MainMenu extends Application
 
 	Ship ship;
 	Background background;
-
+	/**
+	 * Scene for the game user will play
+	 * @return created scene
+	 */
 	public Scene spaceShooter()
 	{
 
@@ -59,7 +67,10 @@ public class MainMenu extends Application
 		return scene;
 	}
 
-	
+	/**
+	 * Scene for the main menu. allows user to switch to other scenes
+	 * @return created scene
+	 */
 	public Scene menu()
 	{
 		Text titleMain = StylingTool.textCreator("ALPHA SPACE SHOOTER");
@@ -85,7 +96,7 @@ public class MainMenu extends Application
 		
 	}
 
-	//method to create settings layout
+	
 	public Scene settings()
 	{
 		Text options = StylingTool.textCreator("MOUSE OR KEYBOARD");
@@ -106,7 +117,10 @@ public class MainMenu extends Application
 
 		return new Scene(layout,1000,800);
 	}
-
+	/**
+	 * Scene that allows user to select level before game play
+	 * @return created scene
+	 */
 	public Scene levelSelect()
 	{
 		Text select = StylingTool.textCreator("SELECT LEVEL");
@@ -150,7 +164,10 @@ public class MainMenu extends Application
 		return new Scene(layout,1000,800);
 	}
 
-	//method to create hangar layout
+	/**
+	 * Scene that allows user to select their ship before gameplay
+	 * @return created scene
+	 */
 	public Scene hangar()
 	{
 		Text select = StylingTool.textCreator("SELECT YOUR SHIP");
@@ -181,7 +198,10 @@ public class MainMenu extends Application
 
 		return new Scene(layout,1000,800);
 	}
-	
+	/**
+	 * Scene that displays credits for third party resources in the game
+	 * @return created scene
+	 */
 	public Scene credits()
 	{
 		VBox layout = new VBox(10);
@@ -198,6 +218,10 @@ public class MainMenu extends Application
 		layout.getChildren().addAll(credits, freightCredits, titanCredits, batwingCredits, starShipCredits, returnMenu);
 		return new Scene(layout,1000,800);
 	}
+	/**
+	 * Scene that is displayed when player dies in game and allows the user to return to the menu
+	 * @return created scene
+	 */
 	public Scene playerDeath()
 	{
 		Text death = StylingTool.textCreator("YOU HAVE DIED");
@@ -210,7 +234,11 @@ public class MainMenu extends Application
 		layout.getChildren().addAll(death, returnMenu);
 		return new Scene(layout,1000,800);
 	}
-
+	/**
+	 * Scene that allows user to add different ammo to their ship
+	 * @param shipChoice selects which ship to add ammo to
+	 * @return created scene
+	 */
 	public Scene selectAmmo(int shipChoice)
 	{
 		Text selectAmmo = StylingTool.textCreator("SELECT AMMO");
@@ -235,6 +263,11 @@ public class MainMenu extends Application
 		return new Scene(layout,1000,800);
 
 	}
+	/**
+	 * method to select ammo type
+	 * @param ammoChoices index to select different ammo types
+	 * @return ammo selected 
+	 */
 	public int ammoSelection(String ammoChoices)
 	{
 
@@ -257,7 +290,12 @@ public class MainMenu extends Application
 
 		return ammoSelection;
 	}
-
+	/**
+	 * Method that sets player ship and ammo types before game
+	 * @param shipSelection index for ship selection
+	 * @param ammoSelection1 index for ammo 1 selection
+	 * @param ammoSelection2 index for ammo 2 selection
+	 */
 	//Obnoxious if statement
 	public void setShipAndAmmo(int shipSelection, int ammoSelection1, int ammoSelection2) {
 		if (shipSelection == 1) {
