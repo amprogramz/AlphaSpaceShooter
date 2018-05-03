@@ -17,7 +17,7 @@ public class Background
     Canvas moveableBackground = new Canvas();
     GraphicsContext moveableBackgroundGC = moveableBackground.getGraphicsContext2D();
     double BGwidth;
-    double BGheight;
+    double BGheight=400;
 
     public Background(String filePath, double width, double height)
     {
@@ -27,6 +27,7 @@ public class Background
 
         moveableBackgroundGC.setFill(Color.BLACK);
         moveableBackgroundGC.fillRect(0,0,width, height);
+        moveableBackgroundGC.drawImage(background, BGwidth, BGheight-2000, 3000, 2400);
     }
 
     public Canvas getBackground()
@@ -45,13 +46,14 @@ public class Background
     }
     public void move(){
     	//Start from bottom left of image
-    	moveableBackgroundGC.drawImage(background, BGwidth, BGheight-2000, 3000, 2400);
-    	
+    	if(BGheight <= 2200){
+    		moveableBackgroundGC.drawImage(background, BGwidth, BGheight-2000, 3000, 2400);}
+
     	//move 1 pixel each time
     	BGheight += 1;
     	
     	//when it reaches top, reset
-    	if (BGheight >= 2700){
+    	if (BGheight >= 2400){
     		BGheight = -400;
     		BGwidth -=1000;
     	}
