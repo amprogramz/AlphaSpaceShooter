@@ -15,7 +15,7 @@ public class BatwingGreen extends Ship
    
   
   
-    private String imageFileName = "sprite/batWingShip/batwingGreen.png";
+    private String imageFileName = "sprite/batWingShip/batwingRed.png";
     private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
     
     public BatwingGreen(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)
