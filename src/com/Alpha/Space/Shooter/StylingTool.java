@@ -65,10 +65,10 @@ public class StylingTool
      * Method to create button with image on top of the button
      * @return button that was created
      */
-    public static Button imageButtonCreator(String FilePath)
+    public static Button imageButtonCreator(String stringToDisplay, String FilePath, double size)
     {
         Button button = new Button("");
-        button.setGraphic(SpriteTool.getImage(FilePath));
+        button.setGraphic(SpriteTool.getImage(FilePath, size, size));
         button.setStyle("-fx-background-color: #000000");
 
         return button;

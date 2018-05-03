@@ -15,7 +15,7 @@ public class StarShip extends Ship
     private Ammo ammo2;
 
     private String movingSoundFile = "Sounds/SoundEffects/shipEngine4.wav";
-    private String imageFileName = "sprite/cartoonshipPurple.png";
+    private String imageFileName = "Sprite/cartoonshipPurple.png";
     private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
 	public StarShip(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)
 	{

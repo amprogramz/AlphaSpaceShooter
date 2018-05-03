@@ -20,7 +20,7 @@ public class Dreadnought extends Ship
     private Ammo ammo2;
 
     private String movingSoundFile = "Sounds/SoundEffects/shipEngine3.wav";
-    private String imageFileName = "sprite/Titan.png";
+    private String imageFileName = "Sprite/Titan.png";
     private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
     
     public Dreadnought(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)

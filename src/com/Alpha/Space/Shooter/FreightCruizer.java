@@ -1,7 +1,9 @@
 package com.Alpha.Space.Shooter;
 
 import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 
@@ -42,7 +44,7 @@ public class FreightCruizer extends Ship
             wings.setFill(Color.TRANSPARENT);
 
             ImageView image = SpriteTool.getImage(imageFileName, wings.getX(),hull.getY(),wings.getWidth(), hull.getHeight(), false);
-
+            //hull.setFill(new ImagePattern(image));
             this.ammo = ammo1;
             this.ammo2 = ammo2;
 

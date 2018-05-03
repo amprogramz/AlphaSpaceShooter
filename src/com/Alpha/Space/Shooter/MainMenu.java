@@ -38,12 +38,7 @@ public class MainMenu extends Application
 	 */
 	public Scene spaceShooter()
 	{
-
-//		 //String background1 = "sprite/Space-Background-1.jpg";
-//		 String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
-
-//		Background background = new Background(background2, 3000, 2400);
-		EnemyArray enemies = new EnemyArray(6);
+		EnemyArray enemies = new EnemyArray(8);
 		Score score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
 		MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
 		
@@ -126,9 +121,9 @@ public class MainMenu extends Application
 	{
 		Text select = StylingTool.textCreator("SELECT LEVEL");
 
-		Button ship1 = StylingTool.imageButtonCreator("sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 150);
+		Button ship1 = StylingTool.imageButtonCreator("easy", "Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 150);
 		ship1.setOnAction(e -> {
-			background = new Background("sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 3000, 2400);
+			background = new Background("Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 3000, 2400);
 			menu.setScene(hangar());
 		});
 
@@ -189,16 +184,16 @@ public class MainMenu extends Application
 	{
 		Text select = StylingTool.textCreator("SELECT YOUR SHIP");
 
-		Button ship1 = StylingTool.imageButtonCreator("sprite/Spaceship_tut/Spaceship_tut.png",150);
+		Button ship1 = StylingTool.imageButtonCreator("Sprite/Spaceship_tut/Spaceship_tut.png",150);
 		ship1.setOnAction(e -> menu.setScene(selectAmmo(1)));
 
-		Button ship2 = StylingTool.imageButtonCreator("sprite/batWingShip/batwingGreen.png", 150);
+		Button ship2 = StylingTool.imageButtonCreator("Sprite/batWingShip/batwingGreen.png", 150);
 		ship2.setOnAction(e -> menu.setScene(selectAmmo(2)));
 
-		Button ship3 = StylingTool.imageButtonCreator("sprite/Titan.png", 150);
+		Button ship3 = StylingTool.imageButtonCreator("Sprite/Titan.png", 150);
 		ship3.setOnAction(e -> menu.setScene(selectAmmo(3)));
 
-		Button ship4 = StylingTool.imageButtonCreator("sprite/cartoonshipPurple.png", 150);
+		Button ship4 = StylingTool.imageButtonCreator("Sprite/cartoonshipPurple.png", 150);
 		ship4.setOnAction(e -> menu.setScene(selectAmmo(4)));
 
 		Button back = StylingTool.buttonCreator("BACK");
