@@ -9,7 +9,7 @@ import javafx.util.Duration;
 
 public class Explosion
 {
-        private ImageView hitExplosionSprite =  new ImageView(SpriteTool.setImage("sprite/explosion.png"));
+        private ImageView hitExplosionSprite =  new ImageView(SpriteTool.setImage("Sprite/explosion.png"));
         Group explosion = new Group();
 
 
