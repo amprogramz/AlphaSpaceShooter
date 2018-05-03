@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class Squid extends Enemy
 {
     Ammo ammo = new FiftyCaliber();
-    ImageView saucer = SpriteTool.getImage("Sprite/Squid.png");
+    Circle saucer = new Circle();
 
     private String imageFileName = "Sprite/SpaceShooter1/PNG/SpritesX2/Ships/spaceShips_006.png";
     
@@ -28,10 +28,7 @@ public class Squid extends Enemy
 
         saucer.setLayoutX(0);
         saucer.setLayoutY(0);
-<<<<<<< HEAD:src/com/Alpha/Space/Shooter/Squid.java
-=======
         saucer.setRadius(25);
->>>>>>> 437e3abaabc5657ac4589319cc4c2f4a26c0494e:src/com/Alpha/Space/Shooter/Saucer.java
 
         super.setEnemy(saucer);
 
