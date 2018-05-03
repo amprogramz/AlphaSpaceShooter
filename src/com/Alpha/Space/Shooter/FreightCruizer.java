@@ -20,7 +20,7 @@ public class FreightCruizer extends Ship
         private Ammo ammo;
         private Ammo ammo2;
 
-        private String imageFileName = "sprite/Spaceship_tut/Spaceship_tut.png";
+        private String imageFileName = "Sprite/Spaceship_tut/Spaceship_tut.png";
         private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
 
         public FreightCruizer(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2)

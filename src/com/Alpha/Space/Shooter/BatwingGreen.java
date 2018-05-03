@@ -18,7 +18,7 @@ public class BatwingGreen extends Ship
    
   
   
-    private String imageFileName = "sprite/batWingShip/batwingRed.png";
+    private String imageFileName = "sprite/batWingShip/batwingGreen.png";
     private String deathSoundFile = "Sounds/SoundEffects/Futuristic Explosion.wav";
     
     public BatwingGreen(double windowWidth, double windowHeight, Ammo ammo1, Ammo ammo2, Ammo ammo3, Ammo ammo4)
@@ -44,7 +44,7 @@ public class BatwingGreen extends Ship
         this.ammo4 = ammo4;
       
 
-        //ammo.setRoundLocation(-200, -200);
+        
         
       
        
@@ -60,9 +60,9 @@ public class BatwingGreen extends Ship
 	@Override
 	public void setShot(EnemyArray enemy, Score score) 
 	{
-        ammo1.setRoundLocation(wings.getParent().getLayoutX() + 0, wings.getParent().getLayoutY());
+        ammo1.setRoundLocation(wings.getParent().getLayoutX() + 3, wings.getParent().getLayoutY());
         ammo1.invokeShipShot(enemy, score);
-        ammo2.setRoundLocation(wings.getParent().getLayoutX() + 150, wings.getParent().getLayoutY());
+        ammo2.setRoundLocation(wings.getParent().getLayoutX() + 147, wings.getParent().getLayoutY());
         ammo2.invokeShipShot(enemy, score);
         ammo3.setRoundLocation(wings.getParent().getLayoutX() + 50, wings.getParent().getLayoutY());
         ammo3.invokeShipShot(enemy, score);
@@ -86,3 +86,4 @@ public class BatwingGreen extends Ship
 	}
 
 }
+
