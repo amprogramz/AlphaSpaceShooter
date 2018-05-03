@@ -163,6 +163,22 @@ public class MainMenu extends Application
 
 		return new Scene(layout,1000,800);
 	}
+	/**
+	 * Scene that is displayed when player dies in game and allows the user to return to the menu
+	 * @return created scene
+	 */
+	public Scene playerDeath()
+	{
+		Text death = StylingTool.textCreator("YOU HAVE DIED");
+		death.setFill(Color.RED);
+		VBox layout = new VBox(10);
+		Button returnMenu = StylingTool.buttonCreator("MAIN MENU");
+		returnMenu.setOnAction(e -> menu.setScene(menu()));
+		layout.setAlignment(Pos.CENTER);
+		layout.setStyle("-fx-background-color: #000000");
+		layout.getChildren().addAll(death, returnMenu);
+		return new Scene(layout,1000,800);
+	}
 
 	/**
 	 * Scene that allows user to select their ship before gameplay
@@ -218,22 +234,7 @@ public class MainMenu extends Application
 		layout.getChildren().addAll(credits, freightCredits, titanCredits, batwingCredits, starShipCredits, returnMenu);
 		return new Scene(layout,1000,800);
 	}
-	/**
-	 * Scene that is displayed when player dies in game and allows the user to return to the menu
-	 * @return created scene
-	 */
-	public Scene playerDeath()
-	{
-		Text death = StylingTool.textCreator("YOU HAVE DIED");
-		death.setFill(Color.RED);
-		VBox layout = new VBox(10);
-		Button returnMenu = StylingTool.buttonCreator("MAIN MENU");
-		returnMenu.setOnAction(e -> menu.setScene(menu()));
-		layout.setAlignment(Pos.CENTER);
-		layout.setStyle("-fx-background-color: #000000");
-		layout.getChildren().addAll(death, returnMenu);
-		return new Scene(layout,1000,800);
-	}
+
 	/**
 	 * Scene that allows user to add different ammo to their ship
 	 * @param shipChoice selects which ship to add ammo to
@@ -430,49 +431,50 @@ public class MainMenu extends Application
 				}
 			}
 		}else if (shipSelection == 4) 
-			{
-				if (ammoSelection1 == 1) {
-					if (ammoSelection2 == 1) {
-						ship = new StarShip (WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new FiftyCaliber());
-					} else if (ammoSelection2 == 2) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Phaser());
-					} else if (ammoSelection2 == 3) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Missile());
-					} else if (ammoSelection2 == 4) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new ShotGun());
-					}
-				} else if (ammoSelection1 == 2) {
-					if (ammoSelection2 == 1) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new FiftyCaliber());
-					} else if (ammoSelection2 == 2) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Phaser());
-					} else if (ammoSelection2 == 3) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Missile());
-					} else if (ammoSelection2 == 4) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new ShotGun());
-					}
-
-				} else if (ammoSelection1 == 3) {
-					if (ammoSelection2 == 1) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new FiftyCaliber());
-					} else if (ammoSelection2 == 2) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Phaser());
-					} else if (ammoSelection2 == 3) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Missile());
-					} else if (ammoSelection2 == 4) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new ShotGun());
-					}
-				} else if (ammoSelection1 == 4) {
-					if (ammoSelection2 == 1) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new FiftyCaliber());
-					} else if (ammoSelection2 == 2) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Phaser());
-					} else if (ammoSelection2 == 3) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Missile());
-					} else if (ammoSelection2 == 4) {
-						ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
-					}
+		{
+			if (ammoSelection1 == 1) {
+				if (ammoSelection2 == 1) {
+					ship = new StarShip (WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new FiftyCaliber(), new ShotGun());
 				}
+			} else if (ammoSelection1 == 2) {
+				if (ammoSelection2 == 1) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Phaser(), new ShotGun());
+				}
+
+			} else if (ammoSelection1 == 3) {
+				if (ammoSelection2 == 1) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new ShotGun());
+				}
+			} else if (ammoSelection1 == 4) {
+				if (ammoSelection2 == 1) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new FiftyCaliber());
+				} else if (ammoSelection2 == 2) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Phaser());
+				} else if (ammoSelection2 == 3) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new Missile());
+				} else if (ammoSelection2 == 4) {
+					ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, new ShotGun(), new ShotGun());
+				}
+			}
+
 		}
 
 		menu.setScene(spaceShooter());
