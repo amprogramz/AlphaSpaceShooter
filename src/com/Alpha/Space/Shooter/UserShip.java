@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public abstract class UserShip extends Ship
 {
+    public void setDefault()
+    {
+        super.setDefaultObjectLocation(super.getScreenWidth() / 2 , (super.getScreenHeight() / 4) * 3 );
+    }
     public void Destruct(int damage, Score score)
     {
         if(score.getHitPoints() > 0)

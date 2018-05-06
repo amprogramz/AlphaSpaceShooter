@@ -56,6 +56,8 @@ public class Dreadnought extends UserShip
 
         super.setScreenWidth(windowWidth);
         super.setScreenHeight(windowHeight);
+
+        super.setDefault();
     }
 	@Override
     public void setShot(EnemyArray enemy, Score score)

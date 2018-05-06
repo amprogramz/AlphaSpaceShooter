@@ -219,5 +219,5 @@ public class Squid extends Enemy
         //System.out.println("x " + saucer.getParent().getLayoutX() + " Y " +saucer.getParent().getLayoutY());
 
     }
-    
+
 }

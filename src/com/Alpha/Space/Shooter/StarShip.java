@@ -50,6 +50,8 @@ public class StarShip extends UserShip
 
         super.setScreenWidth(windowWidth);
         super.setScreenHeight(windowHeight);
+
+        super.setDefault();
 	}
     
     @Override

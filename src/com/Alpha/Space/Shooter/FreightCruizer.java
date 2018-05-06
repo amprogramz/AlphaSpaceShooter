@@ -65,6 +65,8 @@ public class FreightCruizer extends UserShip
 
             super.setScreenWidth(windowWidth);
             super.setScreenHeight(windowHeight);
+
+            super.setDefault();
         }
 
         @Override
