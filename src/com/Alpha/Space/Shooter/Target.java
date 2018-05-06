@@ -21,9 +21,9 @@ public class Target extends Enemy
     Ammo ammo = new FiftyCaliber();
     Rectangle target = new Rectangle();
 
-    private String imageFileName = "Sprite/Squid.png";
+    private String imageFileName = "Sprite/SpaceShooter1/PNG/SpritesX2/Ships/spaceShips_006.png";
     String deathSoundFile = "Sounds/SoundEffects/Small Futuristic Explosion.mp3";
-    public Target(double x, double y, int index)
+    public Target(double screenWidth, double screenHeight, double x, double y, int index)
     {
 
         target.setLayoutX(0);
@@ -31,7 +31,7 @@ public class Target extends Enemy
         target.setWidth(45);
         target.setHeight(45);
         target.setFill(Color.GRAY);
-        super.setEnemy(target);
+        super.addParts(target);
 
         target.getParent().setLayoutX(x);
         target.getParent().setLayoutY(y);
@@ -39,17 +39,19 @@ public class Target extends Enemy
         Image image = SpriteTool.getImage(imageFileName, target.getX(), target.getY(), target.getWidth(), target.getHeight(), false).getImage();
         target.setFill(new ImagePattern(image));
         
-        super.setTargetIndex(index);
+        super.setIndex(index);
         super.setHitPoints(30);
         
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
+        super.setScreenWidth(screenWidth);
+        super.setScreenHeight(screenHeight);
     }
 
     @Override
-    public void setShot(Ship ship, Score score)
+    public void setShot(SpaceObject ship, Score score)
     {
         ammo.setRoundLocation(target.getParent().getLayoutX() + 18, target.getParent().getLayoutY());
-        ammo.invokeEnemyShot(ship, score);
+        ammo.invokeShot(ship, score);
     }
 
     @Override
@@ -62,20 +64,20 @@ public class Target extends Enemy
         return ammoList;
     }
 
-    boolean directionX = true;
+    private boolean directionX = true;
     @Override
     public void move(double screenWidth, double screenHeight, Ship ship, Score score)
     {
         //boolean directionX;
         if (target.getParent().getLayoutX() < screenWidth
                 && directionX == true
-                && !Colideable.collision(ship.getShipObj(), getEnemy()))
+                && !Colideable.collision(ship.getObj(), super.getObj()) )
         {
             moveRight(Math.random()*6);
             moveDown(Math.random()*2);
         }
         else if (target.getParent().getLayoutX() >= screenWidth
-                || Colideable.collision(ship.getShipObj(), getEnemy())
+                || Colideable.collision(ship.getObj(), super.getObj())
                 && target.getParent().getLayoutX() <= ship.getX())
         {
             directionX = false;
@@ -84,13 +86,13 @@ public class Target extends Enemy
         }
         else if (target.getParent().getLayoutX() > 0
                 && directionX == false
-                && !Colideable.collision(ship.getShipObj(), getEnemy()))
+                && !Colideable.collision(ship.getObj(), super.getObj()))
         {
 
             moveLeft(5);
             moveDown(1);
         }else if (target.getParent().getLayoutX() <= 0
-                || Colideable.collision(ship.getShipObj(), getEnemy())
+                || Colideable.collision(ship.getObj(), super.getObj())
                 && target.getParent().getLayoutX() >= ship.getX())
         {
             directionX = true;

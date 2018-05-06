@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class BatwingGreen extends Ship
+public class BatwingGreen extends UserShip
 {
 	private Rectangle hull = new Rectangle();
     private Rectangle wings = new Rectangle();
@@ -45,26 +45,29 @@ public class BatwingGreen extends Ship
         this.ammo3 = ammo3;
         this.ammo4 = ammo4;
 
-        super.addShipParts(hull);
-        super.addShipParts(wings);
-        super.addShipParts(image);
+        super.addParts(hull);
+        super.addParts(wings);
+        super.addParts(image);
 
         super.setMovement(30);
         super.setHitPoints(100);
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
-        super.setShipMovingSound(SoundTool.getAudioClip(movingSoundFile));
+        super.setMovingSound(SoundTool.getAudioClip(movingSoundFile));
+
+        super.setScreenWidth(windowWidth);
+        super.setScreenHeight(windowHeight);
     }
 	@Override
-	public void setShot(EnemyArray enemy, Score score) 
+	public void setShot(EnemyArray enemy, Score score)
 	{
         ammo1.setRoundLocation(wings.getParent().getLayoutX() + 3, wings.getParent().getLayoutY());
-        ammo1.invokeShipShot(enemy, score);
+        ammo1.invokeShot(enemy, score);
         ammo2.setRoundLocation(wings.getParent().getLayoutX() + 147, wings.getParent().getLayoutY());
-        ammo2.invokeShipShot(enemy, score);
+        ammo2.invokeShot(enemy, score);
         ammo3.setRoundLocation(wings.getParent().getLayoutX() + 50, wings.getParent().getLayoutY());
-        ammo3.invokeShipShot(enemy, score);
+        ammo3.invokeShot(enemy, score);
         ammo4.setRoundLocation(wings.getParent().getLayoutX() + 100, wings.getParent().getLayoutY());
-        ammo4.invokeShipShot(enemy, score);
+        ammo4.invokeShot(enemy, score);
 	}
 
 	@Override

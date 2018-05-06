@@ -20,17 +20,17 @@ public class Squid extends Enemy
     Ammo ammo = new FiftyCaliber();
     Circle saucer = new Circle();
 
-    private String imageFileName = "Sprite/SpaceShooter1/PNG/SpritesX2/Ships/spaceShips_006.png";
+    private String imageFileName = "Sprite/Squid.png";
     
     String deathSoundFile = "Sounds/SoundEffects/Small Futuristic Explosion.mp3";
-    public Squid(double x, double y, int index)
+    public Squid(double screenWidth, double screenHeight, double x, double y, int index)
     {
 
         saucer.setLayoutX(0);
         saucer.setLayoutY(0);
         saucer.setRadius(25);
 
-        super.setEnemy(saucer);
+        super.addParts(saucer);
 
         saucer.getParent().setLayoutX(x);
         saucer.getParent().setLayoutY(y);
@@ -38,18 +38,22 @@ public class Squid extends Enemy
         Image image = SpriteTool.getImage(imageFileName, saucer.getCenterX(), saucer.getCenterY(), 20, 20, false).getImage();
         saucer.setFill(new ImagePattern(image));
         
-        super.setTargetIndex(index);
+        super.setIndex(index);
         super.setHitPoints(40);
+
         super.setMovement(1);
 
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
+
+        super.setScreenWidth(screenWidth);
+        super.setScreenHeight(screenHeight);
     }
 
     @Override
-    public void setShot(Ship ship, Score score)
+    public void setShot(SpaceObject ship, Score score)
     {
         ammo.setRoundLocation(saucer.getParent().getLayoutX(), saucer.getParent().getLayoutY());
-        ammo.invokeEnemyShot(ship, score);
+        ammo.invokeShot(ship, score);
     }
 
     @Override
@@ -62,21 +66,17 @@ public class Squid extends Enemy
         return ammoList;
     }
 
-    boolean isDirectionX = true;
-    boolean isDirectionY = true;
-    boolean completeCircle = true;
-    double radius;
-    double initialX;
-    double initialY;
-    double radiusX;
-    double radiusY;
-    double currentX;
-    double currentY;
-    double lastX;
-    double lastY;
-    int index = 0;
-    int randomMoves;
-    boolean temp = true;
+    private boolean isDirectionX = true;
+    private boolean isDirectionY = true;
+    private boolean completeCircle = true;
+    private double radius;
+    private double initialX;
+    private double initialY;
+
+    private int index = 0;
+    private int randomMoves;
+
+
     @Override
     public void move(double screenWidth, double screenHeight, Ship ship, Score score)
     {
@@ -87,32 +87,32 @@ public class Squid extends Enemy
             {
                 if (isDirectionX == true
                         && saucer.getParent().getLayoutX() <= screenWidth
-                        && !Colideable.collision(ship.getShipObj(), getEnemy()))
+                        && !Colideable.collision(ship.getObj(), getObj()))
                 {
-                    moveDown(getMovement());
-                    moveRight(getMovement());
+                    moveDown(1);
+                    moveRight(1);
 
                 }else if (saucer.getParent().getLayoutX() >= screenWidth
-                    || Colideable.collision(ship.getShipObj(), getEnemy())
+                    || Colideable.collision(ship.getObj(), getObj())
                      && saucer.getParent().getLayoutX() <= ship.getX())
                 {
                      isDirectionX = false;
-                     moveLeft(getMovement());
-                     moveDown(getMovement());
+                     moveLeft(1);
+                     moveDown(1);
                 }
                 else if (saucer.getParent().getLayoutX() > 0
                     && isDirectionX == false
-                    && !Colideable.collision(ship.getShipObj(), getEnemy()))
+                    && !Colideable.collision(ship.getObj(), getObj()))
                 {
 
-                    moveLeft(getMovement());
-                    moveDown(getMovement());
+                    moveLeft(1);
+                    moveDown(1);
                 }else if (saucer.getParent().getLayoutX() <= 0
-                    || Colideable.collision(ship.getShipObj(), getEnemy())
+                    || Colideable.collision(ship.getObj(), getObj())
                     && saucer.getParent().getLayoutX() >= ship.getX())
                 {
                     isDirectionX = true;
-                    moveRight(getMovement());
+                    moveRight(1);
                 }
 
                 index++;
@@ -203,7 +203,8 @@ public class Squid extends Enemy
 
         if (saucer.getParent().getLayoutY() == screenHeight)
         {
-            moveUp(screenHeight + 100);
+            //super.setDefaultObjectLocation(0, super.getScreenHeight() + 100);
+            super.moveUp(screenHeight + 100);
         }
 
         if (saucer.getParent().getLayoutX() > 0 && saucer.getParent().getLayoutX() < screenWidth && saucer.getParent().getLayoutY() > 0) {
@@ -218,4 +219,5 @@ public class Squid extends Enemy
         //System.out.println("x " + saucer.getParent().getLayoutX() + " Y " +saucer.getParent().getLayoutY());
 
     }
+    
 }

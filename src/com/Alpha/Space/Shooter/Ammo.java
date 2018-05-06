@@ -15,6 +15,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+
 
 public abstract class Ammo
 {
@@ -103,7 +105,7 @@ public abstract class Ammo
      * Checks for collision and moves the ammo off the screen if a collision happens.
      * @param enemy The enemy array to test the collisions against.
      */
-    public void enemyColishionCheck(EnemyArray enemy, Score score)
+    public void ColishionCheck(EnemyArray enemy, Score score)
     {
         boolean hit = enemy.checkForDestruction(round, damage, score);
         if (hit)
@@ -113,9 +115,9 @@ public abstract class Ammo
 
         }
     }
-    public void shipColishionCheck(Ship ship, Score score)
+    public void ColishionCheck(SpaceObject spaceObject, Score score)
     {
-        boolean hit = ship.checkForShipDestruction(round, damage, score);
+        boolean hit = spaceObject.checkForDestruction(round, damage, score);
         if (hit)
         {
             explosion.animateHitExplosion(round.getLayoutX(), round.getLayoutY());
@@ -127,19 +129,23 @@ public abstract class Ammo
      * Abstact method to define the way the ammo moves when fired. This is the place to get creative.
      * @param enemy The enemy array to test the collisions against.
      */
+    public abstract void shipShoot(SpaceObject spaceObject, Score score);
     public abstract void shipShoot(EnemyArray enemy, Score score);
-    public abstract void enemyShoot(Ship ship, Score score);
+    //public abstract void enemyShoot(Ship ship, Score score);
 
     /**
      * Invokes a timeline which calls the shoot method.
      * @param enemy The enemy array to test the collisions against.
      */
-    public void invokeShipShot(EnemyArray enemy, Score score)
+    public void invokeShot(SpaceObject spaceObject, Score score)
     {
 
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(10),
-                ae ->  shipShoot(enemy, score) ));
+                ae ->  {
+                    //if(spaceObject)
+                    shipShoot(spaceObject, score);
+                } ));
 
 
         timeline.setCycleCount(70);
@@ -149,20 +155,38 @@ public abstract class Ammo
 
     }
 
-    public void invokeEnemyShot(Ship ship, Score score)
+    public void invokeShot(EnemyArray enemy, Score score)
     {
 
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(10),
-                ae ->  enemyShoot(ship, score) ));
+                ae ->  {
+                    //if(spaceObject)
+                    shipShoot(enemy, score);
+                } ));
 
 
         timeline.setCycleCount(70);
         timeline.play();
 
-        shotSound.play();
+        shotSound.play(0);
 
     }
+
+//    public void invokeEnemyShot(Ship ship, Score score)
+//    {
+//
+//        Timeline timeline = new Timeline(new KeyFrame(
+//                Duration.millis(10),
+//                ae ->  enemyShoot(ship, score) ));
+//
+//
+//        timeline.setCycleCount(70);
+//        timeline.play();
+//
+//        shotSound.play();
+//
+//    }
 
     public Group getHitExplosionSprite()
     {

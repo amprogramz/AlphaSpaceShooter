@@ -34,6 +34,14 @@ public class ShotGun extends Ammo
         ammo2.shipShoot(enemy, score);
         ammo3.shipShoot(enemy, score);
     }
+    public void shipShoot(SpaceObject enemy, Score score)
+    {
+
+        ammo.shipShoot(enemy, score);
+        ammo2.shipShoot(enemy, score);
+        ammo3.shipShoot(enemy, score);
+    }
+
 
     @Override
     public void setRoundLocation(double x, double y)
@@ -43,11 +51,7 @@ public class ShotGun extends Ammo
         ammo3.setRoundLocation(x,y);
 
     }
-    public void enemyShoot(Ship ship, Score score)
-    {
-        getRound().setLayoutY(getRound().getLayoutY() + getMovement());
-        shipColishionCheck(ship, score);
-    }
+
 
     @Override
     public Group getHitExplosionSprite()

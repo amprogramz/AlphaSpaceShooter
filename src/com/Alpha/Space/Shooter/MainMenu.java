@@ -30,7 +30,7 @@ public class MainMenu extends Application
 	final int WINDOW_WIDTH = 1000;
 	final int WINDOW_HEIGHT = 800;
 
-	Ship ship;
+	UserShip ship;
 	Background background;
 	/**
 	 * Scene for the game user will play
@@ -38,22 +38,24 @@ public class MainMenu extends Application
 	 */
 	public Scene spaceShooter(int difficulty)
 	{
-		EnemyArray enemies = new EnemyArray(difficulty * 2);
+		SpaceObject obj = new Asteroid(300, 25, 1);
+		EnemyArray enemies = new EnemyArray(WINDOW_WIDTH, WINDOW_HEIGHT, difficulty * 2);
 		Score score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
 		MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
 		
 		Group gameGroup = new Group();
 		ObservableList gameList = gameGroup.getChildren();
 		gameList.add(background.getBackground());
-		gameList.addAll(ship.getShip(WINDOW_WIDTH, WINDOW_HEIGHT));
+		gameList.addAll(ship.getObj());
 		gameList.addAll(ship.getAmmo());
 		gameList.addAll(enemies.getEnemies());
 		gameList.addAll(enemies.getAllAmmo());
 		gameList.addAll(score.getScoreLivesOut());
-		gameList.addAll((ship.getKeepPlaying(score )));
+		//gameList.addAll((ship.getKeepPlaying(score )));
+		gameList.add(obj.getObj());
 
 		Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
-		Controls controls = new Controls(scene, ship, enemies, score, WINDOW_WIDTH, WINDOW_HEIGHT);
+		Controls controls = new Controls(scene, ship, enemies, score);
 
 		soundTrack.play();
 		enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
@@ -173,6 +175,7 @@ public class MainMenu extends Application
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
 		layout.getChildren().addAll(death, returnMenu);
+
 		return new Scene(layout,1000,800);
 	}
 

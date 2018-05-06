@@ -1,3 +1,8 @@
+/**
+ * By Alec McDaugale
+ * This class is used to create an explosion from the explosion image.
+ */
+
 package com.Alpha.Space.Shooter;
 
 import javafx.animation.KeyFrame;

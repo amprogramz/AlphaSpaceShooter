@@ -19,15 +19,16 @@ public class EnemyArray
 {
     private ArrayList<Enemy> enemyArray = new ArrayList<>();
 
-    public EnemyArray(int numberOfTargets)
+    public EnemyArray(double screenWidth, double screenHeight, int numberOfTargets)
     {
         for(int index = 0; index < numberOfTargets; index++)
         {
             double temp = (25 + ((25 * index) + (100 * index)));
-            enemyArray.add(new Target(temp, 20, index));
+            enemyArray.add(new Target(screenWidth, screenHeight, temp, 20, index));
             index++;
-            enemyArray.add(new Squid(temp, 20, index));
+            enemyArray.add(new Squid(screenWidth, screenHeight, temp, 20, index));
         }
+        //enemyArray.add(new Asteroid(300, -25, numberOfTargets + 1);
     }
 
     public ArrayList<Group> getEnemies()
@@ -35,7 +36,7 @@ public class EnemyArray
         ArrayList<Group> blocksToReturn = new ArrayList<>();
         for (int index = 0; index < enemyArray.size(); index++ )
         {
-            blocksToReturn.add(enemyArray.get(index).getEnemy());
+            blocksToReturn.add(enemyArray.get(index).getObj());
         }
         return blocksToReturn;
     }
@@ -46,12 +47,12 @@ public class EnemyArray
 
     public boolean checkForDestruction(Group ammo, int damage, Score score)
     {
-        for(Enemy block : enemyArray)
+        for(SpaceObject enemy : enemyArray)
         {
-            if(Colideable.collision(ammo, enemyArray.get(block.getIndex()).getEnemy()))
+            if(Colideable.collision(ammo, enemyArray.get(enemy.getIndex()).getObj()))
             {
-                System.out.println("Block Hit " + block.getIndex());
-                enemyArray.get(block.getIndex()).destruct(damage, score);
+                System.out.println("Block Hit " + enemy.getIndex());
+                enemyArray.get(enemy.getIndex()).Destruct(damage, score);
                 return true;
             }
         }

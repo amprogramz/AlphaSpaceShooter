@@ -121,7 +121,7 @@ public class Score
         //UIOut.add(keepPlaying);
         return UIOut;
     }
-    public void setHitPoints(int hitPoints)
+    public void setHitPoints(double hitPoints)
     {
         this.hitPoints = hitPoints;
         setHitPointOut();

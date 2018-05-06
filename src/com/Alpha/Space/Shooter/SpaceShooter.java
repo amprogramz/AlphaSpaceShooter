@@ -35,8 +35,8 @@ public class SpaceShooter extends Application
     private String background2 = "sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg";
 
     private Background background = new Background(background2, 3000, 2400);
-    private Ship ship = new BatwingGreen(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Missile(), new Missile(), new Missile());
-    private EnemyArray enemies = new EnemyArray(10);
+    private UserShip ship = new BatwingGreen(WINDOW_WIDTH, WINDOW_HEIGHT, new Missile(), new Missile(), new Missile(), new Missile());
+    private EnemyArray enemies = new EnemyArray(WINDOW_WIDTH, WINDOW_HEIGHT, 4 );
 
 
     private Score score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -53,11 +53,11 @@ public class SpaceShooter extends Application
         Group gameGroup = new Group();
         ObservableList gameList = gameGroup.getChildren();
         gameList.add(background.getBackground());
-        gameList.addAll(ship.getShip(WINDOW_WIDTH, WINDOW_HEIGHT));
+        gameList.addAll(ship.getObj());
         gameList.addAll(ship.getAmmo());
         gameList.addAll(enemies.getEnemies());
         gameList.addAll(enemies.getAllAmmo());
-        gameList.addAll((ship.getKeepPlaying(score)));
+        //gameList.addAll((ship.getKeepPlaying(score)));
        // gameList.addAll();
 
 
@@ -67,7 +67,7 @@ public class SpaceShooter extends Application
 
 
         Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
-        Controls controls = new Controls(scene, ship, enemies, score, WINDOW_WIDTH, WINDOW_HEIGHT);
+        Controls controls = new Controls(scene, ship, enemies, score);
 
 
 

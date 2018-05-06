@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * This is a ship i have defined, inherits the abstract class ship.
  */
 
-public class FreightCruizer extends Ship
+public class FreightCruizer extends UserShip
 {
 
         private Rectangle hull = new Rectangle();
@@ -54,14 +54,17 @@ public class FreightCruizer extends Ship
 
 
 
-            super.addShipParts(hull);
-            super.addShipParts(wings);
-            super.addShipParts(image);
+            super.addParts(hull);
+            super.addParts(wings);
+            super.addParts(image);
 
             super.setMovement(10);
             super.setHitPoints(100);
             super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
-            super.setShipMovingSound(SoundTool.getAudioClip(movingSoundFile));
+            super.setMovingSound(SoundTool.getAudioClip(movingSoundFile));
+
+            super.setScreenWidth(windowWidth);
+            super.setScreenHeight(windowHeight);
         }
 
         @Override
@@ -75,12 +78,12 @@ public class FreightCruizer extends Ship
             return ammoList;
         }
         @Override
-        public void setShot(EnemyArray enemy, Score score)
+        public void setShot(EnemyArray enemy , Score score)
         {
             ammo.setRoundLocation(wings.getParent().getLayoutX() + 21, wings.getParent().getLayoutY());
-            ammo.invokeShipShot(enemy, score);
+            ammo.invokeShot(enemy, score);
             ammo2.setRoundLocation(wings.getParent().getLayoutX() + 78, wings.getParent().getLayoutY());
-            ammo2.invokeShipShot(enemy, score);
+            ammo2.invokeShot(enemy, score);
         }
 
 

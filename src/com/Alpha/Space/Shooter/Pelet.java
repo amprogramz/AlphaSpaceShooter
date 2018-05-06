@@ -34,14 +34,19 @@ public class Pelet extends Ammo
         ammo.getParent().setLayoutY(ammo.getParent().getLayoutY() - getMovement());
         ammo.getParent().setLayoutX(ammo.getParent().getLayoutX() + xMovement);
 
-        enemyColishionCheck(enemy, score);
+        ColishionCheck(enemy, score);
     }
-    public void enemyShoot(Ship ship, Score score)
+
+    public void shipShoot(SpaceObject enemy, Score score)
     {
-        getRound().setLayoutY(getRound().getLayoutY() + getMovement());
-        shipColishionCheck(ship, score);
+
+        ammo.getParent().setLayoutY(ammo.getParent().getLayoutY() - getMovement());
+        ammo.getParent().setLayoutX(ammo.getParent().getLayoutX() - xMovement);
+
+        ColishionCheck(enemy, score);
     }
-    
-    
+
+
+
 
 }

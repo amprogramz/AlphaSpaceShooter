@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class StarShip extends Ship
+public class StarShip extends UserShip
 {
 	private Rectangle hull = new Rectangle();
     private Rectangle wings = new Rectangle();
@@ -39,23 +39,26 @@ public class StarShip extends Ship
         this.ammo.setRoundLocation(-200, -200);
         this.ammo2.setRoundLocation(-200, -200);
 
-        super.addShipParts(hull);
-        super.addShipParts(wings);
-        super.addShipParts(image);
+        super.addParts(hull);
+        super.addParts(wings);
+        super.addParts(image);
 
         super.setMovement(30);
         super.setHitPoints(50);
         super.setDeathSound(SoundTool.getAudioClip(deathSoundFile));
-        super.setShipMovingSound(SoundTool.getAudioClip(movingSoundFile));
+        super.setMovingSound(SoundTool.getAudioClip(movingSoundFile));
+
+        super.setScreenWidth(windowWidth);
+        super.setScreenHeight(windowHeight);
 	}
     
     @Override
-	public void setShot(EnemyArray enemy, Score score) 
+	public void setShot(EnemyArray enemy, Score score)
     {
     	 ammo.setRoundLocation(wings.getParent().getLayoutX() + 21, wings.getParent().getLayoutY());
-         ammo.invokeShipShot(enemy, score);
+         ammo.invokeShot(enemy, score);
          ammo2.setRoundLocation(wings.getParent().getLayoutX() + 78, wings.getParent().getLayoutY());
-         ammo2.invokeShipShot(enemy, score);
+         ammo2.invokeShot(enemy, score);
 		
 	}
 

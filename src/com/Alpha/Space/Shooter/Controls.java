@@ -36,7 +36,7 @@ public class Controls {
      * @param width  This is the screen width of the game.
      * @param height This is the screen height of the game.
      */
-    public Controls(Scene scene, Ship ship, EnemyArray enemy, Score score, double width, double height) {
+    public Controls(Scene scene, UserShip ship, EnemyArray enemy, Score score) {
 //        going to the keyboard controls by default.
     	//Checks inputs 50 times a second
     	//charge is to limit how fast you can shoot
@@ -44,10 +44,10 @@ public class Controls {
     	Timeline timeline = new Timeline(new KeyFrame(
     			Duration.millis(20),
     			ae -> {
-    				if(rightPress){ship.moveShipRight(width);}
-    				if(leftPress){ship.moveShipLeft();}
-    				if(upPress){ship.moveShipUp();}
-    				if(downPress){ship.moveShipDown(height);}
+    				if(rightPress){ship.moveRight();}
+    				if(leftPress){ship.moveLeft();}
+    				if(upPress){ship.moveUp();}
+    				if(downPress){ship.moveDown();}
     				if(spacePress & charge >= 20){ship.setShot(enemy, score); charge = 0;}
     				if(mousePress & charge >= 20){ship.setShot(enemy, score); charge = 0;}
     				if(vPress){enemy.startShooting(ship, score);}
@@ -57,9 +57,9 @@ public class Controls {
     	));
     	timeline.setCycleCount(Animation.INDEFINITE);
     	timeline.play();
-        keyboardControls(scene, ship, enemy, score, width, height);
+        keyboardControls(scene, ship, enemy, score);
     }
-    public void checkControlMode(Scene scene, Ship ship, EnemyArray enemy, Score score, double width, double height)
+    public void checkControlMode(Scene scene, UserShip ship, EnemyArray enemy, Score score)
     {
         keyboard = !keyboard;
         //selects mode
@@ -71,15 +71,15 @@ public class Controls {
             scene.removeEventHandler(MouseEvent.MOUSE_RELEASED, mouseReleased);
             //scene.removeEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
             scene.setCursor(Cursor.DEFAULT);
-            keyboardControls(scene, ship, enemy, score, width, height);
+            keyboardControls(scene, ship, enemy, score);
 
         }else
         {
         	//scene.removeEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
-            mouseControls(scene, ship, enemy, score, width, height);
+            mouseControls(scene, ship, enemy, score);
         }
     }
-    public void keyboardControls(Scene scene, Ship ship, EnemyArray enemy, Score score, double width, double height)
+    public void keyboardControls(Scene scene, UserShip ship, EnemyArray enemy, Score score)
     {
     	scene.setOnKeyPressed(key -> {
     		if(key.getCode() == KeyCode.UP){
@@ -125,59 +125,14 @@ public class Controls {
     			vPress = false;
     		}
     		if(key.getCode() == KeyCode.Q){
-    			checkControlMode(scene, ship, enemy, score, width, height);
+    			checkControlMode(scene, ship, enemy, score);
     			qPress = true;
     		}
     	});
-    	
-    	//Keeping all of this for now in case I broke something
-    	/*
-        keyboardControls = new EventHandler<KeyEvent>() 
-        {
-        	@Override
-        	public void handle(KeyEvent key){
-            switch (key.getCode()) {
-                case UP:
-                    if (ship.getY() > 0) {
-                        ship.moveShipUp();
 
-                    }
-                    break;
-                case DOWN:
-                    if (ship.getY() < height - ship.getHeight()) {
-                        ship.moveShipDown();
-                    }
-                    break;
-                case RIGHT:
-                    if (ship.getX() < (width - ship.getWidth())) {
-                        ship.moveShipRight();
-                    }
-                    break;
-                case LEFT:
-                    if (ship.getX() > 0) {
-                        ship.moveShipLeft();
-
-                    }
-                    break;
-                case SPACE:
-                    ship.setShot(enemy, score);
-                    break;
-                case V:
-
-                    enemy.startShooting(ship, score);
-                    break;
-                case Q:
-                    checkControlMode(scene, ship, enemy, score, width, height);
-
-                    break;
-            }}
-        };
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, keyboardControls);
-        //checkControlMode(scene, ship, enemy, width, height);
-         */
     }
 
-    public void mouseControls(Scene scene, Ship ship, EnemyArray enemy, Score score, double width, double height)
+    public void mouseControls(Scene scene, UserShip ship, EnemyArray enemy, Score score)
     {
         mouseMoved = new EventHandler<MouseEvent>(){
 

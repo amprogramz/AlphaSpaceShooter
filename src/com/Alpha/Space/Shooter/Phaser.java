@@ -3,6 +3,8 @@ package com.Alpha.Space.Shooter;
 
 import javafx.scene.image.ImageView;
 
+import java.util.ArrayList;
+
 public class Phaser extends Ammo{
 	
 	
@@ -23,15 +25,20 @@ public class Phaser extends Ammo{
 	@Override
 	public void shipShoot(EnemyArray enemy, Score score) {
         getRound().setLayoutY(getRound().getLayoutY() - getMovement());
-        enemyColishionCheck(enemy, score);
+        ColishionCheck(enemy, score);
 		
 	}
-
 	@Override
-	public void enemyShoot(Ship ship, Score score) {
+	public void shipShoot(SpaceObject enemy, Score score) {
 		getRound().setLayoutY(getRound().getLayoutY() + getMovement());
-        shipColishionCheck(ship, score);
-		
+		ColishionCheck(enemy, score);
+
 	}
+//	@Override
+//	public void enemyShoot(Ship ship, Score score) {
+//		getRound().setLayoutY(getRound().getLayoutY() + getMovement());
+//        shipColishionCheck(ship, score);
+//
+//	}
 
 }
