@@ -35,7 +35,7 @@ public abstract class Enemy extends Ship implements Moveable
             score.setScore(score.getScore() + 10);
             for (int index = 0; index < super.getObj().getChildren().size(); index++)
             {
-                super.move((int)(Math.random() * 1000), -1500);
+                super.moveShip((int)(Math.random() * 1000), -1500);
                 System.out.println("Enemy location:" + super.getObj().getParent().getLayoutX());
                 currentHitPoints = super.getHitPoints();
                 super.getDeathSound().play();

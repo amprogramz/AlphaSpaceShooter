@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class EnemyArray
 {
     private ArrayList<Enemy> enemyArray = new ArrayList<>();
+    private ArrayList<Asteroid> asteroids = new ArrayList<>();
 
     public EnemyArray(double screenWidth, double screenHeight, int numberOfTargets)
     {
@@ -28,7 +29,7 @@ public class EnemyArray
             index++;
             enemyArray.add(new Squid(screenWidth, screenHeight, temp, 20, index));
         }
-        //enemyArray.add(new Asteroid(300, -25, numberOfTargets + 1);
+        asteroids.add(new Asteroid(300, -25, 0) );
     }
 
     public ArrayList<Group> getEnemies()
@@ -38,12 +39,15 @@ public class EnemyArray
         {
             blocksToReturn.add(enemyArray.get(index).getObj());
         }
+        blocksToReturn.add(asteroids.get(0).getObj());
         return blocksToReturn;
     }
-    public ArrayList<Enemy> getBlockGrid()
-    {
-        return enemyArray;
-    }
+
+
+    //    public ArrayList<Enemy> getBlockGrid()
+//    {
+//        return enemyArray;
+//    }
 
     public boolean checkForDestruction(Group ammo, int damage, Score score)
     {
@@ -53,6 +57,11 @@ public class EnemyArray
             {
                 System.out.println("Block Hit " + enemy.getIndex());
                 enemyArray.get(enemy.getIndex()).Destruct(damage, score);
+                return true;
+            }else if(Colideable.collision(ammo, asteroids.get(0).getObj()))
+            {
+                System.out.println("Asteroid Hit ");
+                asteroids.get(0).Destruct(damage, score);
                 return true;
             }
         }
@@ -90,15 +99,16 @@ public class EnemyArray
 
 
     }
-    public void enemiesMove(double screenWidth, double screenHeight, Ship ship, Score score)
+    public void enemiesMove(double screenWidth, double screenHeight, UserShip ship, Score score)
     {
         for (int index = 0; index < enemyArray.size(); index ++)
         {
             enemyArray.get(index).move(screenWidth, screenHeight, ship, score);
         }
+        asteroids.get(0).move(screenWidth, screenHeight, ship, score);
     }
 
-    public void animateMovement(double screenWidth, double screenHeight, Ship ship, Score score)
+    public void animateMovement(double screenWidth, double screenHeight, UserShip ship, Score score)
     {
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(10),

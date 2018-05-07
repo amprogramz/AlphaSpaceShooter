@@ -17,7 +17,7 @@ public abstract class UserShip extends Ship
             score.reduceHitPoints(damage);
             System.out.println("Health: " + score.getHitPoints());
         }else if (score.getLives() > 1) {
-            super.move(super.getX() - 2000, super.getY());
+            super.moveShip(super.getX() - 2000, super.getY());
             score.setYouDiedVisible(true);
             score.decrementLives();
             System.out.println("Dead.");
@@ -42,8 +42,8 @@ public abstract class UserShip extends Ship
     }
     public Button getKeepPlaying(Score score)
     {
-        keepPlaying.setLayoutY((super.screenHeight / 2) + 100);
-        keepPlaying.setLayoutX(screenWidth / 2 - 100);
+        keepPlaying.setLayoutY((super.getScreenHeight() / 2) + 100);
+        keepPlaying.setLayoutX(super.getScreenWidth() / 2 - 100);
         keepPlaying.setOnMouseClicked(e -> {
             score.setHitPoints(super.getHitPoints());
             score.setYouDiedVisible(false);

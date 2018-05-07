@@ -40,8 +40,8 @@ public class SpaceShooter extends Application
 
 
     private Score score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
-    
-    
+
+
 
     //private Score score = new Score(5);
     private MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
@@ -57,6 +57,7 @@ public class SpaceShooter extends Application
         gameList.addAll(ship.getAmmo());
         gameList.addAll(enemies.getEnemies());
         gameList.addAll(enemies.getAllAmmo());
+
         //gameList.addAll((ship.getKeepPlaying(score)));
        // gameList.addAll();
 
@@ -78,7 +79,7 @@ public class SpaceShooter extends Application
 
 
         enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
-        
+
         background.moveForward();
 
     }

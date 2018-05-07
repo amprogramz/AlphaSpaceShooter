@@ -65,8 +65,9 @@ public class Target extends Enemy
     }
 
     private boolean directionX = true;
+
     @Override
-    public void move(double screenWidth, double screenHeight, Ship ship, Score score)
+    public void move(double screenWidth, double screenHeight, UserShip ship, Score score)
     {
         //boolean directionX;
         if (target.getParent().getLayoutX() < screenWidth

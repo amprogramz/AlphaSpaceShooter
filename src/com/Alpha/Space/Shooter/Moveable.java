@@ -9,5 +9,5 @@ public interface Moveable
 	 * @param ship Ship object to detect collisions.
 	 * @param score Score object.
 	 */
-	public void move(double screenWidth, double screenHeight, Ship ship, Score score);
+	public void move(double screenWidth, double screenHeight, UserShip ship, Score score);
 }

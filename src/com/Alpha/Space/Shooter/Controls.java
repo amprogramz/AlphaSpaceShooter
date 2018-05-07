@@ -33,8 +33,6 @@ public class Controls {
      * @param scene  The scene to add the controls to.
      * @param ship   The ship object is necessary to use its methods to move it.
      * @param enemy  Passing the enemy objects allows us to to detect collisions when we invoke shoot.
-     * @param width  This is the screen width of the game.
-     * @param height This is the screen height of the game.
      */
     public Controls(Scene scene, UserShip ship, EnemyArray enemy, Score score) {
 //        going to the keyboard controls by default.
@@ -138,7 +136,7 @@ public class Controls {
 
             @Override
             public void handle(MouseEvent mouseEvent){
-                ship.move(mouseEvent.getSceneX() - 50, mouseEvent.getSceneY() - 100);
+                ship.moveShip(mouseEvent.getSceneX() - 50, mouseEvent.getSceneY() - 100);
             }
         };
 
@@ -146,7 +144,7 @@ public class Controls {
 
             @Override
             public void handle(MouseEvent mouseEvent){
-                ship.move(mouseEvent.getSceneX() - 50, mouseEvent.getSceneY() - 100);
+                ship.moveShip(mouseEvent.getSceneX() - 50, mouseEvent.getSceneY() - 100);
             }
         };
 

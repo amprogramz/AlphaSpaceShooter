@@ -1,11 +1,15 @@
 package com.Alpha.Space.Shooter;
 
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 public class Asteroid extends SpaceObject implements Moveable
 {
-    Circle circle;
-    int index;
+    private Circle circle;
+    private int index;
+    private String imageFileName = "Sprite/Moon.png";
+
 
     public Asteroid(double x, double y, int index)
     {
@@ -13,9 +17,13 @@ public class Asteroid extends SpaceObject implements Moveable
         circle = new Circle();
         circle.setCenterX(0);
         circle.setCenterY(0);
-        circle.setRadius(75);
+        circle.setRadius(getHitPoints());
+
+        Image image = SpriteTool.getImage(imageFileName, circle.getCenterX(), circle.getCenterY(), 20, 20, false).getImage();
+        circle.setFill(new ImagePattern(image));
 
         super.addParts(circle);
+        super.setMovement(0.25);
 
         super.setDefaultObjectLocation(x, y);
     }
@@ -36,9 +44,9 @@ public class Asteroid extends SpaceObject implements Moveable
 
 
     @Override
-    public void move(double screenWidth, double screenHeight, Ship ship, Score score)
+    public void move(double screenWidth, double screenHeight, UserShip ship, Score score)
     {
-        moveDown(screenHeight);
+        moveDown(super.getMovement());
     }
 
 }

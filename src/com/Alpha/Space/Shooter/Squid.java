@@ -78,7 +78,7 @@ public class Squid extends Enemy
 
 
     @Override
-    public void move(double screenWidth, double screenHeight, Ship ship, Score score)
+    public void move(double screenWidth, double screenHeight, UserShip ship, Score score)
     {
 
         if (completeCircle)

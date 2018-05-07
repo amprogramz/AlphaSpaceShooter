@@ -9,11 +9,11 @@ public abstract class SpaceObject
 {
     private double movement;
 
-    double screenWidth;
-    double screenHeight;
+    private double screenWidth;
+    private double screenHeight;
 
     private double hitPoints;
-    int index;
+    private int index;
     public int getIndex()
     {
         return index;
@@ -64,7 +64,7 @@ public abstract class SpaceObject
     {
         this.hitSound = shipHitSound;
     }
-    public void setMovement(int movement)
+    public void setMovement(double movement)
     {
         this.movement = movement;
     }
@@ -120,7 +120,7 @@ public abstract class SpaceObject
      * @param x Value of X to move to.
      * @param y Value of Y to move to.
      */
-    public void move(double x,double y){
+    public void moveShip(double x,double y){
         spaceObject.setAutoSizeChildren(true);
         spaceObject.setLayoutX(x);
         spaceObject.setLayoutY(y);
