@@ -34,7 +34,7 @@ public abstract class UserShip extends Ship
             score.decrementLives();
             System.out.println("Dead.");
             super.getDeathSound().play();
-            buttonKeepPlaying();
+            //buttonKeepPlaying();
 
         }else if(score.getLives() == 1)
         {
@@ -51,28 +51,5 @@ public abstract class UserShip extends Ship
      */
     public abstract void setShot(EnemyArray enemy, Score score);
 
-    //This button is experimental, im going to move this to the game object.
-    Button keepPlaying = StylingTool.buttonCreator("Continue");
-    private boolean respawn = false;
-    public void buttonKeepPlaying()
-    {
-        keepPlaying.setVisible(true);
-
-    }
-    public Button getKeepPlaying(Score score)
-    {
-        keepPlaying.setLayoutY((super.getScreenHeight() / 2) + 100);
-        keepPlaying.setLayoutX(super.getScreenWidth() / 2 - 100);
-        keepPlaying.setOnMouseClicked(e -> {
-            score.setHitPoints(super.getHitPoints());
-            score.setYouDiedVisible(false);
-            keepPlaying.setVisible(false);
-            super.getObj().setLayoutX(super.getObj().getLayoutX() + 2000);
-
-        });
-
-        keepPlaying.setVisible(false);
-        return keepPlaying;
-    }
 
 }

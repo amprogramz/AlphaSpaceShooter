@@ -1,6 +1,9 @@
 package com.Alpha.Space.Shooter;
 
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +20,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * @author Henry Gray and Alec McDaugale 
@@ -27,46 +31,123 @@ public class MainMenu extends Application
 {
 	Stage menu;
 
-	final int WINDOW_WIDTH = 1000;
-	final int WINDOW_HEIGHT = 800;
+    final int WINDOW_WIDTH = 1000;
+    final int WINDOW_HEIGHT = 800;
 
-	UserShip ship;
-	Background background;
-	MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
+    UserShip ship;
+    String shipFilepathArray[] = {
+            "Sprite/Spaceship_tut/Spaceship_tut.png",
+            "Sprite/batWingShip/batwingGreen.png",
+            "Sprite/Titan.png",
+            "Sprite/cartoonshipPurple.png"
+    };
+    Background background;
+    String backgroundFileArray[] = {
+            "Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg",
+            "Sprite/Space-Background-2.jpg",
+            "Sprite/Space-Background-3.jpg",
+            "Sprite/Space-Background-4.jpg"
+    };
+    MediaPlayer soundTrack;
+    String soundTrackFileArray[] = {
+            "Sounds/Songs/Tentacle Wedding.mp3",
+            "Sounds/Songs/424976__erokia__tilted-synth-1-140bpm.wav",
+            "Sounds/Songs/Upbeat Melody.mp3"
+    };
+    EnemyArray enemies;
+    Score score;
+    Button keepPlaying = getKeepPlaying();
+    Button returnToMain = getReturnToMain();
 
-	/**
-	 * Scene for the game user will play
-	 * @return created scene
-	 */
-	public Scene spaceShooter(int difficulty)
-	{
-		//SpaceObject obj = new Asteroid(300, 25, 1);
-		EnemyArray enemies = new EnemyArray(WINDOW_WIDTH, WINDOW_HEIGHT, difficulty * 2);
-		Score score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
+    /**
+     * Scene for the game user will play
+     * @return created scene
+     */
+    public Scene spaceShooter(int difficulty)
+    {
+        this.ship = ship;
+        this.background = background;
+        enemies = new EnemyArray(WINDOW_WIDTH, WINDOW_HEIGHT, difficulty * 2);
+        score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
+        soundTrack = SoundTool.getMediaPlayer(soundTrackFileArray[(int)(Math.random()* 3)]);
 
-		Group gameGroup = new Group();
-		ObservableList gameList = gameGroup.getChildren();
-		gameList.add(background.getBackground());
-		gameList.addAll(ship.getObj());
-		gameList.addAll(ship.getAmmo());
-		gameList.addAll(enemies.getEnemies());
-		gameList.addAll(enemies.getAllAmmo());
-		gameList.addAll(score.getScoreLivesOut());
-		gameList.addAll((ship.getKeepPlaying(score )));
-		//gameList.add(obj.getObj());
+        Group gameGroup = new Group();
+        ObservableList gameList = gameGroup.getChildren();
+        gameList.add(background.getBackground());
+        gameList.addAll(ship.getObj());
+        gameList.addAll(ship.getAmmo());
+        gameList.addAll(enemies.getEnemies());
+        gameList.addAll(enemies.getAllAmmo());
+        gameList.addAll(score.getScoreLivesOut());
+        gameList.addAll(keepPlaying, returnToMain);
 
-		Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
-		Controls controls = new Controls(scene, ship, enemies, score);
 
-		soundTrack.play();
-		enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
+        Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
+        Controls controls = new Controls(scene, ship, enemies, score);
 
-		background.moveForward();
+        soundTrack.play();
+        enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
+        runGameManager();
 
-		return scene;
-	}
+        background.moveForward();
 
-	/**
+        return scene;
+    }
+    //This button is experimental
+
+    public void runGameManager()
+    {
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(20),
+                ae ->  {
+                    manage();
+                } ));
+
+
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
+
+    public void manage()
+    {
+        if (score.getHitPoints() <= 0 && score.getLives() > 1) {
+
+            keepPlaying.setVisible(true);
+        }else if(score.getLives() ==1){
+            returnToMain.setVisible(true);
+        }
+    }
+    public Button getKeepPlaying()
+    {
+        keepPlaying = StylingTool.buttonCreator("CONTINUE");
+        keepPlaying.setLayoutY(( WINDOW_HEIGHT/ 2) + 100);
+        keepPlaying.setLayoutX( WINDOW_WIDTH/ 2 - 100);
+        keepPlaying.setOnMouseClicked(e -> {
+            score.setHitPoints(ship.getHitPoints());
+            score.setYouDiedVisible(false);
+            keepPlaying.setVisible(false);
+            ship.setDefault();
+
+        });
+
+        keepPlaying.setVisible(false);
+        return keepPlaying;
+    }
+    public Button getReturnToMain()
+    {
+        returnToMain = StylingTool.buttonCreator("RETURN TO MENUE");
+        returnToMain.setLayoutY(( WINDOW_HEIGHT/ 2) + 100);
+        returnToMain.setLayoutX( WINDOW_WIDTH/ 2 - 100);
+        returnToMain.setOnMouseClicked(e -> {
+            menu.setScene(menu());
+        });
+
+        returnToMain.setVisible(false);
+        return returnToMain;
+    }
+
+
+    /**
 	 * Scene for the main menu. allows user to switch to other scenes
 	 * @return created scene
 	 */
