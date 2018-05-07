@@ -1,6 +1,10 @@
 package com.Alpha.Space.Shooter;
 
-//This is just the basic idea we discussed. we could also add a canvas for particle effects.
+/**
+ * David McEwen
+ * A class to create a movable background to give the illusion that the ship is moving.
+ */
+
 import javafx.animation.Timeline;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -19,6 +23,12 @@ public class Background
     double BGwidth;
     double BGheight=400;
 
+    /**
+     * Default constructor to create background.
+     * @param filePath A string with the relevant filepath to the image.
+     * @param width The width to display the image.
+     * @param height The height to display the image.
+     */
     public Background(String filePath, double width, double height)
     {
         background = SpriteTool.setImage(filePath);
@@ -30,11 +40,18 @@ public class Background
         moveableBackgroundGC.drawImage(background, BGwidth, BGheight-2000, 3000, 2400);
     }
 
+    /**
+     * Get the background canvas.
+     * @return the background canvas.
+     */
     public Canvas getBackground()
     {
         return moveableBackground;
     }
 
+    /**
+     * Animation which calls the method move.
+     */
     public void moveForward()
     {
     	//repaint frame 50 times a second
@@ -44,6 +61,10 @@ public class Background
     	timeline.setCycleCount(Animation.INDEFINITE);
     	timeline.play();
     }
+
+    /**
+     * Moves the background forward.
+     */
     public void move(){
     	//Start from bottom left of image
     	if(BGheight <= 2200){
@@ -54,7 +75,7 @@ public class Background
     	
     	//when it reaches top, reset
     	if (BGheight >= 2400){
-    		BGheight = -400;
+    		BGheight = 0;
     		BGwidth -=1000;
     	}
     	//when it reaches right edge, reset

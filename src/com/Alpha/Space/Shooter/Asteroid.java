@@ -1,4 +1,8 @@
 package com.Alpha.Space.Shooter;
+/**
+ * Alec McDaugale
+ * An asteroid object that shrinks as it takes damage.
+ */
 
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
@@ -29,7 +33,7 @@ public class Asteroid extends SpaceObject implements Moveable
     }
 
     @Override
-    public void Destruct(int damage, Score score)
+    public void destruct(int damage, Score score)
     {
         if (circle.getRadius() > 0)
         {

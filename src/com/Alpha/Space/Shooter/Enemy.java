@@ -15,8 +15,7 @@ import java.util.ArrayList;
  */
 public abstract class Enemy extends Ship implements Moveable
 {
-   private int enemyIndex;
-    private double currentHitPoints;
+
 
     /**
      * Method to calculate destruction of the enemy object.
@@ -24,11 +23,11 @@ public abstract class Enemy extends Ship implements Moveable
      * @param score The score object to add points when destroyed.
      */
     @Override
-	public void Destruct(int damage, Score score)
+	public void destruct(int damage, Score score)
     {
-        if(this.currentHitPoints > damage)
+        if(super.getCurrentHitPoints() > damage)
         {
-            currentHitPoints = currentHitPoints - damage;
+            deductCurrentHitPoints(damage);
             //add sound here
         }else
         {
@@ -37,11 +36,17 @@ public abstract class Enemy extends Ship implements Moveable
             {
                 super.moveShip((int)(Math.random() * 1000), -1500);
                 System.out.println("Enemy location:" + super.getObj().getParent().getLayoutX());
-                currentHitPoints = super.getHitPoints();
+                resetCurrentHitPoints();
                 super.getDeathSound().play();
             }
         }
     }
+
+    /**
+     * Abstact method to set the shot for the enemy.
+     * @param enemy enemy object to test collisions against.
+     * @param score the score object to track points.
+     */
     public abstract void setShot(SpaceObject enemy, Score score);
 
 }

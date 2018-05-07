@@ -1,6 +1,7 @@
 package com.Alpha.Space.Shooter;
 /**
  * Author: Alec McDaugale
+ * Sprites: quinn
  * This is a class to define a flying saucer which extends Enemy.
  */
 

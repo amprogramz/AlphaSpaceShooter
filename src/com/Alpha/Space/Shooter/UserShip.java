@@ -1,16 +1,28 @@
 package com.Alpha.Space.Shooter;
-
+/**
+ * Alec McDaugale
+ * This is a base class to inherit user ships from.
+ */
 import javafx.scene.control.Button;
 
-import java.util.ArrayList;
 
 public abstract class UserShip extends Ship
 {
+    /**
+     * This sets the ship by default to the center bottom 1/4 of the screen.
+     */
     public void setDefault()
     {
         super.setDefaultObjectLocation(super.getScreenWidth() / 2 , (super.getScreenHeight() / 4) * 3 );
     }
-    public void Destruct(int damage, Score score)
+
+    /**
+     * Sets action for when the ship is hit
+     * @param damage Damage inflicted on the ship.
+     * @param score Score object.
+     */
+    @Override
+    public void destruct(int damage, Score score)
     {
         if(score.getHitPoints() > 0)
         {
@@ -31,8 +43,15 @@ public abstract class UserShip extends Ship
             score.setGameOverVisible(true);
         }
     }
+
+    /**
+     * Abstract method to set the shot location on the ship.
+     * @param enemy EnemyArray object.
+     * @param score Score object.
+     */
     public abstract void setShot(EnemyArray enemy, Score score);
 
+    //This button is experimental, im going to move this to the game object.
     Button keepPlaying = StylingTool.buttonCreator("Continue");
     private boolean respawn = false;
     public void buttonKeepPlaying()

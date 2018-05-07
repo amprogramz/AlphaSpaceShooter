@@ -56,12 +56,12 @@ public class EnemyArray
             if(Colideable.collision(ammo, enemyArray.get(enemy.getIndex()).getObj()))
             {
                 System.out.println("Block Hit " + enemy.getIndex());
-                enemyArray.get(enemy.getIndex()).Destruct(damage, score);
+                enemyArray.get(enemy.getIndex()).destruct(damage, score);
                 return true;
             }else if(Colideable.collision(ammo, asteroids.get(0).getObj()))
             {
                 System.out.println("Asteroid Hit ");
-                asteroids.get(0).Destruct(damage, score);
+                asteroids.get(0).destruct(damage, score);
                 return true;
             }
         }

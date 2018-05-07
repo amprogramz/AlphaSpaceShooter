@@ -1,5 +1,8 @@
 package com.Alpha.Space.Shooter;
 
+/**
+ * quinn
+ */
 public interface Moveable
 {
 	/**

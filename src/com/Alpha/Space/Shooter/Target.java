@@ -12,7 +12,8 @@ import java.lang.Math;
 import java.util.ArrayList;
 
 /**
- * Author Alec McDaugle
+ * Author: Alec McDaugle
+ * Sprites: quinn
  * This is a child class of Enemy. It is now a borg cube like ship.
  */
 public class Target extends Enemy

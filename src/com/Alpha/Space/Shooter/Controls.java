@@ -1,6 +1,6 @@
 package com.Alpha.Space.Shooter;
 /**
- * Author Alec McDaugale
+ * Author Alec McDaugale & David McEwen
  * This is a class to define the controls in the game
  */
 
