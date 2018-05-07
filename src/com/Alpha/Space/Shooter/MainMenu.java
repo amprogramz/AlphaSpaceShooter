@@ -32,17 +32,18 @@ public class MainMenu extends Application
 
 	UserShip ship;
 	Background background;
+	MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
+
 	/**
 	 * Scene for the game user will play
 	 * @return created scene
 	 */
 	public Scene spaceShooter(int difficulty)
 	{
-		SpaceObject obj = new Asteroid(300, 25, 1);
+		//SpaceObject obj = new Asteroid(300, 25, 1);
 		EnemyArray enemies = new EnemyArray(WINDOW_WIDTH, WINDOW_HEIGHT, difficulty * 2);
 		Score score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
-		MediaPlayer soundTrack = SoundTool.getMediaPlayer("Sounds/Songs/Tentacle Wedding.mp3");
-		
+
 		Group gameGroup = new Group();
 		ObservableList gameList = gameGroup.getChildren();
 		gameList.add(background.getBackground());
@@ -51,8 +52,8 @@ public class MainMenu extends Application
 		gameList.addAll(enemies.getEnemies());
 		gameList.addAll(enemies.getAllAmmo());
 		gameList.addAll(score.getScoreLivesOut());
-		//gameList.addAll((ship.getKeepPlaying(score )));
-		gameList.add(obj.getObj());
+		gameList.addAll((ship.getKeepPlaying(score )));
+		//gameList.add(obj.getObj());
 
 		Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
 		Controls controls = new Controls(scene, ship, enemies, score);

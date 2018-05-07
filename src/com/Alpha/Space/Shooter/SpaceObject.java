@@ -155,9 +155,14 @@ public abstract class SpaceObject
     {
         currentHitPoints = currentHitPoints - damage;
     }
+
+    /**
+     * Get the current hit points.
+     * @return double current hit points.
+     */
     public double getCurrentHitPoints()
     {
-        return getCurrentHitPoints();
+        return currentHitPoints;
     }
 
     /**
