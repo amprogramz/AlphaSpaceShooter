@@ -34,28 +34,13 @@ public class MainMenu extends Application
     final int WINDOW_WIDTH = 1000;
     final int WINDOW_HEIGHT = 800;
 
-//    UserShip ship;
-//    String shipFilepathArray[] = {
-//            "Sprite/Spaceship_tut/Spaceship_tut.png",
-//            "Sprite/batWingShip/batwingGreen.png",
-//            "Sprite/Titan.png",
-//            "Sprite/cartoonshipPurple.png"
-//    };
-//    Background background;
-//    String backgroundFileArray[] = {
-//            "Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg",
-//            "Sprite/Space-Background-2.jpg",
-//            "Sprite/Space-Background-3.jpg",
-//            "Sprite/Space-Background-4.jpg"
-//    };
+
     MediaPlayer soundTrack;
     String soundTrackFileArray[] = {
             "Sounds/Songs/Tentacle Wedding.mp3",
             "Sounds/Songs/424976__erokia__tilted-synth-1-140bpm.wav",
             "Sounds/Songs/Upbeat Melody.mp3"
     };
-//    EnemyArray enemies;
-//    Score score;
 
     int dificulty;
     int backgroundSelection;
@@ -88,8 +73,13 @@ public class MainMenu extends Application
 
         return gameObject.spaceShooter(keepPlaying, returnToMain);
     }
-    //This button is experimental
 
+    /**
+     * The manager is a timeline which calls the method manage.
+     * @param score the score object.
+     * @param keepPlaying button keep playing.
+     * @param returnToMain button return to main.
+     */
     public void runGameManager(Score score, Button keepPlaying, Button returnToMain)
     {
         Timeline timeline = new Timeline(new KeyFrame(
@@ -103,15 +93,28 @@ public class MainMenu extends Application
         timeline.play();
     }
 
+    /**
+     * Manages when the buttons keep playing and return to main appear.
+     * @param score score object.
+     * @param keepPlaying keep playing button.
+     * @param returnToMain return to main button.
+     */
     public void manage(Score score, Button keepPlaying, Button returnToMain)
     {
-        if (score.getHitPoints() <= 0 && score.getLives() > 1) {
+        if (score.getHitPoints() <= 0 && score.getLives() >= 1) {
 
             keepPlaying.setVisible(true);
-        }else if(score.getLives() ==1){
+        }else if(score.getLives() == 0){
             returnToMain.setVisible(true);
         }
     }
+
+    /**
+     * returns a button and actions to define the keep playing button.
+     * @param score the score object.
+     * @param ship the ship object.
+     * @return returns a button.
+     */
     public Button getKeepPlaying(Score score, UserShip ship)
     {
         Button keepPlaying = StylingTool.buttonCreator("CONTINUE");
@@ -128,6 +131,11 @@ public class MainMenu extends Application
         keepPlaying.setVisible(false);
         return keepPlaying;
     }
+
+    /**
+     * Method to get the return to main menue button with action.
+     * @return returnToMain button.
+     */
     public Button getReturnToMain()
     {
         Button returnToMain = StylingTool.buttonCreator("RETURN TO MENUE");
@@ -143,7 +151,7 @@ public class MainMenu extends Application
 
 
     /**
-	 * Scene for the main menu. allows user to switch to other scenes
+	 * The main menu. Allows user to switch to other scenes
 	 * @return created scene
 	 */
 	public Scene menu()
@@ -171,7 +179,10 @@ public class MainMenu extends Application
 		
 	}
 
-	
+    /**
+     * A scene that allows you to adjust the settings.
+     * @return returns the settings Scene.
+     */
 	public Scene settings()
 	{
 		Text options = StylingTool.textCreator("MOUSE OR KEYBOARD");
@@ -245,7 +256,8 @@ public class MainMenu extends Application
 
 
 	/**
-	 * Scene that allows user to select their ship before gameplay
+	 * Scene that allows user to select their ship before game play. sets the shipSelection int to pass to the game
+     * object.
 	 * @return created scene
 	 */
 	public Scene hangar()
@@ -312,7 +324,11 @@ public class MainMenu extends Application
 		return new Scene(layout,1000,800);
 	}
 
-
+    /**
+     * Allows the user to select the ammo for their ship. This method sets the value to the int ammoSelection1 and
+     * ammoSelection2 to pass to the game object.
+     * @return The selectAmmo scene.
+     */
 	public Scene selectAmmo()
 	{
 		Text selectAmmo = StylingTool.textCreator("SELECT AMMO");
@@ -344,9 +360,9 @@ public class MainMenu extends Application
 
 	}
 	/**
-	 * method to select ammo type
+	 * Method to select ammo type. Converts a string to an int value which gets passed to the gameObject.
 	 * @param ammoChoices index to select different ammo types
-	 * @return ammo selected 
+	 * @return An int value which represents the ammo selected
 	 */
 	public int ammoSelection(String ammoChoices)
 	{

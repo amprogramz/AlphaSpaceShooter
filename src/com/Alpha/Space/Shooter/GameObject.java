@@ -1,4 +1,8 @@
 package com.Alpha.Space.Shooter;
+/**
+ * @author Alec McDaugale
+ * This class creates a game scene which can be passed back to the MainMenue.
+ */
 
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
@@ -28,6 +32,14 @@ public class GameObject
     EnemyArray enemies;
     Score score;
 
+    /**
+     * Default constructor. Defines all of the objects to be added to the game.
+     * @param dificulty int which represents the difficulty.
+     * @param backgroundSelection int which represents the background to set.
+     * @param shipSelection int which represents the ship to be selected.
+     * @param ammoSelection1 int which represents the first ammo to be selected.
+     * @param ammoSelection2 int which represents the second ammo to be selected.
+     */
     public GameObject(int dificulty,
                       int backgroundSelection,
                       int shipSelection,
@@ -71,7 +83,12 @@ public class GameObject
         return ammo[selection];
     }
 
-
+    /**
+     * Creates the game scene.
+     * @param keepPlaying Pass the keepPlaying button from mainMenue.
+     * @param returnToMain Pass the returnToMain button from mainMenue.
+     * @return Returns the game scene.
+     */
 
     public Scene spaceShooter(Button keepPlaying, Button returnToMain)
     {
@@ -94,10 +111,19 @@ public class GameObject
         return scene;
     }
 
+    /**
+     * Get the score object.
+     * @return score object
+     */
     public Score getScore()
     {
         return score;
     }
+
+    /**
+     * Get the UserShip oject.
+     * @return UserShip object.
+     */
     public UserShip getShip()
     {
         return ship;
