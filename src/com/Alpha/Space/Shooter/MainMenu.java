@@ -34,73 +34,68 @@ public class MainMenu extends Application
     final int WINDOW_WIDTH = 1000;
     final int WINDOW_HEIGHT = 800;
 
-    UserShip ship;
-    String shipFilepathArray[] = {
-            "Sprite/Spaceship_tut/Spaceship_tut.png",
-            "Sprite/batWingShip/batwingGreen.png",
-            "Sprite/Titan.png",
-            "Sprite/cartoonshipPurple.png"
-    };
-    Background background;
-    String backgroundFileArray[] = {
-            "Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg",
-            "Sprite/Space-Background-2.jpg",
-            "Sprite/Space-Background-3.jpg",
-            "Sprite/Space-Background-4.jpg"
-    };
+//    UserShip ship;
+//    String shipFilepathArray[] = {
+//            "Sprite/Spaceship_tut/Spaceship_tut.png",
+//            "Sprite/batWingShip/batwingGreen.png",
+//            "Sprite/Titan.png",
+//            "Sprite/cartoonshipPurple.png"
+//    };
+//    Background background;
+//    String backgroundFileArray[] = {
+//            "Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg",
+//            "Sprite/Space-Background-2.jpg",
+//            "Sprite/Space-Background-3.jpg",
+//            "Sprite/Space-Background-4.jpg"
+//    };
     MediaPlayer soundTrack;
     String soundTrackFileArray[] = {
             "Sounds/Songs/Tentacle Wedding.mp3",
             "Sounds/Songs/424976__erokia__tilted-synth-1-140bpm.wav",
             "Sounds/Songs/Upbeat Melody.mp3"
     };
-    EnemyArray enemies;
-    Score score;
-    Button keepPlaying = getKeepPlaying();
-    Button returnToMain = getReturnToMain();
+//    EnemyArray enemies;
+//    Score score;
+
+    int dificulty;
+    int backgroundSelection;
+    int shipSelection;
+    int ammoSelection1;
+    int ammoSelection2;
+
 
     /**
      * Scene for the game user will play
      * @return created scene
      */
-    public Scene spaceShooter(int difficulty)
+    public Scene spaceShooter()
     {
-        this.ship = ship;
-        this.background = background;
-        enemies = new EnemyArray(WINDOW_WIDTH, WINDOW_HEIGHT, difficulty * 2);
-        score = new Score(5, ship.getHitPoints(), WINDOW_WIDTH, WINDOW_HEIGHT);
+        GameObject gameObject = new GameObject(dificulty, backgroundSelection, shipSelection, ammoSelection1, ammoSelection2);
+        Button keepPlaying;
+        Button returnToMain;
+        keepPlaying = getKeepPlaying(gameObject.getScore(), gameObject.getShip());
+        returnToMain = getReturnToMain();
+        gameObject.spaceShooter(keepPlaying, returnToMain);
+
+
         soundTrack = SoundTool.getMediaPlayer(soundTrackFileArray[(int)(Math.random()* 3)]);
 
-        Group gameGroup = new Group();
-        ObservableList gameList = gameGroup.getChildren();
-        gameList.add(background.getBackground());
-        gameList.addAll(ship.getObj());
-        gameList.addAll(ship.getAmmo());
-        gameList.addAll(enemies.getEnemies());
-        gameList.addAll(enemies.getAllAmmo());
-        gameList.addAll(score.getScoreLivesOut());
-        gameList.addAll(keepPlaying, returnToMain);
 
-
-        Scene scene = new Scene(gameGroup, WINDOW_WIDTH, WINDOW_HEIGHT);
-        Controls controls = new Controls(scene, ship, enemies, score);
 
         soundTrack.play();
-        enemies.animateMovement(WINDOW_WIDTH, WINDOW_HEIGHT, ship, score);
-        runGameManager();
+        runGameManager(gameObject.getScore(), keepPlaying, returnToMain);
 
-        background.moveForward();
 
-        return scene;
+        return gameObject.spaceShooter(keepPlaying, returnToMain);
     }
     //This button is experimental
 
-    public void runGameManager()
+    public void runGameManager(Score score, Button keepPlaying, Button returnToMain)
     {
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.millis(20),
                 ae ->  {
-                    manage();
+                    manage(score, keepPlaying, returnToMain);
                 } ));
 
 
@@ -108,7 +103,7 @@ public class MainMenu extends Application
         timeline.play();
     }
 
-    public void manage()
+    public void manage(Score score, Button keepPlaying, Button returnToMain)
     {
         if (score.getHitPoints() <= 0 && score.getLives() > 1) {
 
@@ -117,9 +112,9 @@ public class MainMenu extends Application
             returnToMain.setVisible(true);
         }
     }
-    public Button getKeepPlaying()
+    public Button getKeepPlaying(Score score, UserShip ship)
     {
-        keepPlaying = StylingTool.buttonCreator("CONTINUE");
+        Button keepPlaying = StylingTool.buttonCreator("CONTINUE");
         keepPlaying.setLayoutY(( WINDOW_HEIGHT/ 2) + 100);
         keepPlaying.setLayoutX( WINDOW_WIDTH/ 2 - 100);
         keepPlaying.setOnMouseClicked(e -> {
@@ -135,7 +130,7 @@ public class MainMenu extends Application
     }
     public Button getReturnToMain()
     {
-        returnToMain = StylingTool.buttonCreator("RETURN TO MENUE");
+        Button returnToMain = StylingTool.buttonCreator("RETURN TO MENUE");
         returnToMain.setLayoutY(( WINDOW_HEIGHT/ 2) + 100);
         returnToMain.setLayoutX( WINDOW_WIDTH/ 2 - 100);
         returnToMain.setOnMouseClicked(e -> {
@@ -207,26 +202,30 @@ public class MainMenu extends Application
 
 		Button ship1 = StylingTool.imageButtonCreator("EASY", "Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 150);
 		ship1.setOnAction(e -> {
-			background = new Background("Sprite/Gods-and-Idols-2012-04-11-21-40-17-86.jpg", 3000, 2400);
-			menu.setScene(hangar(4));
+			backgroundSelection = 0;
+			dificulty = 4;
+			menu.setScene(hangar());
 		});
 
 		Button ship2 = StylingTool.imageButtonCreator("MEDIUM", "Sprite/Space-Background-2.jpg", 150);
 		ship2.setOnAction(e -> {
-			background = new Background("Sprite/Space-Background-2.jpg", 3000, 2400);
-			menu.setScene(hangar(5));
+			backgroundSelection = 1;
+			dificulty = 5;
+            menu.setScene(hangar());
 		});
 
 		Button ship3 = StylingTool.imageButtonCreator("HARD", "Sprite/Space-Background-3.jpg", 150);
 		ship3.setOnAction(e -> {
-			background = new Background("Sprite/Space-Background-3.jpg", 3000, 2400);
-			menu.setScene(hangar(7));
+			backgroundSelection = 2;
+			dificulty = 7;
+            menu.setScene(hangar());
 		});
 
 		Button ship4 = StylingTool.imageButtonCreator("BEZERK", "Sprite/Space-Background-4.jpg", 150);
 		ship4.setOnAction(e -> {
-			background = new Background("Sprite/Space-Background-4.jpg", 3000, 2400);
-			menu.setScene(hangar(16));
+			backgroundSelection = 3;
+            dificulty = 16;
+            menu.setScene(hangar());
 		});
 
 		Button back = StylingTool.buttonCreator("BACK");
@@ -243,43 +242,39 @@ public class MainMenu extends Application
 
 		return new Scene(layout,1000,800);
 	}
-	/**
-	 * Scene that is displayed when player dies in game and allows the user to return to the menu
-	 * @return created scene
-	 */
-	public Scene playerDeath()
-	{
-		Text death = StylingTool.textCreator("YOU HAVE DIED");
-		death.setFill(Color.RED);
-		VBox layout = new VBox(10);
-		Button returnMenu = StylingTool.buttonCreator("MAIN MENU");
-		returnMenu.setOnAction(e -> menu.setScene(menu()));
-		layout.setAlignment(Pos.CENTER);
-		layout.setStyle("-fx-background-color: #000000");
-		layout.getChildren().addAll(death, returnMenu);
 
-		return new Scene(layout,1000,800);
-	}
 
 	/**
 	 * Scene that allows user to select their ship before gameplay
 	 * @return created scene
 	 */
-	public Scene hangar(int difficulty)
+	public Scene hangar()
 	{
 		Text select = StylingTool.textCreator("SELECT YOUR SHIP");
 
 		Button ship1 = StylingTool.imageButtonCreator("Sprite/Spaceship_tut/Spaceship_tut.png",150);
-		ship1.setOnAction(e -> menu.setScene(selectAmmo(1,difficulty)));
+		ship1.setOnAction(e -> {
+		    shipSelection = 0;
+		    menu.setScene(selectAmmo());
+        });
 
 		Button ship2 = StylingTool.imageButtonCreator("Sprite/batWingShip/batwingGreen.png", 150);
-		ship2.setOnAction(e -> menu.setScene(selectAmmo(2,difficulty)));
+		ship2.setOnAction(e -> {
+		    shipSelection = 1;
+		    menu.setScene(selectAmmo());
+        });
 
 		Button ship3 = StylingTool.imageButtonCreator("Sprite/Titan.png", 150);
-		ship3.setOnAction(e -> menu.setScene(selectAmmo(3,difficulty)));
+		ship3.setOnAction(e -> {
+		    shipSelection = 2;
+		    menu.setScene(selectAmmo());
+        });
 
 		Button ship4 = StylingTool.imageButtonCreator("Sprite/cartoonshipPurple.png", 150);
-		ship4.setOnAction(e -> menu.setScene(selectAmmo(4,difficulty)));
+		ship4.setOnAction(e -> {
+		    shipSelection = 3;
+		    menu.setScene(selectAmmo());
+        });
 
 		Button back = StylingTool.buttonCreator("BACK");
 		back.setOnAction(e -> menu.setScene(levelSelect() ));
@@ -317,12 +312,8 @@ public class MainMenu extends Application
 		return new Scene(layout,1000,800);
 	}
 
-	/**
-	 * Scene that allows user to add different ammo to their ship
-	 * @param shipChoice selects which ship to add ammo to
-	 * @return created scene
-	 */
-	public Scene selectAmmo(int shipChoice, int difficulty)
+
+	public Scene selectAmmo()
 	{
 		Text selectAmmo = StylingTool.textCreator("SELECT AMMO");
 
@@ -336,10 +327,14 @@ public class MainMenu extends Application
 		ammoChoices2.setValue("Ammo 2");
 
 		Button play = StylingTool.buttonCreator("PLAY");
-		play.setOnAction(e -> setShipAndAmmo(shipChoice, ammoSelection(ammoChoices.getValue()), ammoSelection(ammoChoices2.getValue()), difficulty));
+		play.setOnAction(e -> {
+		        ammoSelection1 = ammoSelection(ammoChoices.getValue());
+		        ammoSelection2 = ammoSelection(ammoChoices2.getValue());
+		        menu.setScene(spaceShooter());
+		    });
 
 		Button back = StylingTool.buttonCreator("BACK");
-		back.setOnAction(e -> menu.setScene(hangar(difficulty)));
+		back.setOnAction(e -> menu.setScene(hangar()));
 		VBox layout = new VBox(10);
 		layout.setAlignment(Pos.CENTER);
 		layout.setStyle("-fx-background-color: #000000");
@@ -375,54 +370,18 @@ public class MainMenu extends Application
 
 		return ammoSelection;
 	}
-	/**
-	 * Method that sets player ship and ammo types before game
-	 * @param shipSelection index for ship selection
-	 * @param ammoSelection1 index for ammo 1 selection
-	 * @param ammoSelection2 index for ammo 2 selection
-	 */
-	//No more Obnoxious if statement
-	public void setShipAndAmmo(int shipSelection, int ammoSelection1, int ammoSelection2, int difficulty) {
-
-		if (shipSelection == 1)
-		{
-			ship = new FreightCruizer(WINDOW_WIDTH, WINDOW_HEIGHT, ammo(ammoSelection1), ammo(ammoSelection2));
-		}else if (shipSelection == 2)
-		{
-			ship = new BatwingGreen(WINDOW_WIDTH, WINDOW_HEIGHT, ammo(ammoSelection1), ammo(ammoSelection1), ammo(ammoSelection2), ammo(ammoSelection2));
-		}else if(shipSelection == 3)
-		{
-			ship = new Dreadnought(WINDOW_WIDTH, WINDOW_HEIGHT, ammo(ammoSelection1), ammo(ammoSelection2));
-		} else if (shipSelection == 4)
-		{
-			ship = new StarShip(WINDOW_WIDTH, WINDOW_HEIGHT, ammo(ammoSelection1), ammo(ammoSelection2));
-		}
-
-		menu.setScene(spaceShooter(difficulty));
-	}
-
-	private Ammo ammo(int selection)
-	{
-		Ammo ammo[] = {
-				new FiftyCaliber(),
-				new Phaser(),
-				new Missile(),
-				new ShotGun()};
-		
-		return ammo[selection];
-	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception 
+	public void start(Stage primaryStage) throws Exception
 	{
 		menu = primaryStage;
 		Image icon = new Image(getClass().getResourceAsStream("Sprite/Squid.png"));
 		menu.getIcons().add(icon);
 		menu.setScene(menu());
 		menu.show();
-		
-		
-		
+
+
+
 	}
 	
 	public static void main(String[] args) 
