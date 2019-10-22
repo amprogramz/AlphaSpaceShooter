@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AlphaSpaceShooter">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/AlphaSpaceShooter_jar/AlphaSpaceShooter.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

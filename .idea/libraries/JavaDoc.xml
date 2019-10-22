@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="JavaDoc">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/JavaDoc/member-search-index.zip!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/JavaDoc/package-search-index.zip!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/Alpha/Space/Shooter/JavaDoc/type-search-index.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
